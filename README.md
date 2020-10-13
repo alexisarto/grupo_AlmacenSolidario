@@ -19,6 +19,9 @@ Los productos seran del listado de precios cuidados.
   **Público objetivo**
   Mayores de 18 años con acceso a internet.
   
+  Tablero de tablero
+  https://trello.com/b/sWzUdJHl/grupo-azar
+  
 
 Andersonmarket.com - Diseño de pagina
 gurumarket.com.ar -Diseño
