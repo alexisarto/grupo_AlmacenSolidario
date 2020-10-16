@@ -22,4 +22,12 @@ router.get('/agregar-producto', function(req, res, next) {
   res.render('productAdd');
 });
 
+router.get('/home', function(req, res, next) {
+  res.render('home');
+});
+
+router.get('/instituciones', function(req, res, next) {
+  res.render('intituciones');
+});
+
 module.exports = router;
