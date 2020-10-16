@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.formulario {
+    padding: 2%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: lightgray;
+}
+input , button {
+    width: 90%;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 0;
+}
+button {
+    color: white;
+    background-color: #0044aa;
+}
+button:hover {
+    background-color: #0022aa;
+}

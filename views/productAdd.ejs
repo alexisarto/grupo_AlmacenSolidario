@@ -2,10 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/estiloFormulario.css">
     <title>Agregar Producto</title>
 </head>
 <body>
-    
+    <form class="formulario" action="index.ejs" method="GET">
+        <h1>Agregar producto</h1>
+        <input type="text" required name="descripcion" placeholder="Descripcion"><br>
+        <input type="text" required name="marca" placeholder="Marca"><br>
+        <input type="text" required name="presentacion" placeholder="Presentacion"><br><br>
+        <p><label for="">Seleccionar categoria</label>
+        <select name="categoria" id="">
+            <option value="almacen">Almacen</option>
+            <option value="bebes">Bebes</option>
+            <option value="bebidas">Bebidas</option>
+            <option value="lacteos">Lacteos</option>
+            <option value="limpieza">Limpieza</option>
+            <option value="perfumeria">Perfumeria</option>
+            <option value="nueva-categoria">Nueva categoria</option>
+        </select></p><br>
+        <input type="number" required name="precio" placeholder="Precio"><br>
+        <p><label for="imagen_producto">Seleccionar imagen</label>
+        <input type="file" required id="imagen_producto" name="imagen_producto"></p>
+        <button type="submit">Crear Producto</button>
+    </form>
 </body>
 </html>
