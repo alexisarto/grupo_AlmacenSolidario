@@ -2,10 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/estiloFormulario.css">
     <title>Registro</title>
 </head>
 <body>
-    
+    <form class="formulario" action="index.ejs" method="GET">
+        <h1>Crear Cuenta</h1>
+        <input type="text" required name="nombre" placeholder="Nombre"><br>
+        <input type="email" required name="email" placeholder="E-mail"><br>
+        <input type="password" required name="contrasenia" placeholder="Contraseña"><br>
+        <input type="password" required name="confContrasenia" placeholder="Confirmar contraseña"><br>
+        <button type="submit">Crear Cuenta</button>
+    </form>
 </body>
 </html>
