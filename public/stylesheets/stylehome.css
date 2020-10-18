@@ -1,0 +1,51 @@
+body {
+    margin: 0px;
+    padding: 0px;
+}
+* {
+    box-sizing: border-box;
+}
+
+main {
+    width: 100%;
+}
+
+section {
+    width: 100%;
+    border: 2px solid black;
+}
+
+section img {
+    display: inline-block;
+    width: 100%;
+    height: 100px;
+}
+
+.flotante {
+    width: 25%;
+    text-align: center;
+    margin: 20px auto;
+    border: 1px solid green;
+    padding: 5px;
+}
+
+.proceso div {
+    border: 1px solid red;
+    display: inline-block;
+    margin: 15px auto;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    padding: 10px;
+}
+
+.contadores div{
+    border: 1px solid blue;
+    display: inline-block;
+    margin: 5%;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    padding: 10px;
+}
+
