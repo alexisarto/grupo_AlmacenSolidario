@@ -1,0 +1,55 @@
+.body{
+    background-color:rgb(37, 131, 207);
+    height: 955px;
+    width: 84%;
+}
+
+.header{
+    height: 100px;
+    border:2px solid black;
+}
+
+.producto, .totalypagar{
+    background-color: white;
+    border:2px solid black;
+    height:150px;
+    padding-top: 50px;
+    padding-left: 300px;
+    margin: 10px 10px;
+}
+
+.botonpagar{
+    height:30px;
+    width:90px;
+    vertical-align: middle;
+    margin-right: 50px;
+    margin-top: 30px;
+}
+
+.footer{
+    height: 100px;
+    border:2px solid black;
+    margin-top: 2px;
+}
+
+.textopagar{
+    width:5px;
+}
+.moldefoto{
+    height: 150px;
+    width: 150px;
+    border:2px solid black;
+    margin-left: -275px;
+    margin-top: -40px;
+}
+.aside{
+    height: 955px;
+    width: 15%;
+    background-color: pink;
+}
+
+.aside, .body{
+    margin-top: 2px;
+    display: inline-block;
+    vertical-align: top;
+}
