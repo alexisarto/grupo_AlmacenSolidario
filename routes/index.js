@@ -29,7 +29,7 @@ router.get('/login', function(req, res, next) {
 router.get('/resetear-contrasenia', function(req, res, next) {
   res.render('passwordReset');
 });
-
+  
 router.get('/home', function(req, res, next) {
   res.render('home');
 });

@@ -1,0 +1,74 @@
+.insti1, .insti2, .insti3, .insti4 {
+    width: 95%;
+    border: 2px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;   
+}
+
+.insti1 {
+    height: 130px;
+}
+
+.insti2 {
+    height: 160px;
+}
+
+.insti3 {
+    height: 140px;
+}
+
+.insti4 {
+    height: 170px;
+}
+
+p {
+    margin: auto;
+    text-align: center;
+}
+
+
+.infoInsti1, .infoInsti2, .infoInsti3, .infoInsti4 {
+    width: 250px;
+    height:  80px;
+    border: 3px solid;
+    padding: 5px;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 1;
+
+}
+
+.infoInsti1 {
+    right: 40px;
+    bottom: -50px;
+    border-color: #dc7a07;
+    background-color: #dc7a07;
+}
+
+.infoInsti2 {
+    left: 30px;
+    bottom: -25px;
+    border-color: #1e9e6b;
+    background-color: #1e9e6b
+}
+
+.infoInsti3 {
+    right: 60px;
+    bottom: -45px;
+    border-color: #3ab0e2;
+    background-color: #3ab0e2
+}
+
+.infoInsti4 {
+    left: 20px;
+    bottom: 5px;
+    border-color: #f7d861;
+    background-color: #f7d861;
+}
+
+section img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
