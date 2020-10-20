@@ -27,7 +27,7 @@ router.get('/home', function(req, res, next) {
 });
 
 router.get('/instituciones', function(req, res, next) {
-  res.render('intituciones');
+  res.render('instituciones');
 });
 
 module.exports = router;
