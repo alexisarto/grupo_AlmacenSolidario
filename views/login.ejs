@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/stylesheets/estiloFormulario.css">
+    <title>Login</title>
+</head>
+<body>
+    <form class="formulario" action="index.ejs" method="GET">
+        <h1>Ingresar</h1>
+        <input type="email" required name="email" placeholder="E-mail"><br>
+        <input type="password" required name="contrasenia" placeholder="Contraseña"><br><br>
+        <p><a class="resetear-contrasenia" href="resetear-contrasenia">¿Olvidaste la contraseña?</a></p>
+        <button type="submit">Ingresar a mi cuenta</button><br><br>
+        <p>¿No estás registrado?</p>
+        <button type="button"><a href="registro">Crear cuenta</a></button>
+    </form>
+</body>
+</html>

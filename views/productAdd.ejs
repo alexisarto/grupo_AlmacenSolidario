@@ -10,9 +10,18 @@
         <h1>Agregar producto</h1>
         <input type="text" required name="descripcion" placeholder="Descripcion"><br>
         <input type="text" required name="marca" placeholder="Marca"><br>
-        <input type="text" required name="presentacion" placeholder="Presentacion"><br><br>
-        <p><label for="">Seleccionar categoria</label>
-        <select name="categoria" id="">
+        <input class="presentacion" type="number" required name="presentacion" placeholder="Presentacion">
+        <label for="">Unidad de medida</label>
+        <select name="medida" id="select-medida">
+            <option value="cc">cc</option>
+            <option value="lt">lt</option>
+            <option value="ml">ml</option>
+            <option value="gr">gr</option>
+            <option value="kg">kg</option>
+            <option value="un">un</option>
+        </select></p><br><br>   
+        <label for="">Seleccionar categoria</label>
+        <select name="categoria" id="select-categoria">
             <option value="almacen">Almacen</option>
             <option value="bebes">Bebes</option>
             <option value="bebidas">Bebidas</option>
@@ -20,10 +29,12 @@
             <option value="limpieza">Limpieza</option>
             <option value="perfumeria">Perfumeria</option>
             <option value="nueva-categoria">Nueva categoria</option>
-        </select></p><br>
-        <input type="number" required name="precio" placeholder="Precio"><br>
-        <p><label for="imagen_producto">Seleccionar imagen</label>
-        <input type="file" required id="imagen_producto" name="imagen_producto"></p>
+        </select><br><br>
+        <input class="precio" type="number" required name="precio" placeholder="Precio"> $<br><br>
+        <div class="input-file">
+            <p class="texto-file">Seleccionar archivo de imagen</p>
+            <input type="file" required id="imagen_producto" name="imagen_producto">
+        </div><br>
         <button type="submit">Crear Producto</button>
     </form>
 </body>
