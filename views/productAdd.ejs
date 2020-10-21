@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="/stylesheets/estiloFormulario.css">
-    <title>Agregar Producto</title>
-</head>
-<body>
-    <form class="formulario" action="index.ejs" method="GET">
-        <h1>Agregar producto</h1>
-        <input type="text" required name="descripcion" placeholder="Descripcion"><br>
-        <input type="text" required name="marca" placeholder="Marca"><br>
-        <input class="presentacion" type="number" required name="presentacion" placeholder="Presentacion">
-        <label for="">Unidad de medida</label>
-        <select name="medida" id="select-medida">
-            <option value="cc">cc</option>
-            <option value="lt">lt</option>
-            <option value="ml">ml</option>
-            <option value="gr">gr</option>
-            <option value="kg">kg</option>
-            <option value="un">un</option>
-        </select></p><br><br>   
-        <label for="">Seleccionar categoria</label>
-        <select name="categoria" id="select-categoria">
-            <option value="almacen">Almacen</option>
-            <option value="bebes">Bebes</option>
-            <option value="bebidas">Bebidas</option>
-            <option value="lacteos">Lacteos</option>
-            <option value="limpieza">Limpieza</option>
-            <option value="perfumeria">Perfumeria</option>
-            <option value="nueva-categoria">Nueva categoria</option>
-        </select><br><br>
-        <input class="precio" type="number" required name="precio" placeholder="Precio"> $<br><br>
-        <div class="input-file">
-            <p class="texto-file">Seleccionar archivo de imagen</p>
-            <input type="file" required id="imagen_producto" name="imagen_producto">
-        </div><br>
-        <button type="submit">Crear Producto</button>
-    </form>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/stylesheets/estiloFormulario.css">
+        <title>Agregar Producto</title>
+    </head>
+    <body>
+        <div class="formulario-agregar-producto">
+            <img src="img/image-logo.jpg" class="avatar" alt="imagen logo">
+            <h1>Agregar producto</h1>
+            <form action="index.ejs" method="GET">
+                <input type="text" required name="descripcion" placeholder="Descripcion"><br>
+                <input type="text" required name="marca" placeholder="Marca"><br>
+                <input class="presentacion" type="number" required name="presentacion" placeholder="Presentacion">
+                <label for="">Unidad de medida</label>
+                <select name="medida" id="select-medida">
+                    <option value="cc">cc</option>
+                    <option value="lt">lt</option>
+                    <option value="ml">ml</option>
+                    <option value="gr">gr</option>
+                    <option value="kg">kg</option>
+                    <option value="un">un</option>
+                </select></p><br>   
+                <label for="">Seleccionar categoria</label>
+                <select name="categoria" id="select-categoria">
+                    <option value="almacen">Almacen</option>
+                    <option value="bebes">Bebes</option>
+                    <option value="bebidas">Bebidas</option>
+                    <option value="lacteos">Lacteos</option>
+                    <option value="limpieza">Limpieza</option>
+                    <option value="perfumeria">Perfumeria</option>
+                    <option value="nueva-categoria">Nueva categoria</option>
+                </select><br>
+                <input class="precio" type="number" required name="precio" placeholder="Precio"> $<br><br>
+                <div class="input-file">
+                    <p class="texto-file">Seleccionar archivo de imagen</p>
+                    <input type="file" required id="imagen_producto" name="imagen_producto">
+                </div><br>
+                <button type="submit">Crear Producto</button>
+            </form>
+        </div>
+    </body>
 </html>
