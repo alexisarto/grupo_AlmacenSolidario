@@ -1,7 +1,10 @@
 .body{
-    background-color:rgb(37, 131, 207);
+    background-color:yellowgreen;
     height: 955px;
-    width: 84%;
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    justify-content: space-around;
 }
 
 .header{
@@ -9,21 +12,82 @@
     border:2px solid black;
 }
 
-.producto, .totalypagar{
+.producto{
     background-color: white;
     border:2px solid black;
     height:150px;
-    padding-top: 50px;
-    padding-left: 300px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.Contenedor_productos{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 70%;
+
+}
+.Contenedor_precio{
+    background-color: white;
+    border:2px solid black;
     margin: 10px 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 29%;
+}
+.contenedor_info_producto{
+    display: flex;
+    flex-direction: row;
+}
+
+.cantidad_producto{
+    display: flex;
+    align-self: center;
+    width:30%;
+    justify-content: center;
+    font-size: small;
+}
+
+.producto_precio{
+    width: 70%;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.textopagar{
+    position: relative;
+    height: auto;
+    margin-left: 15px;
+    top: 50px;
+}
+.preciosproductos{
+    height:80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-bottom: 2px solid black;
+}
+
+.precioProd{
+    align-self: flex-start;
+
+}
+
+.totalypagar{
+    display: flex;
+    flex-direction: row;
 }
 
 .botonpagar{
-    height:30px;
-    width:90px;
-    vertical-align: middle;
-    margin-right: 50px;
-    margin-top: 30px;
+    position: relative;
+    align-self: center;
+    left:20vh;
+    top: 50px;
+    background-color: #0022aa;
+    color: white;
+    border-radius: 5px;
 }
 
 .footer{
@@ -32,24 +96,79 @@
     margin-top: 2px;
 }
 
-.textopagar{
-    width:5px;
-}
 .moldefoto{
-    height: 150px;
-    width: 150px;
+    display: flex;
+    height: 120px;
+    width: 120px;
     border:2px solid black;
-    margin-left: -275px;
-    margin-top: -40px;
+    justify-content: center;
+    margin: 10px 10px;
 }
+
+/* DETALLE DEL PRODUCTO */
+
 .aside{
     height: 955px;
     width: 15%;
     background-color: pink;
 }
 
-.aside, .body{
-    margin-top: 2px;
-    display: inline-block;
-    vertical-align: top;
+.moldeFotoDetalle{
+    position: relative;
+    height: 150px;
+    width: 150px;
+    border:2px solid black;
+    top:10px;
+    left:10px;
 }
+
+.containerProd{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    height:500px;
+    border: 2px solid black;
+}
+.infoProd{
+    height: 80%;
+}
+.nombreProd{
+    font-size: medium;
+    height: 20%;
+}
+.detallesProd{
+    position: relative;
+    align-items: stretch;
+    top:10px;
+    left:20px;
+    width:700px;
+    height:150px;
+}
+
+.botonAgregar{
+    position: relative;
+    right:20vh;
+    background-color: #0022aa;
+    color:white;
+    border-radius: 5px;
+    border-color: unset;
+}
+.precio{
+    position: relative;
+    left: 20vh;
+}
+.agregarYpagar{
+    display: flex;
+    align-items: center;
+    height:150px;
+    justify-content: space-between;
+    width:100%;
+}
+.detalle_producto{
+    width: 85%;
+}
+.body_detalle{
+    display: flex;
+}
+
