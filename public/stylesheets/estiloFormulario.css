@@ -3,20 +3,21 @@
     padding: 0;
     box-sizing: border-box;
 }
-.formulario {
-    padding: 2%;
-    margin-bottom: 20px;
-    background-color: lightgray;
+body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: #f4f8f9;
 }
 input , button , #select-medida , #select-categoria {
     padding: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
-    border-radius: 5px;
     border: 0;
+    outline: none;
 }
 input , button {
-    width: 80%;
+    width: 100%;
 }
 #select-medida {
     width: 5%;
@@ -26,13 +27,25 @@ input , button {
 }
 button {
     color: white;
-    background-color: #0044aa;
+    background-color: #1e9e6b;
+    border-radius: 5px;
 }
 button:hover {
-    background-color: #0022aa;
+    background-color: #069059;
 }
-.presentacion , .precio {
-    width: 20%;
+.sec-button {
+    color: white;
+    background-color: #dc7a07;
+    border-radius: 5px;
+}
+.sec-button:hover {
+    background-color: #cb4332;
+}
+.presentacion {
+    width: 40%;
+}
+.precio {
+    width: 30%;
 }
 a {
     color: white;
@@ -40,7 +53,6 @@ a {
     display: block;
 }
 p {
-    width: 80%;
     text-align: right;
     margin-bottom: -10px;
 }
@@ -59,9 +71,9 @@ p {
 }
 .input-file {
     position: relative;
-    width: 20%;
+    width: 80%;
     background-color: white;
-    border-radius: 5px;
+    border-bottom: 1px solid #e1e1e1;
 }
 #imagen_producto {
     position: absolute;
@@ -72,4 +84,40 @@ p {
     width: 100%;
     height: 100%;
     opacity: 0;
+}
+.formulario {
+    background-color: white;
+    border: 1px solid #e1e1e1;
+    border-radius: 7px;
+    padding: 15px;
+    width: 320px;
+    position: absolute;
+    left: 50vw;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+}
+input {
+    border-bottom: 1px solid #e1e1e1;
+}
+h1 {
+    font-size: 28px;
+}
+.formulario .avatar , .formulario-agregar-producto .avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50px;
+    position: absolute;
+    top: -70px;
+    left: calc(50% - 50px);
+}
+.formulario-agregar-producto {
+    background-color: white;
+    border: 1px solid #e1e1e1;
+    border-radius: 7px;
+    padding: 15px;
+    width: 320px;
+    position: absolute;
+    left: 50vw;
+    top: 80px;
+    transform: translateX(-50%);
 }

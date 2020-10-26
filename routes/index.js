@@ -27,19 +27,15 @@ router.get('/login', function(req, res, next) {
 });
 
 router.get('/resetear-contrasenia', function(req, res, next) {
-  res.render('passwordReset')
+  res.render('passwordReset');
 });
-
+  
 router.get('/home', function(req, res, next) {
   res.render('home');
 });
 
 router.get('/instituciones', function(req, res, next) {
-  res.render('intituciones');
-});
-
-router.get('/almacen', function(req, res, next) {
-  res.render('almacen');
+  res.render('instituciones');
 });
 
 module.exports = router;
