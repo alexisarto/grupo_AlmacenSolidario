@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+header {
+    background-color: #67bfc1;
+    height: 100px;
+    width: 100vw;
+    padding: 5px 4vw;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    position: fixed;
+    z-index: 100;
+}
+
+header section.isologotipo {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    width: 30%;
+
+}
+
+header section.isologotipo div.logo {
+    padding:5px;
+    width: 40%;   
+}
+
+header section.isologotipo div.logo img {
+    height: 100px;
+}
+
+header section.navegacion div.encabezado {
+    display: flex;
+    flex-direction: row;
+    height: 49%;
+    justify-content: flex-end;
+}
+
+header section.navegacion div.encabezado div.usuario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 5px;
+}
+
+header section.navegacion div.encabezado div.carrito {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 5px;
+}
+
+header section.navegacion div.encabezado div.usuario a,
+header section.navegacion div.encabezado div.carrito a {
+    font-size: 20px;
+    color: white;
+
+}
+
+header section.navegacion nav {
+    display:flex;
+    height: 49%;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+header section.navegacion nav ul{
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    list-style: none;
+}
+
+header section.navegacion nav ul li a {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0px 5px;
+    
+}
+
+
+
+

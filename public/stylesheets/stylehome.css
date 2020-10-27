@@ -5,13 +5,6 @@
     padding: 0px;
 }
 
-header {
-    width: 100vw;
-    height: 100px;;
-    border: 3px solid pink;
-
-}
-
 main.home {
     width: 100vw;
     display:flex;
@@ -98,13 +91,18 @@ section.proceso div {
 
 section.proceso div i {
     padding-bottom: 10px;
+    font-size: 30px;
 }
 
-section.proceso hr {
-    background: red;
-    width: 5px;
-    height: 30px;
-    border: 0px;
+section.imagenAlimentos {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    position: relative;
+}
+
+section.imagenAlimentos img {
+    width: 100%;
 }
 
 section.contadores {
