@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 body {
     width: 100%;
@@ -42,7 +43,7 @@ button:hover {
     background-color: #cb4332;
 }
 .presentacion {
-    width: 40%;
+    width: 45%;
 }
 .precio {
     width: 30%;
@@ -120,4 +121,47 @@ h1 {
     left: 50vw;
     top: 80px;
     transform: translateX(-50%);
+}
+label , p {
+    font-size: 13px;
+    color: gray;
+}
+.texto-nota {
+    font-size: 10px;
+}
+@media (min-width: 767px) {
+    .formulario-agregar-producto {
+        background-color: white;
+        border: 1px solid #e1e1e1;
+        border-radius: 7px;
+        padding: 15px;
+        width: 90%;
+    }
+    .formulario-agregar-producto .agregar-info1-producto {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .formulario-agregar-producto .presentacion {
+        width: 20%;
+    }
+    .formulario-agregar-producto .agregar-info2-producto {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .formulario-agregar-producto .input-file {
+        width: 40%;
+    }
+    .formulario-agregar-producto button {
+        width: 30%;
+        align-self: center;
+    }
+    .formulario-agregar-producto form {
+        display: flex;
+        flex-direction: column;
+    }
+    .formulario-agregar-producto .texto-nota {
+        text-align: left;
+    }
 }

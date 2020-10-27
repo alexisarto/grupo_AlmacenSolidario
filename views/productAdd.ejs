@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/stylesheets/estiloFormulario.css">
         <title>Agregar Producto</title>
     </head>
@@ -11,33 +12,42 @@
             <img src="img/image-logo.jpg" class="avatar" alt="imagen logo">
             <h1>Agregar producto</h1>
             <form action="index.ejs" method="GET">
-                <input type="text" required name="descripcion" placeholder="Descripcion"><br>
+                <input type="text" required name="item" placeholder="Item"><br>
                 <input type="text" required name="marca" placeholder="Marca"><br>
-                <input class="presentacion" type="number" required name="presentacion" placeholder="Presentacion">
-                <label for="">Unidad de medida</label>
-                <select name="medida" id="select-medida">
-                    <option value="cc">cc</option>
-                    <option value="lt">lt</option>
-                    <option value="ml">ml</option>
-                    <option value="gr">gr</option>
-                    <option value="kg">kg</option>
-                    <option value="un">un</option>
-                </select></p><br>   
-                <label for="">Seleccionar categoria</label>
-                <select name="categoria" id="select-categoria">
-                    <option value="almacen">Almacen</option>
-                    <option value="bebes">Bebes</option>
-                    <option value="bebidas">Bebidas</option>
-                    <option value="lacteos">Lacteos</option>
-                    <option value="limpieza">Limpieza</option>
-                    <option value="perfumeria">Perfumeria</option>
-                    <option value="nueva-categoria">Nueva categoria</option>
-                </select><br>
-                <input class="precio" type="number" required name="precio" placeholder="Precio"> $<br><br>
-                <div class="input-file">
-                    <p class="texto-file">Seleccionar archivo de imagen</p>
-                    <input type="file" required id="imagen_producto" name="imagen_producto">
+                <div class="agregar-info1-producto">
+                    <input class="presentacion" type="number" required name="presentacion" placeholder="Presentacion">
+                    <label for="">Unidad de medida</label>
+                    <select name="medida" id="select-medida" required>
+                        <option></option>
+                        <option value="cc">cc</option>
+                        <option value="lt">lt</option>
+                        <option value="ml">ml</option>
+                        <option value="gr">gr</option>
+                        <option value="kg">kg</option>
+                        <option value="un">un</option>
+                    </select></p><br>
+                    <div class="etiqueta-categoria">   
+                        <label for="">Seleccionar categoria</label>
+                        <select name="categoria" id="select-categoria" required>
+                            <option></option>
+                            <option value="almacen">Almacen</option>
+                            <option value="bebes">Bebes</option>
+                            <option value="bebidas">Bebidas</option>
+                            <option value="lacteos">Lacteos</option>
+                            <option value="limpieza">Limpieza</option>
+                            <option value="perfumeria">Perfumeria</option>
+                            <option value="nueva-categoria">Nueva categoria</option>
+                        </select><br>
+                    </div>
+                </div>
+                <div class="agregar-info2-producto">
+                    <input class="precio" type="number" required name="precio" placeholder="Precio"><label> $</label><br><br>
+                    <div class="input-file">
+                        <p class="texto-file">Seleccionar archivo de imagen</p>
+                        <input type="file" required id="imagen_producto" name="imagen_producto">
+                    </div><br>
                 </div><br>
+                <p class="texto-nota">* Todos los campos son requeridos</p>
                 <button type="submit">Crear Producto</button>
             </form>
         </div>
