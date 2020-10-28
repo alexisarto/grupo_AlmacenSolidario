@@ -7,7 +7,7 @@
 .disenio-footer {
     color: #939393;
     background-color: #272727;
-    height: 20vh;
+    height: 12vh;
     padding: 20px;
     display: flex;
     justify-content: space-between;
@@ -15,7 +15,7 @@
 .copyright {
     font-size: 12px;
     align-self: flex-end;
-    flex: 1 1 40%;
+    flex: 1 1 44%;
 }
 .preguntas-frecuentes {
     text-decoration: none;
@@ -25,12 +25,12 @@
     color: #0044aa;
 }
 #preguntas-frecuentes {
-    flex: 1 1 40%;
+    flex: 1 1 44%;
 }
 .redes {
     display: flex;
     flex-direction: column;
-    flex: 1 1 20%;
+    flex: 1 1 12%;
 }
 .iconos-redes {
     display: flex;
