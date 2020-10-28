@@ -14,6 +14,7 @@ header {
     flex-direction: row;
     position: fixed;
     z-index: 100;
+    border-bottom: 1px solid black;
 }
 
 header section.isologotipo {

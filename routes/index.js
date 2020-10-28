@@ -42,4 +42,8 @@ router.get('/footer', function(req, res, next) {
   res.render('footer');
 });
 
+router.get('/almacen', function(req, res, next) {
+  res.render('almacen');
+});
+
 module.exports = router;
