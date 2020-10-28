@@ -5,7 +5,7 @@
 }
 
 header {
-    background-color: #67bfc1;
+    background-color: #00b8e6;
     height: 100px;
     width: 100vw;
     padding: 5px 4vw;
@@ -80,10 +80,20 @@ header section.navegacion nav ul li a {
     color: white;
     text-decoration: none;
     display: inline-block;
-    padding: 0px 5px;
-    
+    padding: 0px 10px;   
 }
 
+header section.navegacion nav ul li.subLogin ul.children {
+    display: none;
+    position: absolute;
+}
 
+header section.navegacion nav ul li.subLogin:hover ul.children {
+    display: block;
+}
 
+header section.navegacion nav ul li.subLogin ul.children li {
+    background-color:#66e0ff;
+    position: relative;
+}
 

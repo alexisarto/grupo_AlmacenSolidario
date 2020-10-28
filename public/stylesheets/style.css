@@ -1,11 +1,12 @@
+@import 'header.css';
+@import 'estiloFooter.css';
+@import 'stylehome.css';
+@import 'styleInstituciones.css';
+@import 'estiloFormulario.css';
+@import 'productos.css';
+
+
 *{
   box-sizing: border-box;
 }
 
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
