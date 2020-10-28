@@ -34,11 +34,15 @@ header section.isologotipo div.logo img {
     height: 100px;
 }
 
+header section.navegacion {
+    width: 69%;
+}
+
 header section.navegacion div.encabezado {
     display: flex;
     flex-direction: row;
-    height: 49%;
     justify-content: flex-end;
+    height: 49%;
 }
 
 header section.navegacion div.encabezado div.usuario {
