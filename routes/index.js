@@ -38,10 +38,6 @@ router.get('/instituciones', function(req, res, next) {
   res.render('instituciones');
 });
 
-router.get('/footer', function(req, res, next) {
-  res.render('footer');
-});
-
 router.get('/almacen', function(req, res, next) {
   res.render('almacen');
 });
