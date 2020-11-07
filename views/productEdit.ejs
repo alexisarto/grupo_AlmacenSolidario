@@ -5,20 +5,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/stylesheets/estiloFormulario.css">
-        <title>Agregar Producto</title>
+        <title>Editar Producto</title>
     </head>
     <body>
         <div class="formulario-agregar-producto">
             <a href="../home"><img src="/img/Logo.png" class="avatar" alt="imagen logo"></a>
-            <h1>Agregar producto</h1>
-            <form action="/products/agregar-producto" method="POST">
+            <h1>Editar producto</h1>
+            <form action="/products/editar-producto/<%= productFound.id %>" method="POST">
                 <input type="hidden" name="id" value="">
-                <input type="text" required name="item" placeholder="Item"><br>
-                <input type="text" required name="marca" placeholder="Marca"><br>
+                <input type="text" required name="item" value="<%= productFound.item %>" placeholder="Item"><br>
+                <input type="text" required name="marca" value="<%= productFound.marca %>" placeholder="Marca"><br>
                 <div class="agregar-info1-producto">
-                    <input class="presentacion" type="text" required name="presentacion" placeholder="Presentacion">
+                    <input class="presentacion" type="text" required name="presentacion" value="<%= productFound.presentacion %>" placeholder="Presentacion">
                     <label for="">Unidad de medida</label>
-                    <select name="medida" id="select-medida" required>
+                    <select name="medida" id="select-medida" required value="<%= productFound.medida %>">
                         <option></option>
                         <option value="cc">cc</option>
                         <option value="lt">lt</option>
@@ -29,7 +29,7 @@
                     </select></p><br>
                     <div class="etiqueta-categoria">   
                         <label for="">Seleccionar categoria</label>
-                        <select name="categoria" id="select-categoria" required>
+                        <select name="categoria" id="select-categoria" required value="<%= productFound.categoria %>">
                             <option></option>
                             <option value="almacen">Almacen</option>
                             <option value="bebes">Bebes</option>
@@ -42,14 +42,14 @@
                     </div>
                 </div>
                 <div class="agregar-info2-producto">
-                    <input class="precio" type="text" required name="precio" placeholder="Precio"><label> $</label><br><br>
+                    <input class="precio" type="text" required name="precio" value="<%= productFound.precio %>" placeholder="Precio"><label> $</label><br><br>
                     <div class="input-file">
                         <p class="texto-file">Seleccionar archivo de imagen</p>
-                        <input type="file" required id="imagen_producto" name="imagen_producto">
+                        <input type="file" required id="imagen_producto" name="imagen_producto" value="<%= productFound.imagen_producto %>">
                     </div><br>
                 </div><br>
                 <p class="texto-nota">* Todos los campos son requeridos</p>
-                <button type="submit">Crear Producto</button>
+                <button type="submit">Editar Producto</button>
             </form>
         </div>
     </body>
