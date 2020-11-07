@@ -14,6 +14,6 @@ router.get('/editar-producto/:id', productsController.productEdit);
 router.post('/editar-producto/:id', productsController.productUpdate);
 
 /* GET products list. */
-//router.get('/list', productsController.list);
+router.get('/list', productsController.list);
 
 module.exports = router;

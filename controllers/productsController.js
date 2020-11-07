@@ -39,12 +39,12 @@ const productsController = {
         });
         editProductsJSON = JSON.stringify(editProducts);
         fs.writeFileSync(__dirname + '/../data/products.json', editProductsJSON);
-        res.send('Producto editado');
-    }
+        res.redirect('/products/list');
+    },
 
-    //list: function(req, res, next) {
-    //    res.render('list', {products});
-    //}
+    list: function(req, res, next) {
+        res.render('list', {products});
+    }
 
 }
 
