@@ -10,35 +10,31 @@ body {
     position: relative;
     background-color: #f4f8f9;
 }
-input , button , #select-medida , #select-categoria {
+.formulario-agregar-producto input , .formulario-agregar-producto button , .formulario-agregar-producto #select-medida , .formulario-agregar-producto #select-categoria {
     padding: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
     border: 0;
     outline: none;
 }
-h1 {
+.formulario-agregar-producto h1 {
     font-size: 28px;
 }
-label , p , span {
+.formulario-agregar-producto label , .formulario-agregar-producto p , .formulario-agregar-producto span {
     font-size: 13px;
     color: gray;
 }
-.texto-nota {
+.formulario-agregar-producto .texto-nota {
     font-size: 10px;
 }
-button {
+.formulario-agregar-producto button {
     color: white;
     background-color: #1e9e6b;
     border-radius: 5px;
     width: 30%;
 }
-button:hover {
+.formulario-agregar-producto button:hover {
     background-color: #069059;
-}
-.avatar {
-    width: 100px;
-    height: 100px;
 }
 .formulario-agregar-producto {
     background-color: white;
@@ -51,16 +47,16 @@ button:hover {
     top: 80px;
     transform: translateX(-50%);
 }
-input#imagen_producto {
+.formulario-agregar-producto input#imagen_producto {
     display: none;
 }
-input#imagen_producto + label {
+.formulario-agregar-producto input#imagen_producto + label {
     background-color: #dc7a07;
     padding: 8px;
     color: white;
     border-radius: 5px;
 }
-input#imagen_producto + label:hover {
+.formulario-agregar-producto input#imagen_producto + label:hover {
     background-color: #cb4332;
     cursor: pointer;
 }
@@ -79,7 +75,6 @@ input#imagen_producto + label:hover {
 }
 .formulario-agregar-producto .agregar-info2-producto {
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 .formulario-agregar-producto button {
@@ -92,4 +87,10 @@ input#imagen_producto + label:hover {
 }
 .formulario-agregar-producto .texto-nota {
     text-align: left;
+}
+.formulario-agregar-producto .agregar-info2-producto label {
+    padding: 10px;
+}
+.formulario-agregar-producto .input-file {
+    padding-left: 75px;
 }
