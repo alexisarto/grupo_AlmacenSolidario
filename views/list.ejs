@@ -6,7 +6,7 @@
     <title>Listado de Productos</title>
 </head>
 <body>
-    <ul>
+    <ol>
         <% products.forEach(function(producto) { %>
             <li>
                 <%= producto.item %>
@@ -18,6 +18,6 @@
                 <a href="/products/editar-producto/<%= producto.id %>">Editar</a> - <a href="#">Borrar</a>
             </li>
         <% }); %>
-    </ul>
+    </ol>
 </body>
 </html>

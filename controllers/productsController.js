@@ -8,7 +8,7 @@ const productsController = {
         products.push(req.body);
         let productsJSON = JSON.stringify(products);
         fs.writeFileSync(__dirname + '/../data/products.json', productsJSON);
-        res.send('Se ha creado el producto ' + req.body.item + ', marca ' + req.body.marca);
+        res.redirect('/products/list');
     },
     
     productEdit: function(req, res, next) {

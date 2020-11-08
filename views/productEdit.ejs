@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/stylesheets/estiloFormulario.css">
+        <link rel="stylesheet" href="/stylesheets/estiloAgregar.css">
         <title>Editar Producto</title>
     </head>
     <body>
@@ -19,33 +19,40 @@
                     <input class="presentacion" type="text" required name="presentacion" value="<%= productFound.presentacion %>" placeholder="Presentacion">
                     <label for="">Unidad de medida</label>
                     <select name="medida" id="select-medida" required value="<%= productFound.medida %>">
-                        <option></option>
-                        <option value="cc">cc</option>
-                        <option value="lt">lt</option>
-                        <option value="ml">ml</option>
-                        <option value="gr">gr</option>
-                        <option value="kg">kg</option>
-                        <option value="un">un</option>
+                        <option value="cc" <%= productFound.medida === 'cc' ? 'selected' : ''%> >cc</option>
+                        <option value="lt" <%= productFound.medida === 'lt' ? 'selected' : ''%> >lt</option>
+                        <option value="ml" <%= productFound.medida === 'ml' ? 'selected' : ''%> >ml</option>
+                        <option value="gr" <%= productFound.medida === 'gr' ? 'selected' : ''%> >gr</option>
+                        <option value="kg" <%= productFound.medida === 'kg' ? 'selected' : ''%> >kg</option>
+                        <option value="un" <%= productFound.medida === 'un' ? 'selected' : ''%> >un</option>
                     </select></p><br>
                     <div class="etiqueta-categoria">   
                         <label for="">Seleccionar categoria</label>
                         <select name="categoria" id="select-categoria" required value="<%= productFound.categoria %>">
-                            <option></option>
-                            <option value="almacen">Almacen</option>
-                            <option value="bebes">Bebes</option>
-                            <option value="bebidas">Bebidas</option>
-                            <option value="lacteos">Lacteos</option>
-                            <option value="limpieza">Limpieza</option>
-                            <option value="perfumeria">Perfumeria</option>
-                            <option value="nueva-categoria">Nueva categoria</option>
+                            <option value="almacen" <%= productFound.categoria === 'almacen' ? 'selected' : ''%> >Almacen</option>
+                            <option value="bebes" <%= productFound.categoria === 'bebes' ? 'selected' : ''%> >Bebes</option>
+                            <option value="bebidas" <%= productFound.categoria === 'bebidas' ? 'selected' : ''%> >Bebidas</option>
+                            <option value="lacteos" <%= productFound.categoria === 'lacteos' ? 'selected' : ''%> >Lacteos</option>
+                            <option value="limpieza" <%= productFound.categoria === 'limpieza' ? 'selected' : ''%> >Limpieza</option>
+                            <option value="perfumeria" <%= productFound.categoria === 'perfumeria' ? 'selected' : ''%> >Perfumeria</option>
+                            <option value="nueva-categoria" <%= productFound.categoria === 'nueva-categoria' ? 'selected' : ''%> >Nueva categoria</option>
                         </select><br>
                     </div>
                 </div>
                 <div class="agregar-info2-producto">
                     <input class="precio" type="text" required name="precio" value="<%= productFound.precio %>" placeholder="Precio"><label> $</label><br><br>
                     <div class="input-file">
-                        <p class="texto-file">Seleccionar archivo de imagen</p>
-                        <input type="file" required id="imagen_producto" name="imagen_producto" value="<%= productFound.imagen_producto %>">
+                        <input type="file" required id="imagen_producto" name="imagen_producto">
+                        <label for="imagen_producto">Seleccionar archivo de imagen</label>
+                        <span id="file-name"><%= productFound.imagen_producto %></span>
+                        <script>
+                            let inputFile = document.getElementById('imagen_producto');
+                            let fileNameField = document.getElementById('file-name');
+                            inputFile.addEventListener('change', function(event) {
+                                let uploadedFilename = event.target.files[0].name;
+                                fileNameField.textContent = uploadedFilename;
+                            })
+                        </script>
                     </div><br>
                 </div><br>
                 <p class="texto-nota">* Todos los campos son requeridos</p>
