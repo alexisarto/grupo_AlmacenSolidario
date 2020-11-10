@@ -3,8 +3,12 @@ const indexController = {
         res.render('home')
     },
 
-    instituciones: function (req,res, next){
+    instituciones: function (req, res, next){
         res.render('instituciones')
+    },
+
+    aboutUs: function (req, res, next){
+        res.render('aboutUs')
     }
 }
 

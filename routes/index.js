@@ -19,6 +19,8 @@ router.get('/home', indexController.home);
 
 router.get('/instituciones', indexController.instituciones);
 
+router.get('/nosotros', indexController.aboutUs);
+
 router.get('/almacen', function(req, res, next) {
   res.render('almacen');
 });
