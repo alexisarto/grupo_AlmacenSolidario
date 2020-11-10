@@ -10,81 +10,44 @@ body {
     position: relative;
     background-color: #f4f8f9;
 }
-input , button , #select-medida , #select-categoria {
+.formulario input , .formulario button {
     padding: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
     border: 0;
     outline: none;
-}
-input , button {
     width: 100%;
 }
-#select-medida {
-    width: 5%;
-}
-#select-categoria {
-    width: 12%;
-}
-button {
+.formulario button {
     color: white;
     background-color: #1e9e6b;
     border-radius: 5px;
 }
-button:hover {
+.formulario button:hover {
     background-color: #069059;
 }
-.sec-button {
+.formulario .sec-button {
     color: white;
     background-color: #dc7a07;
     border-radius: 5px;
 }
-.sec-button:hover {
+.formulario .sec-button:hover {
     background-color: #cb4332;
 }
-.presentacion {
-    width: 45%;
-}
-.precio {
-    width: 30%;
-}
-a {
+.formulario a {
     color: white;
     text-decoration: none;
     display: block;
 }
-p {
+.formulario p {
     text-align: right;
     margin-bottom: -10px;
 }
-.resetear-contrasenia {
+.formulario .resetear-contrasenia {
     color: black;
 }
-.resetear-contrasenia:hover {
+.formulario .resetear-contrasenia:hover {
     color:#0044aa;
-}
-.texto-file {
-    color: gray;
-    padding: 10px;
-    margin-bottom: 0px;
-    text-align: left;
-    width: 100%;
-}
-.input-file {
-    position: relative;
-    width: 80%;
-    background-color: white;
-    border-bottom: 1px solid #e1e1e1;
-}
-#imagen_producto {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
 }
 .formulario {
     background-color: white;
@@ -97,13 +60,13 @@ p {
     top: 50vh;
     transform: translate(-50%, -50%);
 }
-input {
+.formulario input {
     border-bottom: 1px solid #e1e1e1;
 }
-h1 {
+.formulario h1 {
     font-size: 28px;
 }
-.formulario .avatar , .formulario-agregar-producto .avatar {
+.formulario .avatar {
     width: 100px;
     height: 100px;
     border-radius: 50px;
@@ -111,60 +74,7 @@ h1 {
     top: -75px;
     left: calc(50% - 50px);
 }
-.formulario-agregar-producto {
-    background-color: white;
-    border: 1px solid #e1e1e1;
-    border-radius: 7px;
-    padding: 15px;
-    width: 320px;
-    position: absolute;
-    left: 50vw;
-    top: 80px;
-    transform: translateX(-50%);
-}
-label , p {
+.formulario label , .formulario p {
     font-size: 13px;
     color: gray;
-}
-.texto-nota {
-    font-size: 10px;
-}
-@media (min-width: 767px) {
-    .formulario-agregar-producto {
-        background-color: white;
-        border: 1px solid #e1e1e1;
-        border-radius: 7px;
-        padding: 15px;
-        width: 90%;
-    }
-    .formulario-agregar-producto .agregar-info1-producto {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .formulario-agregar-producto .presentacion {
-        width: 20%;
-    }
-    .formulario-agregar-producto #select-categoria {
-        width: 50%;
-    }
-    .formulario-agregar-producto .agregar-info2-producto {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .formulario-agregar-producto .input-file {
-        width: 40%;
-    }
-    .formulario-agregar-producto button {
-        width: 30%;
-        align-self: center;
-    }
-    .formulario-agregar-producto form {
-        display: flex;
-        flex-direction: column;
-    }
-    .formulario-agregar-producto .texto-nota {
-        text-align: left;
-    }
 }

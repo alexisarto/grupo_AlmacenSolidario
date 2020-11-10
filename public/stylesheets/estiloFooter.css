@@ -12,27 +12,27 @@
     display: flex;
     justify-content: space-between;
 }
-.copyright {
+.disenio-footer .copyright {
     font-size: 12px;
     align-self: flex-end;
     flex: 1 1 44%;
 }
-.preguntas-frecuentes {
+.disenio-footer .preguntas-frecuentes {
     text-decoration: none;
     color: #939393;
 }
-.preguntas-frecuentes:hover {
+.disenio-footer .preguntas-frecuentes:hover {
     color: #0044aa;
 }
-#preguntas-frecuentes {
+.disenio-footer #preguntas-frecuentes {
     flex: 1 1 44%;
 }
-.redes {
+.disenio-footer .redes {
     display: flex;
     flex-direction: column;
     flex: 1 1 12%;
 }
-.iconos-redes {
+.disenio-footer .iconos-redes {
     display: flex;
 }
 footer div div a {
