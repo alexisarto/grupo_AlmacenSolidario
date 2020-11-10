@@ -94,3 +94,72 @@ body {
 .formulario-agregar-producto .input-file {
     padding-left: 75px;
 }
+@media (max-width: 768px) {
+    .formulario-agregar-producto h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .formulario-agregar-producto .agregar-info1-producto {
+        display: block;
+    }
+    .formulario-agregar-producto .agregar-info2-producto {
+        display: block;
+    }
+    .formulario-agregar-producto .input-file {
+        padding-left: 0;
+    }
+    .formulario-agregar-producto button {
+        width: 50%
+    }
+}
+@media (max-width: 320px) {
+    .formulario-agregar-producto {
+        top: 50px;
+    }
+    .formulario-agregar-producto .avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50px;
+        position: absolute;
+        top: -45px;
+        left: calc(50% - 30px);
+    }
+    .formulario-agregar-producto .agregar-info1-producto {
+        display: block;
+    }
+    .formulario-agregar-producto .agregar-info2-producto {
+        display: block;
+    }
+    .formulario-agregar-producto .input-file {
+        padding-left: 0;
+    }
+    .formulario-agregar-producto button {
+        width: 80%;
+        margin-top: 10px;
+    }
+    .formulario-agregar-producto .agregar-info1-producto .unidad-medida {
+        width: 100%;
+    }
+    .formulario-agregar-producto h1 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+    .formulario-agregar-producto .agregar-info1-producto .etiqueta-categoria {
+        width: 100%;
+        display: flex;
+    }
+    .formulario-agregar-producto .agregar-info1-producto .etiqueta-categoria label {
+        align-self: center;
+    }
+    .formulario-agregar-producto input , .formulario-agregar-producto label , .formulario-agregar-producto p , .formulario-agregar-producto span {
+        font-size: 10px;
+    }
+    .formulario-agregar-producto .agregar-info2-producto .input-file #file-name {
+        display: block;
+        width: 100%;
+        margin-top: 15px;
+    }
+    .formulario-agregar-producto .texto-nota {
+        font-size: 8px;
+    }
+}

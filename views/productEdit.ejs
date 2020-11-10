@@ -17,15 +17,17 @@
                 <input type="text" required name="marca" value="<%= productFound.marca %>" placeholder="Marca"><br>
                 <div class="agregar-info1-producto">
                     <input class="presentacion" type="text" required name="presentacion" value="<%= productFound.presentacion %>" placeholder="Presentacion">
-                    <label for="">Unidad de medida</label>
-                    <select name="medida" id="select-medida" required value="<%= productFound.medida %>">
-                        <option value="cc" <%= productFound.medida === 'cc' ? 'selected' : ''%> >cc</option>
-                        <option value="lt" <%= productFound.medida === 'lt' ? 'selected' : ''%> >lt</option>
-                        <option value="ml" <%= productFound.medida === 'ml' ? 'selected' : ''%> >ml</option>
-                        <option value="gr" <%= productFound.medida === 'gr' ? 'selected' : ''%> >gr</option>
-                        <option value="kg" <%= productFound.medida === 'kg' ? 'selected' : ''%> >kg</option>
-                        <option value="un" <%= productFound.medida === 'un' ? 'selected' : ''%> >un</option>
-                    </select></p><br>
+                    <div class="unidad-medida">
+                        <label for="">Unidad de medida</label>
+                        <select name="medida" id="select-medida" required value="<%= productFound.medida %>">
+                            <option value="cc" <%= productFound.medida === 'cc' ? 'selected' : ''%> >cc</option>
+                            <option value="lt" <%= productFound.medida === 'lt' ? 'selected' : ''%> >lt</option>
+                            <option value="ml" <%= productFound.medida === 'ml' ? 'selected' : ''%> >ml</option>
+                            <option value="gr" <%= productFound.medida === 'gr' ? 'selected' : ''%> >gr</option>
+                            <option value="kg" <%= productFound.medida === 'kg' ? 'selected' : ''%> >kg</option>
+                            <option value="un" <%= productFound.medida === 'un' ? 'selected' : ''%> >un</option>
+                        </select></p><br>
+                    </div>
                     <div class="etiqueta-categoria">   
                         <label for="">Seleccionar categoria</label>
                         <select name="categoria" id="select-categoria" required value="<%= productFound.categoria %>">
