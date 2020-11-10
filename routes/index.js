@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const indexController = require('../controllers/indexController');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -14,13 +15,11 @@ router.get('/detalle-producto', function(req, res, next) {
   res.render('productDetail');
 });
 
-router.get('/home', function(req, res, next) {
-  res.render('home');
-});
+router.get('/home', indexController.home);
 
-router.get('/instituciones', function(req, res, next) {
-  res.render('instituciones');
-});
+router.get('/instituciones', indexController.instituciones);
+
+router.get('/nosotros', indexController.aboutUs);
 
 router.get('/almacen', function(req, res, next) {
   res.render('almacen');
