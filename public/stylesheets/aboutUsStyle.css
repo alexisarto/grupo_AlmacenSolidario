@@ -1,0 +1,36 @@
+main.about {
+    width: 100vw;
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f8f9;   
+}
+
+main.about section {
+    width: 85%;
+}
+
+section.imagenAbout {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    position: relative;
+}
+
+section.imagenAbout img {
+    display: block;
+    width: 100%;
+}
+
+section.textoAbout {
+    padding: 20px 10px;
+    background-color: #dc7a07;
+    color: black;
+    text-align: center;
+}
+
+section.textoAbout p {
+    padding-top: 20px;
+}
+
