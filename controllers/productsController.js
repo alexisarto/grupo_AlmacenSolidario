@@ -2,7 +2,7 @@ const fs = require('fs');
 var products = JSON.parse(fs.readFileSync(__dirname + '/../data/products.json', 'utf-8'));
 const productsController = {
     productAdd: function(req, res, next) {
-        res.render('productAdd');
+        res.render('products/productAdd');
       },
     productStore: function(req, res, next) {
         products.push(req.body);
@@ -21,7 +21,7 @@ const productsController = {
             }
         }
         if (productFound) {
-            res.render('productEdit', {productFound});
+            res.render('products/productEdit', {productFound});
         } else {
             res.send('Producto invalido')
         }
@@ -43,7 +43,7 @@ const productsController = {
     },
 
     list: function(req, res, next) {
-        res.render('list', {products});
+        res.render('products/list', {products});
     }
 
 }

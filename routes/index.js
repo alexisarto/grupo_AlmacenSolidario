@@ -8,11 +8,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/carrito', function(req, res, next) {
-  res.render('productCart');
+  res.render('products/productCart');
 });
 
 router.get('/detalle-producto', function(req, res, next) {
-  res.render('productDetail');
+  res.render('products/productDetail');
 });
 
 router.get('/home', indexController.home);
@@ -22,7 +22,7 @@ router.get('/instituciones', indexController.instituciones);
 router.get('/nosotros', indexController.aboutUs);
 
 router.get('/almacen', function(req, res, next) {
-  res.render('almacen');
+  res.render('products/almacen');
 });
 
 module.exports = router;

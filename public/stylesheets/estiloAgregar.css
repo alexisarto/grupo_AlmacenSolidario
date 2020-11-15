@@ -75,6 +75,7 @@ body.form {
 }
 .formulario-agregar-producto .agregar-info2-producto {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
 }
 .formulario-agregar-producto button {
