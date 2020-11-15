@@ -5,7 +5,17 @@ const productsController = {
         res.render('products/productAdd');
       },
     productStore: function(req, res, next) {
-        products.push(req.body);
+        let newProduct = {
+            id: parseInt(products[products.length -1].id) + 1,
+            item: req.body.item,
+            marca: req.body.marca,
+            presentacion: req.body.presentacion,
+            medida: req.body.medida,
+            categoria: req.body.categoria,
+            precio: req.body.precio,
+            imagen_producto: req.files[0].filename
+        };
+        products.push(newProduct);
         let productsJSON = JSON.stringify(products);
         fs.writeFileSync(__dirname + '/../data/products.json', productsJSON);
         res.redirect('/products/list');

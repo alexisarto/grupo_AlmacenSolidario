@@ -8,8 +8,7 @@
         <div class="formulario-agregar-producto">
             <a href="/home"><img src="/img/Logo.png" class="avatar" alt="imagen logo"></a>
             <h1>Editar producto</h1>
-            <form action="/products/editar-producto/<%= productFound.id %>" method="POST">
-                <input type="hidden" name="id" value="">
+            <form action="/products/editar-producto/<%= productFound.id %>" method="POST" enctype="multipart/form-data">
                 <input type="text" required name="item" value="<%= productFound.item %>" placeholder="Item"><br>
                 <input type="text" required name="marca" value="<%= productFound.marca %>" placeholder="Marca"><br>
                 <div class="agregar-info1-producto">

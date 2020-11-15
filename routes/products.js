@@ -1,17 +1,30 @@
 var express = require('express');
 const productsController = require('../controllers/productsController');
 var router = express.Router();
+var path = require('path');
+var multer = require('multer');
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'public/images/imagenes_productos')
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.originalname + '-' + Date.now() + path.extname(file.originalname))
+    }
+  })
+   
+  var upload = multer({ storage: storage })
 
 /* GET products add. */
 router.get('/agregar-producto', productsController.productAdd);
 /* POST products store. */
-router.post('/agregar-producto', productsController.productStore);
+router.post('/agregar-producto', upload.any(), productsController.productStore);
 
 
 /* GET products edit. */
 router.get('/editar-producto/:id', productsController.productEdit);
 /* POST products edit. */
-router.post('/editar-producto/:id', productsController.productUpdate);
+router.post('/editar-producto/:id', upload.any(), productsController.productUpdate);
 
 /* GET products list. */
 router.get('/list', productsController.list);
