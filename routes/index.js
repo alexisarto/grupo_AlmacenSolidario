@@ -7,22 +7,12 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/carrito', function(req, res, next) {
-  res.render('productCart');
-});
-
-router.get('/detalle-producto', function(req, res, next) {
-  res.render('productDetail');
-});
-
 router.get('/home', indexController.home);
 
 router.get('/instituciones', indexController.instituciones);
 
 router.get('/nosotros', indexController.aboutUs);
 
-router.get('/almacen', function(req, res, next) {
-  res.render('almacen');
-});
+
 
 module.exports = router;

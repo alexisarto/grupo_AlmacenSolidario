@@ -44,6 +44,18 @@ const productsController = {
 
     list: function(req, res, next) {
         res.render('list', {products});
+    },
+
+    carrito: function(req,res,next){
+        res.render("productCart",);
+    },
+
+    detalleProducto: function(req,res,next){
+        res.render("productDetail");
+    },
+
+    almacen: function(req,res,next){
+        res.render("almacen");
     }
 
 }
