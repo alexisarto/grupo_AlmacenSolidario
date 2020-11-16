@@ -53,19 +53,19 @@ const productsController = {
     },
 
     list: function(req, res, next) {
-        res.render('list', {products});
+        res.render('products/list', {products});
     },
 
     carrito: function(req,res,next){
-        res.render("productCart",);
+        res.render("products/productCart",);
     },
 
     detalleProducto: function(req,res,next){
-        res.render("productDetail");
+        res.render("products/productDetail");
     },
 
     almacen: function(req,res,next){
-        res.render("almacen");
+        res.render("products/almacen");
     }
 
 }

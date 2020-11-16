@@ -15,7 +15,7 @@
                     <input class="presentacion" type="text" required name="presentacion" value="<%= productFound.presentacion %>" placeholder="Presentacion">
                     <div class="unidad-medida">
                         <label for="">Unidad de medida</label>
-                        <select name="medida" id="select-medida" required value="<%= productFound.medida %>">
+                        <select name="medida" id="select-medida" required>
                             <option value="cc" <%= productFound.medida === 'cc' ? 'selected' : ''%> >cc</option>
                             <option value="lt" <%= productFound.medida === 'lt' ? 'selected' : ''%> >lt</option>
                             <option value="ml" <%= productFound.medida === 'ml' ? 'selected' : ''%> >ml</option>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="etiqueta-categoria">   
                         <label for="">Seleccionar categoria</label>
-                        <select name="categoria" id="select-categoria" required value="<%= productFound.categoria %>">
+                        <select name="categoria" id="select-categoria" required>
                             <option value="almacen" <%= productFound.categoria === 'almacen' ? 'selected' : ''%> >Almacen</option>
                             <option value="bebes" <%= productFound.categoria === 'bebes' ? 'selected' : ''%> >Bebes</option>
                             <option value="bebidas" <%= productFound.categoria === 'bebidas' ? 'selected' : ''%> >Bebidas</option>
