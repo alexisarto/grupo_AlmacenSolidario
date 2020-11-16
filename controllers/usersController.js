@@ -1,14 +1,14 @@
 const usersController = {
     register: function(req, res, next) {
-        res.render('register');
+        res.render('users/register');
       },
 
     login: function(req, res, next) {
-        res.render('login');
+        res.render('users/login');
       },
 
     passwordReset: function(req, res, next) {
-        res.render('passwordReset');
+        res.render('users/passwordReset');
       },
 
 }

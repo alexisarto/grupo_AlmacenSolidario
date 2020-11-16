@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/stylesheets/estiloAgregar.css">
+        <%- include('../partials/head')%>
         <title>Editar Producto</title>
     </head>
-    <body>
+    <body class = "form">
         <div class="formulario-agregar-producto">
-            <a href="../home"><img src="/img/Logo.png" class="avatar" alt="imagen logo"></a>
+            <a href="/home"><img src="/img/Logo.png" class="avatar" alt="imagen logo"></a>
             <h1>Editar producto</h1>
-            <form action="/products/editar-producto/<%= productFound.id %>" method="POST">
-                <input type="hidden" name="id" value="">
+            <form action="/products/editar-producto/<%= productFound.id %>" method="POST" enctype="multipart/form-data">
                 <input type="text" required name="item" value="<%= productFound.item %>" placeholder="Item"><br>
                 <input type="text" required name="marca" value="<%= productFound.marca %>" placeholder="Marca"><br>
                 <div class="agregar-info1-producto">
@@ -43,7 +39,7 @@
                 </div>
                 <div class="agregar-info2-producto">
                     <label> $</label>
-                    <input class="precio" type="text" required name="precio" value="<%= productFound.precio %>" placeholder="Precio"><br><br>
+                    <input type="text" required name="precio" value="<%= productFound.precio %>" placeholder="Precio"><br><br>
                     <div class="input-file">
                         <input type="file" required id="imagen_producto" name="imagen_producto">
                         <label for="imagen_producto">Seleccionar archivo de imagen</label>

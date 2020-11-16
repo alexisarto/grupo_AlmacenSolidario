@@ -1,14 +1,14 @@
 const indexController = {
     home: function (req, res, next){
-        res.render('home')
+        res.render('index/home')
     },
 
     instituciones: function (req, res, next){
-        res.render('instituciones')
+        res.render('index/instituciones')
     },
 
     aboutUs: function (req, res, next){
-        res.render('aboutUs')
+        res.render('index/aboutUs')
     }
 }
 
