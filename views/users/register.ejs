@@ -8,11 +8,19 @@
         <div class="formulario">
             <a href="../home"><img src="/img/Logo.png" class="avatar" alt="imagen logo"></a>
             <h1>Crear Cuenta</h1>
-            <form action="index.ejs" method="GET">
-                <input type="text" required name="nombre" placeholder="Nombre"><br>
-                <input type="email" required name="email" placeholder="E-mail"><br>
-                <input type="password" required name="contrasenia" placeholder="Contraseña"><br>
-                <input type="password" required name="confContrasenia" placeholder="Confirmar contraseña"><br>
+            <% if (typeof errors != 'undefined') { %>
+                <p style="color: red; text-align: left; margin-bottom: 3px">Error!</p>
+                <ul style="font-size: 13px">
+                    <% for (let i = 0; i < errors.length; i++) { %>
+                        <%= errors[i].msg %>
+                    <% } %>
+                </ul>
+            <% } %>
+            <form action="/users/registro" method="POST">
+                <input type="text" name="nombre" placeholder="Nombre"><br>
+                <input type="email" name="email" placeholder="E-mail"><br>
+                <input type="password" name="contrasenia" placeholder="Contraseña"><br>
+                <input type="password" name="confContrasenia" placeholder="Confirmar contraseña"><br>
                 <button type="submit">Crear Cuenta</button>
             </form>
         </div>

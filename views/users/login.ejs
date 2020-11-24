@@ -8,7 +8,15 @@
         <div class="formulario">
             <a href="../home"><img src="/img/Logo.png" class="avatar" alt="imagen logo"></a>
             <h1>Ingresar</h1>
-            <form action="index.ejs" method="GET">
+            <% if (typeof errors != 'undefined') { %>
+                <p style="color: red; text-align: left; margin-bottom: 3px">Error!</p>
+                <ul style="font-size: 13px">
+                    <% for (let i = 0; i < errors.length; i++) { %>
+                        <%= errors[i].msg %>
+                    <% } %>
+                </ul>
+            <% } %>
+            <form action="/users/login" method="POST">
                 <input type="email" required name="email" placeholder="E-mail"><br>
                 <input type="password" required name="contrasenia" placeholder="Contraseña"><br><br>
                 <p><a class="resetear-contrasenia" href="resetear-contrasenia">¿Olvidaste la contraseña?</a></p>
