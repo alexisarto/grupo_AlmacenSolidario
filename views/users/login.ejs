@@ -17,8 +17,8 @@
                 </ul>
             <% } %>
             <form action="/users/login" method="POST">
-                <input type="email" required name="email" placeholder="E-mail"><br>
-                <input type="password" required name="contrasenia" placeholder="Contraseña"><br><br>
+                <input type="email" name="email" <% if (typeof email != 'undefined') { %> value="<%= email %>" <% } else { %> placeholder="E-mail" <% } %>><br>
+                <input type="password" name="contrasenia" placeholder="Contraseña"><br><br>
                 <p><a class="resetear-contrasenia" href="resetear-contrasenia">¿Olvidaste la contraseña?</a></p>
                 <button type="submit">Ingresar a mi cuenta</button><br><br>
                 <p>¿No tenés cuenta?</p>

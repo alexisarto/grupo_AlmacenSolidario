@@ -20,7 +20,8 @@ const usersController = {
           id: newId,
           nombre: req.body.nombre,
           email: req.body.email,
-          contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10)
+          contrasenia: bcryptjs.hashSync(req.body.contrasenia, 10),
+          perfil: "usuario"
       };
         users.push(newUser);
         let usersJSON = JSON.stringify(users);
@@ -39,15 +40,17 @@ const usersController = {
       let errors = validationResult(req);
       if (errors.isEmpty()) {
       for (let i = 0; i < users.length; i++) {
-        if (req.body.email == users[i].email && bcryptjs.compareSync(req.body.contrasenia, users[i].contrasenia)) {
-          var usuarioALoguearse = users[i];
-          break;
-        }
+        if (req.body.email == users[i].email) {
+          if (bcryptjs.compareSync(req.body.contrasenia, users[i].contrasenia)) {
+            var usuarioALoguearse = users[i];
+            break;
+          }
+        } 
       }
       if (usuarioALoguearse == undefined) {
         return res.render('users/login', {errors: [
           {msg: 'Usuario / contraseña inválidos'}
-        ]});
+        ], email: req.body.email});
       }
       req.session.usuarioLogueado = usuarioALoguearse;
       res.render('index/home');
