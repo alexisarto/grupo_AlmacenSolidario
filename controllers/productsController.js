@@ -16,7 +16,7 @@ const productsController = {
             imagen_producto: req.files[0].filename
         };
         products.push(newProduct);
-        let productsJSON = JSON.stringify(products);
+        let productsJSON = JSON.stringify(products, null, 2);
         fs.writeFileSync(__dirname + '/../data/products.json', productsJSON);
         res.redirect('/products/list');
     },
@@ -50,6 +50,28 @@ const productsController = {
         editProductsJSON = JSON.stringify(editProducts);
         fs.writeFileSync(__dirname + '/../data/products.json', editProductsJSON);
         res.redirect('/products/list');
+    },
+
+    destroy: function(req, res, next) {
+        var idProduct = req.params.id;
+        var productFound;
+        for (var i = 0; i < products.length; i++) {
+            if (products[i].id == idProduct) {
+                productFound = products[i];
+                break;
+            }
+        }
+        if (productFound) {
+            var productDestroy = products.filter(function(product) {
+                return product.id != idProduct;
+            });
+            productsDestroyJSON = JSON.stringify(productDestroy);
+            fs.writeFileSync(__dirname + '/../data/products.json', productsDestroyJSON);
+            products = productDestroy;
+            res.redirect('/products/list');
+        } else {
+            res.send('Producto invalido');
+        }
     },
 
     list: function(req, res, next) {

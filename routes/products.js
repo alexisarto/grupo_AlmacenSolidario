@@ -29,10 +29,13 @@ router.get('/detalleProducto', productsController.detalleProducto);
 /* GET detalle producto*/
 router.get('/almacen', productsController.almacen);
 
-/* GET products edit. */
+/* GET product edit */
 router.get('/editar-producto/:id', productsController.productEdit);
-/* POST products edit. */
+/* POST product edit */
 router.post('/editar-producto/:id', upload.any(), productsController.productUpdate);
+
+/* GET product destroy */
+router.get('/destroy/:id', productsController.destroy);
 
 /* GET products list. */
 router.get('/list', productsController.list);

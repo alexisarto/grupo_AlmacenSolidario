@@ -24,7 +24,7 @@ const usersController = {
           perfil: "usuario"
       };
         users.push(newUser);
-        let usersJSON = JSON.stringify(users);
+        let usersJSON = JSON.stringify(users, null, 2);
         fs.writeFileSync(__dirname + '/../data/users.json', usersJSON);
           res.send('se ha registrado el usuario ' + req.body.nombre);
         } else {

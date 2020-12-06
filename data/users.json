@@ -1,1 +1,44 @@
-[{"id":1,"nombre":"Sergio","email":"sergio@sergio.com","contrasenia":"$2a$10$fFat4c34patWcE1DGwf2y.zA7Go1F1vWJ1yiUrUEZxfQ7jkCf9wne","perfil":"usuario"},{"id":2,"nombre":"Juan","email":"juan@juan.com","contrasenia":"$2a$10$kaHzX2EZP6zlU3xqQemyRuPd5YxyW6BmDChWadoK0GdXn1Y96iKCO","perfil":"usuario"},{"id":3,"nombre":"Jose","email":"jose@jose.com","contrasenia":"$2a$10$3caVqjq8HsJlAszSEPN3l.bIPy.ON6FuZCz2KtcEHUx2ZeQRByGDO","perfil":"usuario"},{"id":4,"nombre":"Pedro","email":"pedro@pedro.com","contrasenia":"$2a$10$HpwbLmoaryYM/w2Pq5HE9.OrhieZ/OzgQI9kkrqAyyDlucWmpFqlC","perfil":"usuario"},{"id":5,"nombre":"Maria","email":"maria@maria.com","contrasenia":"$2a$10$Mxhpy4C4pJNuHG56r7KnUevRBuz94P7B/7P.JdKyTBQ5Ql0e6zZn6","perfil":"usuario"}]
+[
+  {
+    "id": 1,
+    "nombre": "Sergio",
+    "email": "sergio@sergio.com",
+    "contrasenia": "$2a$10$fFat4c34patWcE1DGwf2y.zA7Go1F1vWJ1yiUrUEZxfQ7jkCf9wne",
+    "perfil": "usuario"
+  },
+  {
+    "id": 2,
+    "nombre": "Juan",
+    "email": "juan@juan.com",
+    "contrasenia": "$2a$10$kaHzX2EZP6zlU3xqQemyRuPd5YxyW6BmDChWadoK0GdXn1Y96iKCO",
+    "perfil": "usuario"
+  },
+  {
+    "id": 3,
+    "nombre": "Jose",
+    "email": "jose@jose.com",
+    "contrasenia": "$2a$10$3caVqjq8HsJlAszSEPN3l.bIPy.ON6FuZCz2KtcEHUx2ZeQRByGDO",
+    "perfil": "usuario"
+  },
+  {
+    "id": 4,
+    "nombre": "Pedro",
+    "email": "pedro@pedro.com",
+    "contrasenia": "$2a$10$HpwbLmoaryYM/w2Pq5HE9.OrhieZ/OzgQI9kkrqAyyDlucWmpFqlC",
+    "perfil": "usuario"
+  },
+  {
+    "id": 5,
+    "nombre": "Maria",
+    "email": "maria@maria.com",
+    "contrasenia": "$2a$10$Mxhpy4C4pJNuHG56r7KnUevRBuz94P7B/7P.JdKyTBQ5Ql0e6zZn6",
+    "perfil": "usuario"
+  },
+  {
+    "id": 6,
+    "nombre": "Antonio",
+    "email": "antonio@antonio.com",
+    "contrasenia": "$2a$10$ZpUp/vYMDT/k8fVXFwqv1ujhNp5sBut.44VAwI0eYDMAY0XvD3wIe",
+    "perfil": "usuario"
+  }
+]

@@ -16,7 +16,7 @@
                 <%= producto.medida %>
                 <%= producto.categoria %>
                 $<%= producto.precio %>
-                <a href="/products/editar-producto/<%= producto.id %>">Editar</a> - <a href="#">Borrar</a>
+                <a href="/products/editar-producto/<%= producto.id %>">Editar</a> - <a href='/products/destroy/<%= producto.id %>'>Eliminar</a>
             </li>
         <% }); %>
     </ol>
