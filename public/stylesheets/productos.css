@@ -117,7 +117,7 @@
 .moldefoto{
     display: flex;
     height: 120px;
-    width: 120px;
+    width: auto;
     justify-content: center;
     margin: 10px 10px;
 }
@@ -220,7 +220,6 @@
     margin-top: 102px;
     margin-left: 5px;
     width: 85%;
-    height: 950px;
     display: flex;
     grid-gap: 5px;
     flex-wrap: wrap;

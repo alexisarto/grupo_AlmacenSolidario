@@ -44,165 +44,24 @@
                 </form>
             </div>
             <div class="grilla_almacen">
+                <% products.forEach(function(product) { %>
                 <div class="producto_almacen">
+                    
                     <div class="fotoeInfo_almacen">
-                        <img class="moldefoto" src="images\Imagenes_productos\Arroz Largo fino Apóstoles x 1 kg.jpg" alt="FOTO">
+                        <img class="moldefoto" src="/images/Imagenes_productos/<%= product.imagen_producto %>" alt="FOTO">
                     <div class="infoProd_almacen">
-                        <h1 class="nombreProd_almacen">Arroz Largo fino Apóstoles x 1 kg</h1>
-                        <p class="detalle_producto_almacen">Arroz Largo fino</p>
+                        <h1 class="nombreProd_almacen"><%= product.item %></h1>
+                        <p class="detalle_producto_almacen"><%= product.marca %></p>
+                        <p class="detalle_presentacion_oducto_almacen"><%= product.presentacion %><%= product.medida %></p>
                     </div>
                     </div>
                     <div class="precioyboton_infoProd_almacen">
-                        <h4 class="precioProd_almacen">$__</h4>
+                        <h4 class="precioProd_almacen">$<%= product.precio %></h4>
                         <input type="button" class="botonAgregar_almacen" value="Agregar">
                     </div>
+                    
                 </div>
-                <div class="producto_almacen">
-                    <div class="fotoeInfo_almacen">
-                        <img class="moldefoto" src="images\Imagenes_productos\Arroz Largo fino Apóstoles x 1 kg.jpg" alt="FOTO">
-                    <div class="infoProd_almacen">
-                        <h1 class="nombreProd_almacen">Arroz Largo fino Apóstoles x 1 kg</h1>
-                        <p class="detalle_producto_almacen">Arroz Largo fino</p>
-                    </div>
-                    </div>
-                    <div class="precioyboton_infoProd_almacen">
-                        <h4 class="precioProd_almacen">$__</h4>
-                        <input type="button" class="botonAgregar_almacen" value="Agregar">
-                    </div>
-                </div>
-                <div class="producto_almacen">
-                    <div class="fotoeInfo_almacen">
-                        <img class="moldefoto" src="images\Imagenes_productos\Arroz Largo fino Apóstoles x 1 kg.jpg" alt="FOTO">
-                    <div class="infoProd_almacen">
-                        <h1 class="nombreProd_almacen">Arroz Largo fino Apóstoles x 1 kg</h1>
-                        <p class="detalle_producto_almacen">Arroz Largo fino</p>
-                    </div>
-                    </div>
-                    <div class="precioyboton_infoProd_almacen">
-                        <h4 class="precioProd_almacen">$__</h4>
-                        <input type="button" class="botonAgregar_almacen" value="Agregar">
-                    </div>
-                </div>
-                <div class="producto_almacen">
-                    <div class="fotoeInfo_almacen">
-                        <img class="moldefoto" src="images\Imagenes_productos\Arroz Largo fino Apóstoles x 1 kg.jpg" alt="FOTO">
-                    <div class="infoProd_almacen">
-                        <h1 class="nombreProd_almacen">Arroz Largo fino Apóstoles x 1 kg</h1>
-                        <p class="detalle_producto_almacen">Arroz Largo fino</p>
-                    </div>
-                    </div>
-                    <div class="precioyboton_infoProd_almacen">
-                        <h4 class="precioProd_almacen">$__</h4>
-                        <input type="button" class="botonAgregar_almacen" value="Agregar">
-                    </div>
-                </div>
-                <div class="producto_almacen">
-                    <div class="fotoeInfo_almacen">
-                        <img class="moldefoto" src="images\Imagenes_productos\Arroz Largo fino Apóstoles x 1 kg.jpg" alt="FOTO">
-                    <div class="infoProd_almacen">
-                        <h1 class="nombreProd_almacen">Arroz Largo fino Apóstoles x 1 kg</h1>
-                        <p class="detalle_producto_almacen">Arroz Largo fino</p>
-                    </div>
-                    </div>
-                    <div class="precioyboton_infoProd_almacen">
-                        <h4 class="precioProd_almacen">$__</h4>
-                        <input type="button" class="botonAgregar_almacen" value="Agregar">
-                    </div>
-                </div>
-                <div class="producto_almacen">
-                    <div class="fotoeInfo_almacen">
-                        <img class="moldefoto" src="images\Imagenes_productos\Arroz Largo fino Apóstoles x 1 kg.jpg" alt="FOTO">
-                    <div class="infoProd_almacen">
-                        <h1 class="nombreProd_almacen">Arroz Largo fino Apóstoles x 1 kg</h1>
-                        <p class="detalle_producto_almacen">Arroz Largo fino</p>
-                    </div>
-                    </div>
-                    <div class="precioyboton_infoProd_almacen">
-                        <h4 class="precioProd_almacen">$__</h4>
-                        <input type="button" class="botonAgregar_almacen" value="Agregar">
-                    </div>
-                </div>
-                <div class="producto_almacen">
-                    <div class="fotoeInfo_almacen">
-                        <img class="moldefoto" src="images\Imagenes_productos\Arroz Largo fino Apóstoles x 1 kg.jpg" alt="FOTO">
-                    <div class="infoProd_almacen">
-                        <h1 class="nombreProd_almacen">Arroz Largo fino Apóstoles x 1 kg</h1>
-                        <p class="detalle_producto_almacen">Arroz Largo fino</p>
-                    </div>
-                    </div>
-                    <div class="precioyboton_infoProd_almacen">
-                        <h4 class="precioProd_almacen">$__</h4>
-                        <input type="button" class="botonAgregar_almacen" value="Agregar">
-                    </div>
-                </div>
-                <div class="producto_almacen">
-                    <div class="fotoeInfo_almacen">
-                        <img class="moldefoto" src="images\Imagenes_productos\Arroz Largo fino Apóstoles x 1 kg.jpg" alt="FOTO">
-                    <div class="infoProd_almacen">
-                        <h1 class="nombreProd_almacen">Arroz Largo fino Apóstoles x 1 kg</h1>
-                        <p class="detalle_producto_almacen">Arroz Largo fino</p>
-                    </div>
-                    </div>
-                    <div class="precioyboton_infoProd_almacen">
-                        <h4 class="precioProd_almacen">$__</h4>
-                        <input type="button" class="botonAgregar_almacen" value="Agregar">
-                    </div>
-                </div>
-                <div class="producto_almacen">
-                    <div class="fotoeInfo_almacen">
-                        <img class="moldefoto" src="images\Imagenes_productos\Arroz Largo fino Apóstoles x 1 kg.jpg" alt="FOTO">
-                    <div class="infoProd_almacen">
-                        <h1 class="nombreProd_almacen">Arroz Largo fino Apóstoles x 1 kg</h1>
-                        <p class="detalle_producto_almacen">Arroz Largo fino</p>
-                    </div>
-                    </div>
-                    <div class="precioyboton_infoProd_almacen">
-                        <h4 class="precioProd_almacen">$__</h4>
-                        <input type="button" class="botonAgregar_almacen" value="Agregar">
-                    </div>
-                </div>
-                <div class="producto_almacen">
-                    <div class="fotoeInfo_almacen">
-                        <img class="moldefoto" src="images\Imagenes_productos\Arroz Largo fino Apóstoles x 1 kg.jpg" alt="FOTO">
-                    <div class="infoProd_almacen">
-                        <h1 class="nombreProd_almacen">Arroz Largo fino Apóstoles x 1 kg</h1>
-                        <p class="detalle_producto_almacen">Arroz Largo fino</p>
-                    </div>
-                    </div>
-                    <div class="precioyboton_infoProd_almacen">
-                        <h4 class="precioProd_almacen">$__</h4>
-                        <input type="button" class="botonAgregar_almacen" value="Agregar">
-                    </div>
-                </div>
-                <div class="producto_almacen">
-                    <div class="fotoeInfo_almacen">
-                        <img class="moldefoto" src="images\Imagenes_productos\Arroz Largo fino Apóstoles x 1 kg.jpg" alt="FOTO">
-                    <div class="infoProd_almacen">
-                        <h1 class="nombreProd_almacen">Arroz Largo fino Apóstoles x 1 kg</h1>
-                        <p class="detalle_producto_almacen">Arroz Largo fino</p>
-                    </div>
-                    </div>
-                    <div class="precioyboton_infoProd_almacen">
-                        <h4 class="precioProd_almacen">$__</h4>
-                        <input type="button" class="botonAgregar_almacen" value="Agregar">
-                    </div>
-                </div>
-                <div class="producto_almacen">
-                    <div class="fotoeInfo_almacen">
-                        <img class="moldefoto" src="images\Imagenes_productos\Arroz Largo fino Apóstoles x 1 kg.jpg" alt="FOTO">
-                    <div class="infoProd_almacen">
-                        <h1 class="nombreProd_almacen">Arroz Largo fino Apóstoles x 1 kg</h1>
-                        <p class="detalle_producto_almacen">Arroz Largo fino</p>
-                    </div>
-                    </div>
-                    <div class="precioyboton_infoProd_almacen">
-                        <h4 class="precioProd_almacen">$__</h4>
-                        <input type="button" class="botonAgregar_almacen" value="Agregar">
-                    </div>
-                </div>
-                
-                
-
+                <% }) %>
             </div>
         </main>    
         

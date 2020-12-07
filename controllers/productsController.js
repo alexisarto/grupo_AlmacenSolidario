@@ -43,11 +43,12 @@ const productsController = {
             if (product.id == idProduct) {
                 let productoEditado = req.body;
                 productoEditado.id = idProduct;
+                productoEditado.imagen_producto = req.files[0].filename
                 return productoEditado;
             }
             return product;
         });
-        editProductsJSON = JSON.stringify(editProducts);
+        editProductsJSON = JSON.stringify(editProducts, null, 2);
         fs.writeFileSync(__dirname + '/../data/products.json', editProductsJSON);
         res.redirect('/products/list');
     },
@@ -87,7 +88,7 @@ const productsController = {
     },
 
     almacen: function(req,res,next){
-        res.render("products/almacen");
+        res.render("products/almacen", {products});
     }
 
 }
