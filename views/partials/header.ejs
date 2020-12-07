@@ -14,7 +14,7 @@
             
             <div class="usuario">
                 <a href=""><i class="fas fa-user"></i></a>
-                <p>Nombre</p>
+                <p><% if (typeof usuario != 'undefined') { %> <%= usuario.nombre %> <% } else { %> Nombre <% } %></p>
             </div>
 
             <div class="carrito">

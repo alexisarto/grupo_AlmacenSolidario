@@ -53,7 +53,7 @@ const usersController = {
         ], email: req.body.email});
       }
       req.session.usuarioLogueado = usuarioALoguearse;
-      res.render('index/home');
+      res.render('index/home', {usuario: req.session.usuarioLogueado});
     } else {
       return res.render('users/login', {errors: errors.errors});
     }
