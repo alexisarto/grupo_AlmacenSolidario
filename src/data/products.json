@@ -36,7 +36,7 @@
     "presentacion": "250",
     "medida": "ml",
     "categoria": "perfumeria",
-    "precio": "99",
+    "precio": "99.00",
     "imagen_producto": "Alcohol en gel Doy Pack Germex x 250 ml.jpg"
   },
   {
@@ -76,7 +76,7 @@
     "presentacion": "170",
     "medida": "gr",
     "categoria": "almacen",
-    "precio": "75",
+    "precio": "75.00",
     "imagen_producto": "Atún Desmenuzado al natural Supermercado x 170 gr.jpg"
   },
   {
@@ -178,5 +178,65 @@
     "categoria": "almacen",
     "precio": "35.30",
     "imagen_producto": "Fideos Tallarín Canale x 500 gr.jpg"
+  },
+  {
+    "id": 19,
+    "item": "Fideos Tirabuzón",
+    "marca": "Canale",
+    "presentacion": "500",
+    "medida": "gr",
+    "categoria": "almacen",
+    "precio": "35.30",
+    "imagen_producto": "Fideos Tirabuzón Canale x 500 gr.jpg"
+  },
+  {
+    "id": 20,
+    "item": "Fideos Tirabuzón Libre de Gluten",
+    "marca": "Matarazzo",
+    "presentacion": "500",
+    "medida": "gr",
+    "categoria": "almacen",
+    "precio": "112.30",
+    "imagen_producto": "Fideos Tirabuzón Libre de Gluten Matarazzo x 500 gr.jpg"
+  },
+  {
+    "id": 21,
+    "item": "Flan Vainilla",
+    "marca": "Ravana",
+    "presentacion": "60",
+    "medida": "gr",
+    "categoria": "almacen",
+    "precio": "23.90",
+    "imagen_producto": "Flan Vainilla Ravana x 60 gr.jpg"
+  },
+  {
+    "id": 22,
+    "item": "Galleta Marinera Clásica",
+    "marca": "Tia Maruca",
+    "presentacion": "350",
+    "medida": "gr",
+    "categoria": "almacen",
+    "precio": "90.30",
+    "imagen_producto": "Galleta Marinera Clásica Tía Maruca x 350 gr.webp"
+  },
+  {
+    "id": 23,
+    "item": "Galletitas de agua Pack x 3",
+    "marca": "Criollitas",
+    "presentacion": "300",
+    "medida": "gr",
+    "categoria": "almacen",
+    "precio": "78.10",
+    "imagen_producto": "Galletitas de agua Pack x 3 Criollitas x 300 gr.jpg"
+  },
+  {
+    "id": 24,
+    "item": "Galletitas dulces Clásica",
+    "marca": "Lincoln",
+    "presentacion": "153",
+    "medida": "gr",
+    "categoria": "almacen",
+    "precio": "54.10",
+    "imagen_producto": "Galletitas dulces Clásica Lincoln x 153 gr.jpg"
   }
 ]
