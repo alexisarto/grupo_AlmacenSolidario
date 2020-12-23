@@ -43,6 +43,14 @@ body.form {
     text-align: right;
     margin-bottom: -10px;
 }
+.formulario .recordame {
+    margin-bottom: 15px;
+    display: flex;
+}
+.formulario .recordame input {
+    margin: 0;
+    width: 10%;
+}
 .formulario .resetear-contrasenia {
     color: black;
 }

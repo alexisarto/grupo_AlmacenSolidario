@@ -29,23 +29,253 @@
   },
   {
     "id": 5,
-    "nombre": "Maria",
+    "nombre": "Maria2",
     "email": "maria@maria.com",
-    "contrasenia": "$2a$10$Mxhpy4C4pJNuHG56r7KnUevRBuz94P7B/7P.JdKyTBQ5Ql0e6zZn6",
+    "contrasenia": "$2a$10$seO0elKTC0e4i3/2KDd8vuB43NA92LXltPwHG0sHYM3kiuE9Ok5e2",
     "perfil": "usuario"
   },
   {
     "id": 6,
     "nombre": "Antonio",
     "email": "antonio@antonio.com",
-    "contrasenia": "$2a$10$ZpUp/vYMDT/k8fVXFwqv1ujhNp5sBut.44VAwI0eYDMAY0XvD3wIe",
+    "contrasenia": "",
     "perfil": "usuario"
   },
   {
     "id": 7,
-    "nombre": "Cacho",
+    "nombre": "Cachorrito",
     "email": "cacho@cacho.com",
-    "contrasenia": "$2a$10$gkq7InM.DJB.VEJz/w4kg.8BqHeyezHtaBsEesR/BNq1ysqIoXU9W",
+    "contrasenia": "$2a$10$BVqFTnCs/791CQ9EyavFZ.CYIH2mbWJjY.6RTEAxVjkIw5UcudXjW",
+    "perfil": "usuario"
+  },
+  {
+    "id": 8,
+    "nombre": "Pepe Luis",
+    "email": "pepe@pepe.com",
+    "contrasenia": "$2a$10$KXtxJIsXEyoPczNOCoh1UuGQXGhP3FRAJhwqtPuPv8inrWUVRcP12",
+    "perfil": "usuario"
+  },
+  {
+    "id": "9",
+    "nombre": "Anibalito",
+    "contrasenia": "",
+    "perfil": "usuario"
+  },
+  {
+    "id": 10,
+    "nombre": "Andres",
+    "email": "andres@andres.com",
+    "contrasenia": "$2a$10$JeW7FujK1pSy7/07miy1Jub/a0FPXpnyh06a1F2M0AeUiBx7c7g6a",
+    "perfil": "usuario"
+  },
+  {
+    "id": 11,
+    "nombre": "Mingo",
+    "email": "mingo@mingo.com",
+    "contrasenia": "$2a$10$cvcZ9K5/3wAlO5Fopz8pweKXdFwa7rVuqadaa6akC8CElsHzX.1NO",
+    "perfil": "usuario"
+  },
+  {
+    "id": 12,
+    "nombre": "pancho",
+    "email": "pancho@pancho.com",
+    "contrasenia": "$2a$10$i0Qz6iElA2cfSz.s/I3/vurhRSOOh2R7q37lrHIgMxq5MNt1LsuFi",
+    "perfil": "usuario"
+  },
+  {
+    "id": 13,
+    "nombre": "arreglador",
+    "email": "arreglador@arreglador.com",
+    "contrasenia": "$2a$10$zBMRb9M0aR75uh56/yIaYOu1FNatjzqogrLSWq9Wa6nR4lkrubNu.",
+    "perfil": "usuario"
+  },
+  {
+    "id": 14,
+    "nombre": "arreglador2",
+    "email": "arreglador2@hole.com",
+    "contrasenia": "$2a$10$FelxJeB26eHGOwsCiuAiXeWLnFO1JLlWnU0pPdtxw6ryqvufjEjG.",
+    "perfil": "usuario"
+  },
+  {
+    "id": 15,
+    "nombre": "arreglador3",
+    "email": "arreglador3@ghola.com",
+    "contrasenia": "$2a$10$stg7kHzteX.I2cbwXDUj1.h7aa2hd9UuzJ2D/xGsHHtlDczs9j/e.",
+    "perfil": "usuario"
+  },
+  {
+    "id": 16,
+    "nombre": "arreglador4",
+    "email": "arreglador4@aefd.com",
+    "contrasenia": "$2a$10$8tt77akkbaanBRXMFJVbH.Ht/69o1KfVvAuKFJ0Z0S6eA/6xeHQq6",
+    "perfil": "usuario"
+  },
+  {
+    "id": 17,
+    "nombre": "arreglador5",
+    "email": "arreglador5@asdo.com",
+    "contrasenia": "$2a$10$UeSmgxBVrg4SHOrs9HrhpuX2tH1ZW5WI3PVQJ842L.oppl8NYzNX.",
+    "perfil": "usuario"
+  },
+  {
+    "id": 18,
+    "nombre": "Mario",
+    "email": "mario@mario.com",
+    "contrasenia": "$2a$10$UJ2jEIkKxJVlMt3ZvK.1Nud/pUiWaB/Qw2AerTba7FMs6EDv9G8FG",
+    "perfil": "usuario"
+  },
+  {
+    "id": 19,
+    "nombre": "Manuel",
+    "email": "manuel@manuel.com",
+    "contrasenia": "$2a$10$yMGjvthfdvTLLIxSl2Zhw.LPgACBqBVoSmo39sAqPaEr4HGhADuhq",
+    "perfil": "usuario"
+  },
+  {
+    "id": 20,
+    "nombre": "Santiago",
+    "email": "santiago@santiago.com",
+    "contrasenia": "$2a$10$vP7.3qaL5eZep41NMm7TIOGqjO147.nGwR1ZBaoiqf/2un6tkAX9W",
+    "perfil": "usuario"
+  },
+  {
+    "id": 21,
+    "nombre": "Calixto",
+    "email": "calixto@calixto.com",
+    "contrasenia": "$2a$10$RMe/9N341A671FSQ/vNlweElsKE13ZTG3QSfJw17qqdwximDFI36m",
+    "perfil": "usuario"
+  },
+  {
+    "id": 22,
+    "nombre": "Pirulo",
+    "email": "pirulo@pirulo.com",
+    "contrasenia": "$2a$10$aQZSB68nfg/uvmpy6QNicuG.JL1E3d/AzwLqjxBj5K4.Ey1aoZgKe",
+    "perfil": "usuario"
+  },
+  {
+    "id": 23,
+    "nombre": "Pirulo2",
+    "email": "pirulo2@pirulo2.com",
+    "contrasenia": "$2a$10$J//9sC6U4l8WelEWbpaLa.REJf71SIebZhzYr69ZZYz7sYaC9p3Xa",
+    "perfil": "usuario"
+  },
+  {
+    "id": 24,
+    "nombre": "Pirulo3",
+    "email": "pirulo3@pirulo3.com",
+    "contrasenia": "$2a$10$SuWHM8geO5jd7Jp142f2teWj4OfArLndmZ.Sz2RsscbizEN53VATm",
+    "perfil": "usuario"
+  },
+  {
+    "id": 25,
+    "nombre": "Pirulo4",
+    "email": "pirulo4@pirulo4.com",
+    "contrasenia": "$2a$10$DlHp1unF11ZcZNkT1eKsBegMe8nWWTvOe/XxyGkm3L5j4HpWiZesy",
+    "perfil": "usuario"
+  },
+  {
+    "id": 26,
+    "nombre": "Sultano",
+    "email": "sultano@sultano.com",
+    "contrasenia": "$2a$10$gQp5cFG7iyWiSAobsbj6K.Jo33JX1B7iTuLqpniOMka6NaQNto2Yu",
+    "perfil": "usuario"
+  },
+  {
+    "id": 27,
+    "nombre": "Mengano",
+    "email": "mengano@mengano.com",
+    "contrasenia": "$2a$10$pmLqEuTsKi7ZE1HzECNtFO8O4ICF3zg3yMHSgT6EkQwIRf1yx/Ibq",
+    "perfil": "usuario"
+  },
+  {
+    "id": 28,
+    "nombre": "Matias",
+    "email": "matias@matias.com",
+    "contrasenia": "$2a$10$D67bgXm4el3Hps6Y7XLMmeHW4cZTEyWXyEjY63Gknxyx/UISwgvdK",
+    "perfil": "usuario"
+  },
+  {
+    "id": 29,
+    "nombre": "Javier",
+    "email": "javier@javier.com",
+    "contrasenia": "$2a$10$w4VB404j8A6gXD5.wzYByeH1kpmuWDSXPeEZsMn9Vu7H9wx2bJ3Dq",
+    "perfil": "usuario"
+  },
+  {
+    "id": 30,
+    "nombre": "Maximo",
+    "email": "maximo@maximo.com",
+    "contrasenia": "$2a$10$E0B/05D.KXlsukNWvaQt9.m1jaLLIyL3xtkTaFJnChAzedsph2/fS",
+    "perfil": "usuario"
+  },
+  {
+    "id": 31,
+    "nombre": "Carlos",
+    "email": "carlos@carlos.com",
+    "contrasenia": "$2a$10$eDE708bBEx7PzcWmGW3hje1xIvYFeYubWccszdFDGiAs4UoGqdHk6",
+    "perfil": "usuario"
+  },
+  {
+    "id": 32,
+    "nombre": "Rafael",
+    "email": "rafael@rafael.com",
+    "contrasenia": "$2a$10$M/DZ1ry4qbvaW56/k2544e4PBDlKBbxONFXYhMuYoOe07C6Co8p4S",
+    "perfil": "usuario"
+  },
+  {
+    "id": 33,
+    "nombre": "Cipriano",
+    "email": "cipriano@cipriano.com",
+    "contrasenia": "$2a$10$k0Hs1zQ0pRiaVM5HrvyqXeoeAspSLAI/hANZYjQyfcGqIWrrF7rRi",
+    "perfil": "usuario"
+  },
+  {
+    "id": 34,
+    "nombre": "Bruno",
+    "email": "bruno@bruno.com",
+    "contrasenia": "$2a$10$yqo.HklUL1CXDpuuyyhkvOdNuwUhd7N9Cp0ybPRoi/5eixlxEFs1q",
+    "perfil": "usuario"
+  },
+  {
+    "id": 35,
+    "nombre": "Nicolas",
+    "email": "nicolas@nicolas.com",
+    "contrasenia": "$2a$10$uXkp7kB2MjmB5p4MPlOjLO0jsoXB.drlgao0AS7cjliKoIWV7pV3O",
+    "perfil": "usuario"
+  },
+  {
+    "id": 36,
+    "nombre": "Juanchi",
+    "email": "juanchi@juanchi.com",
+    "contrasenia": "$2a$10$XDREET78Lyi7EV9HkpXKVeT2ozm4VplSMstoE9eCw8DzYtYwPPMze",
+    "perfil": "usuario"
+  },
+  {
+    "id": 37,
+    "nombre": "Catalina2",
+    "email": "catalina@catalina.com",
+    "contrasenia": "$2a$10$4VJtJAa0jKE3IUiLjpc23ed.lfROl41nH6tOfvChZ4XWByWoKBLvW",
+    "perfil": "usuario"
+  },
+  {
+    "id": 38,
+    "nombre": "Paula",
+    "email": "paula@paula.com",
+    "contrasenia": "$2a$10$NNsSOEmqY07cnYbzbL4I.ea8dPTARNDGOeyzog55kEGIgyNfrsM.W",
+    "perfil": "usuario"
+  },
+  {
+    "id": 39,
+    "nombre": "Pablo",
+    "email": "pablo@pablo.com",
+    "contrasenia": "$2a$10$B/bGPClBV4lAPMvGFs430.E0OxFONhudnaAxtm6v.kaECjG2EbrMa",
+    "perfil": "usuario"
+  },
+  {
+    "id": 40,
+    "nombre": "Valentin",
+    "email": "valentin@valentin.com",
+    "contrasenia": "$2a$10$y5.ybuFEerVMwWuFYAE4s.5Y2Fd3fOyh8lbet35D2TjVQASmXcsxm",
     "perfil": "usuario"
   }
 ]

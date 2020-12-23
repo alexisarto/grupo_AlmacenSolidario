@@ -50,6 +50,7 @@ const productsController = {
         });
         editProductsJSON = JSON.stringify(editProducts, null, 2);
         fs.writeFileSync(__dirname + '/../data/products.json', editProductsJSON);
+        products = editProducts;
         res.redirect('/products/list');
     },
 
@@ -88,7 +89,8 @@ const productsController = {
     },
 
     almacen: function(req,res,next){
-        res.render("products/almacen", {products});
+        const usuarioLogueado = req.session.usuarioLogueado;
+        res.render("products/almacen", {products, usuarioLogueado});
     }
 
 }

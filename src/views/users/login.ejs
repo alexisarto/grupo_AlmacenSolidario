@@ -6,7 +6,7 @@
     </head>
     <body class= 'form'>
         <div class="formulario">
-            <a href="../home"><img src="/img/Logo.png" class="avatar" alt="imagen logo"></a>
+            <a href="/home"><img src="/img/Logo.png" class="avatar" alt="imagen logo"></a>
             <h1>Ingresar</h1>
             <% if (typeof errors != 'undefined') { %>
                 <p style="color: red; text-align: left; margin-bottom: 3px">Error!</p>
@@ -19,6 +19,10 @@
             <form action="/users/login" method="POST">
                 <input type="email" name="email" <% if (typeof email != 'undefined') { %> value="<%= email %>" <% } else { %> placeholder="E-mail" <% } %>><br>
                 <input type="password" name="contrasenia" placeholder="Contraseña"><br><br>
+                <div class="recordame">
+                    <input type="checkbox" name="recordame">
+                    <label for="">Recordame</label>
+                </div>
                 <p><a class="resetear-contrasenia" href="resetear-contrasenia">¿Olvidaste la contraseña?</a></p>
                 <button type="submit">Ingresar a mi cuenta</button><br><br>
                 <p>¿No tenés cuenta?</p>

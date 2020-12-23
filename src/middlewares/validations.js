@@ -36,6 +36,22 @@ const validations = {
         check('contrasenia')
           .isLength({min: 8}).withMessage('La contraseña debe tener al menos 8 caracteres')
           .isAlphanumeric().withMessage('La contraseña debe ser alfanumérica')
+      ],
+    userProfileEdit: [
+        check('nombre').isLength({min: 2}).withMessage('Debes ingresar un nombre'),
+        check('currentContrasenia')
+          .isLength({min: 1}).withMessage('Debe ingresar la contraseña para realizar cambios.'),
+        check('contrasenia')
+          .optional({checkFalsy: true})
+          .isLength({min: 8}).withMessage('La contraseña debe tener al menos 8 caracteres')
+          .isAlphanumeric().withMessage('La contraseña debe ser alfanumérica'),
+        body('contrasenia').custom(function(value, {req}) {
+          if (req.body.confContrasenia != value) {
+            return false;
+          } else {
+            return true;
+          }
+        }).withMessage('Las contraseñas deben coincidir')
       ]
 }
 

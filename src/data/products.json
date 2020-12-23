@@ -1,12 +1,12 @@
 [
   {
-    "id": "1",
     "item": "Aceite Girasol",
     "marca": "Cada Día",
     "presentacion": "1500",
     "medida": "cc",
     "categoria": "almacen",
     "precio": "131.05",
+    "id": "1",
     "imagen_producto": "Aceite Girasol Cada Día x 1500 cc.jpg"
   },
   {
@@ -238,5 +238,15 @@
     "categoria": "almacen",
     "precio": "54.10",
     "imagen_producto": "Galletitas dulces Clásica Lincoln x 153 gr.jpg"
+  },
+  {
+    "id": 25,
+    "item": "Galletitas dulces Pepas con membrillo",
+    "marca": "Tia Maruca",
+    "presentacion": "250",
+    "medida": "gr",
+    "categoria": "almacen",
+    "precio": "57.25",
+    "imagen_producto": "Galletitas dulces Pepas con membrillo Tía Maruca x 250 gr.png"
   }
 ]

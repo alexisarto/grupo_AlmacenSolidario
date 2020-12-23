@@ -19,6 +19,18 @@ router.post('/registro', validations.userRegister, usersController.store);
 router.get('/login', guestMiddleware, usersController.login);
 router.post('/login', validations.userLogin, usersController.processLogin);
 
+// *** Editar perfil ***
+router.get('/editar-perfil/:id', usersController.profileEdit);
+router.post('/editar-perfil/:id', validations.userProfileEdit, usersController.profileUpdate);
+
 router.get('/resetear-contrasenia', usersController.passwordReset);
+
+router.get('/check', function(req, res) {
+  if(req.session.usuarioLogueado == undefined) {
+    res.send('no estas logueado');
+  } else {
+    res.send('el usuario logueado es ' + req.session.usuarioLogueado.nombre);
+  }
+})
 
 module.exports = router;
