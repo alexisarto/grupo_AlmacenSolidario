@@ -101,4 +101,27 @@ header section.navegacion nav ul li.subLogin ul.children li {
     background-color:#66e0ff;
     position: relative;
 }
-
+.navegacion .encabezado .usuario a {
+    text-decoration: none;
+}
+.navegacion .encabezado .usuario a#nombre {
+    font-size: 16px;
+    color: black;
+}
+.navegacion .encabezado .usuario ul {
+    list-style: none;
+    display: none;
+    position: absolute;
+    top: 48px;
+    right: 70px;
+}
+.navegacion .encabezado .usuario:hover ul {
+    display: block;
+}
+.navegacion .encabezado .usuario ul.perfil li {
+    background-color:#66e0ff;
+    padding: 5px;
+}
+.navegacion .encabezado .usuario ul.perfil li a {
+    font-size: 16px;
+}

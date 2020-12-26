@@ -2,7 +2,8 @@ function guestMiddleware(req, res, next) {
     if (req.session.usuarioLogueado == undefined) {
         next();
     } else {
-        res.send('Esta página es sólo para invitados');
+        console.log(req.session.usuarioLogueado.id);
+        res.render('users/profileDetail', {user: req.session.usuarioLogueado});
     }
 }
 

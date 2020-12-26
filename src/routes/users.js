@@ -3,6 +3,7 @@ const usersController = require('../controllers/usersController');
 var {check, validationResult, body} = require('express-validator');
 var fs = require('fs');
 var guestMiddleware = require('../middlewares/guestMiddleware');
+var authMiddleware = require('../middlewares/authMiddleware');
 var validations = require('../middlewares/validations')
 var router = express.Router();
 
@@ -18,6 +19,12 @@ router.post('/registro', validations.userRegister, usersController.store);
 // *** Login ***
 router.get('/login', guestMiddleware, usersController.login);
 router.post('/login', validations.userLogin, usersController.processLogin);
+
+// *** Logout ***
+router.get('/logout', authMiddleware, usersController.logout);
+
+// *** Mostrar perfil ***
+router.get('/mostrar-perfil/:id', usersController.profileDetail);
 
 // *** Editar perfil ***
 router.get('/editar-perfil/:id', usersController.profileEdit);

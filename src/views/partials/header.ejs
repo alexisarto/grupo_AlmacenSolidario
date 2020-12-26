@@ -13,8 +13,14 @@
         <div class="encabezado">
             
             <div class="usuario">
-                <a href="<% if (typeof usuarioLogueado != 'undefined') { %> /users/editar-perfil/<%= usuarioLogueado.id %> <% } else { %><% } %>"><i class="fas fa-user"></i></a>
-                <p><% if (typeof usuarioLogueado != 'undefined') { %> <%= usuarioLogueado.nombre %> <% } else { %> Nombre <% } %></p>
+                <a href=""><i class="fas fa-user"></i></a>
+                <a href="" id="nombre"><% if (typeof usuarioLogueado != 'undefined') { %> <%= usuarioLogueado.nombre %> <% } else { %> Nombre <% } %></a>
+                <% if (typeof usuarioLogueado != 'undefined') { %>
+                <ul class="perfil">
+                    <li><a href="/users/mostrar-perfil/<%= usuarioLogueado.id %>">Mi perfil</a></li>
+                    <li><a href="/users/logout">Cerrar sesión</a></li>
+                </ul>
+                <% } %>
             </div>
 
             <div class="carrito">

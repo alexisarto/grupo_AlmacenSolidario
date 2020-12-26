@@ -65,6 +65,16 @@ const usersController = {
     }
   },
 
+  profileDetail: function (req, res, next) {
+    const idUser = req.params.id;
+    const user = users.filter(x => x.id == idUser)[0];
+    if (user) {
+      res.render('users/profileDetail', { user: user });
+    } else {
+      res.send('Usuario invalido');
+    }
+  },
+  
   profileEdit: function (req, res, next) {
     const idUser = req.params.id;
     const user = users.filter(x => x.id == idUser)[0];
@@ -103,6 +113,12 @@ const usersController = {
       };
       return res.render('users/profileEdit', { user: userBeingUpdated, errors: errors.errors });
     }
+  },
+
+  logout: function (req, res, next) {
+    res.cookie("recordame", "", { expires: new Date() }); 
+    req.session.destroy();
+    res.redirect('/home');
   },
 
   passwordReset: function (req, res, next) {

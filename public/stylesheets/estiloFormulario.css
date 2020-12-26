@@ -43,6 +43,18 @@ body.form {
     text-align: right;
     margin-bottom: -10px;
 }
+.formulario a#editarPerfil {
+    margin-top: 30px;
+    text-align: center;
+    background-color: #dc7a07;
+    padding: 8px;
+    color: white;
+    border-radius: 5px;
+}
+.formulario a#editarPerfil:hover {
+    background-color: #cb4332;
+    cursor: pointer;
+}
 .formulario .recordame {
     margin-bottom: 15px;
     display: flex;
