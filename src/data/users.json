@@ -277,5 +277,12 @@
     "email": "valentin@valentin.com",
     "contrasenia": "$2a$10$y5.ybuFEerVMwWuFYAE4s.5Y2Fd3fOyh8lbet35D2TjVQASmXcsxm",
     "perfil": "usuario"
+  },
+  {
+    "id": 41,
+    "nombre": "Agustin",
+    "email": "agustin@agustin.com",
+    "contrasenia": "$2a$10$70Pb6TuGT.0nEbRKv.tnsedX9XfA.HpBvkd35JKnwgN25k0AkTYl6",
+    "perfil": "usuario"
   }
 ]

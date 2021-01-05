@@ -2,6 +2,7 @@ const fs = require('fs');
 const bcryptjs = require('bcryptjs');
 var { check, validationResult, body } = require('express-validator');
 var users = JSON.parse(fs.readFileSync(__dirname + '/../data/users.json', 'utf-8'));
+var db = require('../database/models');
 const usersController = {
   register: function (req, res, next) {
     res.render('users/register');
@@ -123,8 +124,48 @@ const usersController = {
 
   passwordReset: function (req, res, next) {
     res.render('users/passwordReset');
-  }
+  },
 
+  crear: function(req, res, next) {
+    res.render('users/crear');
+  },
+
+  registro: function(req, res, next) {
+    let errors = validationResult(req);
+    if (errors.isEmpty()) {
+    db.Usuario.create( {
+      nombre: req.body.name,
+      email: req.body.email,
+      password: bcryptjs.hashSync(req.body.password, 10),
+      perfil_id: 1
+    });
+    res.redirect('/home');
+  } else {
+    res.render('users/crear', { errors: errors.errors });
+    }
+  },
+
+  detallePerfil: function(req, res) {
+    db.Usuario.findByPk(req.params.id)
+    .then(function(user) {
+      res.render('users/detallePerfil', {user: user})
+    });
+  },
+
+  editarPerfil: function(req, res) {
+    db.Usuario.findByPk(req.params.id)
+    .then(function(user) {
+      res.render('users/editarPerfil', {user: user})
+    });
+  },
+
+  actualizarPerfil: function(req, res) {
+    const errors = validationResult(req);
+    db.Usuario.update({
+      name: req.body.name,
+      
+    })
+  }
 }
 
 module.exports = usersController;
