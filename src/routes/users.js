@@ -32,12 +32,15 @@ router.post('/editar-perfil/:id', validations.userProfileEdit, usersController.p
 
 router.get('/resetear-contrasenia', usersController.passwordReset);
 
-router.get('/check', function(req, res) {
-  if(req.session.usuarioLogueado == undefined) {
-    res.send('no estas logueado');
-  } else {
-    res.send('el usuario logueado es ' + req.session.usuarioLogueado.nombre);
-  }
-})
+// *** Crear usuario sql ***
+router.get('/crear', guestMiddleware, usersController.crear);
+router.post('/crear', validations.registroUsuario, usersController.registro);
+
+// *** Detalle perfil ***
+router.get('/detalle-perfil/:id', usersController.detallePerfil);
+
+// *** Modificar perfil ***
+router.get('/modificar-perfil/:id', usersController.editarPerfil);
+router.post('/modificar-perfil/:id', usersController.actualizarPerfil);
 
 module.exports = router;
