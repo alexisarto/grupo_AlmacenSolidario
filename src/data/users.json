@@ -277,5 +277,19 @@
     "email": "valentin@valentin.com",
     "contrasenia": "$2a$10$y5.ybuFEerVMwWuFYAE4s.5Y2Fd3fOyh8lbet35D2TjVQASmXcsxm",
     "perfil": "usuario"
+  },
+  {
+    "id": 41,
+    "nombre": "German",
+    "email": "glocoselli@gmail.com",
+    "contrasenia": "$2a$10$F1rqsmhMJLugVKejKH0ue.Pz7Bxr8fwxrjM2j9QyxULgDBtFYLMtG",
+    "perfil": "usuario"
+  },
+  {
+    "id": 42,
+    "nombre": "Pedro Jose",
+    "email": "pedrojose@gmail.com",
+    "contrasenia": "$2a$10$u2fdMWl0J9rXvexunu4Oze/mJ8g9ckXuvPQA7d9hdnURjQk4LLndS",
+    "perfil": "usuario"
   }
 ]
