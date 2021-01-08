@@ -161,11 +161,41 @@ const usersController = {
 
   actualizarPerfil: function(req, res) {
     const errors = validationResult(req);
+    db.Usuario.findByPk(req.params.id)
+    .then(function(user) {
+      console.log(req.body.currentContrasenia);
+      console.log(user.password);
+      const isPasswordValid = bcryptjs.compareSync(req.body.currentContrasenia, user.password);
+      console.log(isPasswordValid);
+    if (!isPasswordValid) {
+        errors.errors.push({msg: "La contraseña actual es invalida"});
+    }
+    if (errors.isEmpty()) {
+      user.nombre = req.body.name;
+      const newPassword = req.body.password;
+      if (newPassword) {
+        user.password = bcryptjs.hashSync(newPassword, 10);
+      }
+      req.session.usuarioLogueado = user;
     db.Usuario.update({
-      name: req.body.name,
-      
-    })
+      nombre: user.nombre,
+      password: user.password,
+    }, {
+      where: {
+        id: req.params.id
+      }
+    });
+    res.redirect('/home');
+  } else {
+    const userBeingUpdated = {
+      id: user.id,
+      email: user.email,
+      nombre: req.body.name
+    };
+    return res.render('users/editarPerfil', { user: userBeingUpdated, errors: errors.errors });
   }
+});
+ }
 }
 
 module.exports = usersController;

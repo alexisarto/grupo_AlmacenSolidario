@@ -88,6 +88,10 @@ header section.navegacion nav ul li a {
     padding: 0px 10px;   
 }
 
+header section.navegacion nav ul li a:hover {
+    color: #0044aa;
+}
+
 header section.navegacion nav ul li.subLogin ul.children {
     display: none;
     position: absolute;
@@ -99,6 +103,8 @@ header section.navegacion nav ul li.subLogin:hover ul.children {
 
 header section.navegacion nav ul li.subLogin ul.children li {
     background-color:#66e0ff;
+    margin: 0px;
+    padding: 5px 0px;
     position: relative;
 }
 .navegacion .encabezado .usuario a {
@@ -120,8 +126,11 @@ header section.navegacion nav ul li.subLogin ul.children li {
 }
 .navegacion .encabezado .usuario ul.perfil li {
     background-color:#66e0ff;
-    padding: 5px;
+    padding: 5px 10px;
 }
 .navegacion .encabezado .usuario ul.perfil li a {
     font-size: 16px;
+}
+.navegacion .encabezado .usuario ul.perfil li a:hover {
+    color: #0044aa;
 }

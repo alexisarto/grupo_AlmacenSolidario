@@ -284,5 +284,19 @@
     "email": "agustin@agustin.com",
     "contrasenia": "$2a$10$70Pb6TuGT.0nEbRKv.tnsedX9XfA.HpBvkd35JKnwgN25k0AkTYl6",
     "perfil": "usuario"
+  },
+  {
+    "id": 42,
+    "nombre": "Maria",
+    "email": "francisco@francisco.com",
+    "contrasenia": "$2a$10$qKt3Tsz6MrkyPlh8seDwtOGWxBgLQgYiVE9dgBBVjK8BBkc3FooY6",
+    "perfil": "usuario"
+  },
+  {
+    "id": 43,
+    "nombre": "Maximiliano",
+    "email": "maximiliano@maximiliano.com",
+    "contrasenia": "$2a$10$fgvdrtDmqlbNnKM5tN8bauP47rPwk1jxKHYc6KuA6lhH3QiZ2dLv6",
+    "perfil": "usuario"
   }
 ]

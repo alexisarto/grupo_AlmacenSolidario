@@ -61,17 +61,21 @@ const validations = {
           .isLength({min: 8}).withMessage('La contraseña debe tener al menos 8 caracteres')
           .isAlphanumeric().withMessage('La contraseña debe ser alfanumérica'),
         body('email').custom(function(value) {
-          db.Usuario.findAll({
+          console.log(value + " valor ingresado");
+          db.Usuario.findOne({
             where: {
               email: value
             }
-          })
-          .then(function(user){
-            if (user.email) {
+          }).then(function(user){
+            console.log(user + " valor encontrado");
+            if (user) {
+              console.log("usuario existente");
               return false;
+            } else {
+              console.log("registrar")
+              return true;
             }
-          })
-            return true;
+          });
         }).withMessage('Usuario ya existente'),
         body('password').custom(function(value, {req}) {
           if (req.body.confContrasenia != value) {
