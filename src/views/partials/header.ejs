@@ -17,7 +17,7 @@
                 <a href="" id="nombre"><% if (typeof usuarioLogueado != 'undefined') { %> <%= usuarioLogueado.nombre %> <% } else { %> Nombre <% } %></a>
                 <% if (typeof usuarioLogueado != 'undefined') { %>
                 <ul class="perfil">
-                    <li><a href="/users/mostrar-perfil/<%= usuarioLogueado.id %>">Mi perfil</a></li>
+                    <li><a href="/users/detalle-perfil/<%= usuarioLogueado.id %>">Mi perfil</a></li>
                     <li><a href="/users/logout">Cerrar sesión</a></li>
                 </ul>
                 <% } %>
@@ -38,8 +38,8 @@
                 <li class="subLogin">
                     <a href="#">Cuenta</a>
                     <ul class="children">
-                        <li><a href="/users/registro">Crear Cuenta</a></li>
-                        <li><a href="/users/login">Login</a></li>
+                        <li><a href="/users/crear">Crear Cuenta</a></li>
+                        <li><a href="/users/ingresar">Login</a></li>
                     </ul>
                 
                 </li>

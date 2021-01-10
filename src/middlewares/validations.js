@@ -61,20 +61,18 @@ const validations = {
           .isLength({min: 8}).withMessage('La contraseña debe tener al menos 8 caracteres')
           .isAlphanumeric().withMessage('La contraseña debe ser alfanumérica'),
         body('email').custom(function(value) {
-          console.log(value + " valor ingresado");
-          db.Usuario.findOne({
-            where: {
-              email: value
-            }
-          }).then(function(user){
-            console.log(user + " valor encontrado");
-            if (user) {
-              console.log("usuario existente");
-              return false;
-            } else {
-              console.log("registrar")
-              return true;
-            }
+          return new Promise((resolve, reject) => {
+            db.Usuario.findOne({
+              where: {
+                email: value
+              }
+            }).then(function(user){
+              if (user) {        
+                return reject();
+              } else {
+                return resolve();
+              }
+            });  
           });
         }).withMessage('Usuario ya existente'),
         body('password').custom(function(value, {req}) {
@@ -85,6 +83,28 @@ const validations = {
           }
         }).withMessage('Las contraseñas deben coincidir')
       ],
+      edicionPerfil: [
+        check('name').isLength({min: 2}).withMessage('Debes ingresar un nombre'),
+        check('currentContrasenia')
+          .isLength({min: 1}).withMessage('Debe ingresar la contraseña para realizar cambios.'),
+        check('password')
+          .optional({checkFalsy: true})
+          .isLength({min: 8}).withMessage('La contraseña debe tener al menos 8 caracteres')
+          .isAlphanumeric().withMessage('La contraseña debe ser alfanumérica'),
+        body('password').custom(function(value, {req}) {
+          if (req.body.confContrasenia != value) {
+            return false;
+          } else {
+            return true;
+          }
+        }).withMessage('Las contraseñas deben coincidir')
+      ],
+      loginUsuario: [
+        check('email').isEmail().withMessage('Debes ingresar una dirección de e-mail válida'),
+        check('password')
+          .isLength({min: 8}).withMessage('La contraseña debe tener al menos 8 caracteres')
+          .isAlphanumeric().withMessage('La contraseña debe ser alfanumérica')
+      ]
 }
 
 module.exports = validations;

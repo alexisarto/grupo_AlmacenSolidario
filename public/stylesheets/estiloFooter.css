@@ -35,6 +35,9 @@
 .disenio-footer .iconos-redes {
     display: flex;
 }
+.disenio-footer .iconos-redes a:hover {
+    color: #0044aa;
+}
 footer div div a {
     margin-top: 10px;
     margin-right: 17px;

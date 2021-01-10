@@ -133,14 +133,23 @@ const usersController = {
   registro: function(req, res, next) {
     let errors = validationResult(req);
     if (errors.isEmpty()) {
-    db.Usuario.create( {
-      nombre: req.body.name,
-      email: req.body.email,
-      password: bcryptjs.hashSync(req.body.password, 10),
-      perfil_id: 1
-    });
-    res.redirect('/home');
-  } else {
+      const password = bcryptjs.hashSync(req.body.password, 10);
+      db.Usuario.create( {
+        nombre: req.body.name,
+        email: req.body.email,
+        password: password,
+        perfil_id: 1
+      }).then(function() {
+        db.Usuario.findOne( {
+          where: {
+            email: req.body.email
+          }
+        }).then((newUser) =>{
+          req.session.usuarioLogueado = newUser;
+          res.redirect('/home');
+          });
+      });
+    } else {
     res.render('users/crear', { errors: errors.errors });
     }
   },
@@ -163,10 +172,7 @@ const usersController = {
     const errors = validationResult(req);
     db.Usuario.findByPk(req.params.id)
     .then(function(user) {
-      console.log(req.body.currentContrasenia);
-      console.log(user.password);
       const isPasswordValid = bcryptjs.compareSync(req.body.currentContrasenia, user.password);
-      console.log(isPasswordValid);
     if (!isPasswordValid) {
         errors.errors.push({msg: "La contraseña actual es invalida"});
     }
@@ -195,7 +201,38 @@ const usersController = {
     return res.render('users/editarPerfil', { user: userBeingUpdated, errors: errors.errors });
   }
 });
- }
+ },
+
+ formularioLogin: function (req, res, next) {
+  res.render('users/ingresar');
+},
+
+ ingresar: function (req, res, next) {
+  const errors = validationResult(req);
+  if (errors.isEmpty()) {
+    db.Usuario.findOne({
+      where: {
+        email: req.body.email
+      }
+    }).then(function(user) {
+      if(!user) {
+        return res.render('users/ingresar', {
+          errors: [
+            { msg: 'Usuario / contraseña inválidos' }
+          ], email: req.body.email
+        });
+      }
+      req.session.usuarioLogueado = user;
+    if(req.body.recordame != undefined) {
+      res.cookie('recordame', user.email, {maxAge: 7200000})
+    }
+    console.log(req.session.usuarioLogueado);
+    res.redirect('/home');
+    });
+  } else {
+    return res.render('users/ingresar', { errors: errors.errors });
+  }
+}    
 }
 
 module.exports = usersController;
