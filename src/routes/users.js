@@ -41,6 +41,10 @@ router.get('/detalle-perfil/:id', usersController.detallePerfil);
 
 // *** Modificar perfil ***
 router.get('/modificar-perfil/:id', usersController.editarPerfil);
-router.post('/modificar-perfil/:id', usersController.actualizarPerfil);
+router.post('/modificar-perfil/:id', validations.edicionPerfil, usersController.actualizarPerfil);
+
+// *** Ingresar ***
+router.get('/ingresar', guestMiddleware, usersController.formularioLogin);
+router.post('/ingresar', validations.loginUsuario, usersController.ingresar);
 
 module.exports = router;
