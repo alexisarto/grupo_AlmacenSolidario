@@ -14,7 +14,7 @@ router.post('/agregar-producto', upload.any(), productsController.productStore);
 router.get('/carrito', productsController.carrito);
 
 /* GET detalle producto*/
-router.get('/detalleProducto', productsController.detalleProducto);
+router.get('/detalleProducto/:id', productsController.detalleProducto);
 
 /* GET detalle producto*/
 router.get('/almacen', productsController.almacen);

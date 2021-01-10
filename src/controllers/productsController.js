@@ -95,7 +95,14 @@ const productsController = {
     },
 
     detalleProducto: function(req,res,next){
-        res.render("products/productDetail");
+        db.Producto.findByPk(req.params.id)
+        .then(function(producto){
+            res.render('products/productDetail', {producto:producto})
+        })
+        .catch(function(error){
+            res.render('error')
+            console.log(error)
+        })
     },
 
     almacen: function(req,res,next){
