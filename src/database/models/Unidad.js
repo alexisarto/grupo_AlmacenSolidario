@@ -11,7 +11,8 @@ module.exports = function(sequelize, dataTypes) {
         }
     };
     let config = {
-        tableName: "unidades"
+        tableName: "unidades",
+        timestamps: false
     }
     let Unidad = sequelize.define(alias, cols, config);
     Unidad.associate = function(models) {

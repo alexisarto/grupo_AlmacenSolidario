@@ -1,5 +1,8 @@
+const { decodeBase64 } = require('bcryptjs');
 const fs = require('fs');
 var products = JSON.parse(fs.readFileSync(__dirname + '/../data/products.json', 'utf-8'));
+const db = require('../database/models');
+
 const productsController = {
     productAdd: function(req, res, next) {
         res.render('products/productAdd');
@@ -18,23 +21,23 @@ const productsController = {
         products.push(newProduct);
         let productsJSON = JSON.stringify(products, null, 2);
         fs.writeFileSync(__dirname + '/../data/products.json', productsJSON);
-        res.redirect('/products/list');
+        res.redirect('products/list');
     },
     
     productEdit: function(req, res, next) {
-        var idProduct = req.params.id;
-        var productFound;
-        for (var i = 0; i < products.length; i++) {
-            if (products[i].id == idProduct) {
-                productFound = products[i];
-                break;
-            }
-        }
-        if (productFound) {
-            res.render('products/productEdit', {productFound});
-        } else {
-            res.send('Producto invalido')
-        }
+        let pedidoProducto = db.Producto.findByPk(req.params.id);
+        let pedidoMarca = db.Marca.findAll();
+        let pedidoUnidad = db.Unidad.findAll();
+        let pedidoCategoria = db.Categoria.findAll();
+
+        Promise.all([pedidoProducto, pedidoMarca, pedidoUnidad, pedidoCategoria])
+            .then(function([producto, marcas, unidades, categorias]){
+                res.render('products/productEdit', {producto:producto, marcas:marcas, unidades:unidades, categorias:categorias})
+            })
+            .catch(function(error){
+                res.render('error')
+                console.log(error)
+            })
     },
 
     productUpdate: function(req, res, next) {
@@ -51,7 +54,7 @@ const productsController = {
         editProductsJSON = JSON.stringify(editProducts, null, 2);
         fs.writeFileSync(__dirname + '/../data/products.json', editProductsJSON);
         products = editProducts;
-        res.redirect('/products/list');
+        res.redirect('products/list');
     },
 
     destroy: function(req, res, next) {
@@ -77,7 +80,14 @@ const productsController = {
     },
 
     list: function(req, res, next) {
-        res.render('products/list', {products});
+        db.Producto.findAll()
+        .then(function(productos){
+            res.render('products/list', {productos:productos})
+        })
+        .catch(function(error){
+            res.render('error')
+            console.log(error)
+        })   
     },
 
     carrito: function(req,res,next){

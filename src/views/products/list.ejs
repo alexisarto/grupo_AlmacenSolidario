@@ -6,19 +6,21 @@
     <title>Listado de Productos</title>
 </head>
 <body>
-    <a href="agregar-producto">Agregar</a>
-    <ol>
-        <% products.forEach(function(producto) { %>
-            <li>
-                <%= producto.item %>
-                <%= producto.marca %>
-                <%= producto.presentacion %>
-                <%= producto.medida %>
-                <%= producto.categoria %>
-                $<%= producto.precio %>
-                <a href="/products/editar-producto/<%= producto.id %>">Editar</a> - <a href='/products/destroy/<%= producto.id %>'>Eliminar</a>
-            </li>
-        <% }); %>
-    </ol>
+    <head>
+        
+    </head>
+    <main>
+        <h1>Listado de productos</h1>
+        <ol>
+            <% for (let i = 0; i < productos.length; i++) { %>
+                <li>
+                    <%=productos[i].id%>
+                    <%=productos[i].descripcion%>
+                    <%= productos[i].descripcion_completa%>
+                    $<%=productos[i].precio%>
+                </li>
+            <% } %>
+        </ol>
+    </main>
 </body>
 </html>

@@ -11,7 +11,8 @@ module.exports = function(sequelize, dataTypes) {
         }
     };
     let config = {
-        tableName: "marcas"
+        tableName: "marcas",
+        timestamps: false
     }
     let Marca = sequelize.define(alias, cols, config);
     Marca.associate = function(models) {

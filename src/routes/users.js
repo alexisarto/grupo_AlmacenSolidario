@@ -24,7 +24,7 @@ router.post('/login', validations.userLogin, usersController.processLogin);
 router.get('/logout', authMiddleware, usersController.logout);
 
 // *** Mostrar perfil ***
-router.get('/mostrar-perfil/:id', usersController.profileDetail);
+router.get('/mostrar-perfil/:id', usersController.detallePerfil);
 
 // *** Editar perfil ***
 router.get('/editar-perfil/:id', usersController.profileEdit);
