@@ -15,27 +15,20 @@
                     <input class="presentacion" type="text" required name="presentacion" placeholder="Presentacion">
                     <div class="unidad-medida">
                         <label for="">Unidad de medida</label>
-                        <select name="medida" id="select-medida" required>
-                            <option value=""></option>
-                            <option value="cc">cc</option>
-                            <option value="lt">lt</option>
-                            <option value="ml">ml</option>
-                            <option value="gr">gr</option>
-                            <option value="kg">kg</option>
-                            <option value="un">un</option>
+                        <select name="medida">
+                            <% for (let i = 0; i < medidas.lenght; i++) {%>
+                            <option value="<%=medidas[i].id">
+                            <%=medidas[i].medida%>
+                            </option>
                         </select><br>
                     </div>
                     <div class="etiqueta-categoria">   
                         <label for="">Seleccionar categoria</label>
                         <select name="categoria" id="select-categoria" required>
-                            <option value=""></option>
-                            <option value="almacen">Almacen</option>
-                            <option value="bebes">Bebes</option>
-                            <option value="bebidas">Bebidas</option>
-                            <option value="lacteos">Lacteos</option>
-                            <option value="limpieza">Limpieza</option>
-                            <option value="perfumeria">Perfumeria</option>
-                            <option value="nueva-categoria">Nueva categoria</option>
+                            <% for (let i = 0; i < categorias.lenght; i++) {%>
+                                <option value="<%=categorias[i].id">
+                                <%=categorias[i].categoria%>
+                                </option>
                         </select><br>
                     </div>
                 </div>

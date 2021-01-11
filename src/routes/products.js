@@ -25,7 +25,7 @@ router.get('/editar-producto/:id', productsController.productEdit);
 router.post('/editar-producto/:id', upload.any(), productsController.productUpdate);
 
 /* GET product destroy */
-router.get('/destroy/:id', productsController.destroy);
+router.post('/destroy/:id', productsController.destroy);
 
 /* GET products list. */
 router.get('/list', productsController.list);

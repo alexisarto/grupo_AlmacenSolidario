@@ -5,7 +5,13 @@ const db = require('../database/models');
 
 const productsController = {
     productAdd: function(req, res, next) {
-        res.render('products/productAdd');
+        let pedidoUnidades = db.Unidad.findAll();
+        let pedidoCategoria = db.Categoria.findAll();
+
+        Promise.all([pedidoUnidades, pedidoCategoria])
+            .then(function([unidades, categorias]){
+                res.render('products/productAdd', {unidades:unidades, categorias:categorias})
+            })
       },
     productStore: function(req, res, next) {
         let newProduct = {
@@ -58,29 +64,16 @@ const productsController = {
     },
 
     destroy: function(req, res, next) {
-        var idProduct = req.params.id;
-        var productFound;
-        for (var i = 0; i < products.length; i++) {
-            if (products[i].id == idProduct) {
-                productFound = products[i];
-                break;
+        db.Producto.destroy({
+            where: {
+                id: req.params.id
             }
-        }
-        if (productFound) {
-            var productDestroy = products.filter(function(product) {
-                return product.id != idProduct;
-            });
-            productsDestroyJSON = JSON.stringify(productDestroy);
-            fs.writeFileSync(__dirname + '/../data/products.json', productsDestroyJSON);
-            products = productDestroy;
-            res.redirect('/products/list');
-        } else {
-            res.send('Producto invalido');
-        }
+        });
+        res.render("products/list")
     },
 
     list: function(req, res, next) {
-        db.Producto.findAll()
+        db.Producto.findAll({include: [{association: "marca"}, {association: "categoria"}]})
         .then(function(productos){
             res.render('products/list', {productos:productos})
         })
@@ -95,7 +88,7 @@ const productsController = {
     },
 
     detalleProducto: function(req,res,next){
-        db.Producto.findByPk(req.params.id)
+        db.Producto.findByPk(req.params.id, {include: [{association: "marca"}, {association: "categoria"}]})
         .then(function(producto){
             res.render('products/productDetail', {producto:producto})
         })
