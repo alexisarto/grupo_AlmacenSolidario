@@ -5,61 +5,67 @@ const db = require('../database/models');
 
 const productsController = {
     productAdd: function(req, res, next) {
-        let pedidoUnidades = db.Unidad.findAll();
+        let pedidoUnidad = db.Unidad.findAll();
         let pedidoCategoria = db.Categoria.findAll();
+        let pedidoSubCategoria = db.Sub_Categoria.findAll();
+        
 
-        Promise.all([pedidoUnidades, pedidoCategoria])
-            .then(function([unidades, categorias]){
-                res.render('products/productAdd', {unidades:unidades, categorias:categorias})
+        Promise.all([pedidoUnidad, pedidoCategoria, pedidoSubCategoria])
+            .then(function(result){
+                res.render('products/productAdd', {unidad:result[0], categoria:result[1], subcategoria:result[2]})
             })
       },
+
     productStore: function(req, res, next) {
-        let newProduct = {
-            id: parseInt(products[products.length -1].id) + 1,
-            item: req.body.item,
-            marca: req.body.marca,
+        db.Producto.create({
+            descripcion: req.body.descripcion,
+            descripcion_completa: req.body.descripcion_completa,
+            marca_id: req.body.marca,
             presentacion: req.body.presentacion,
-            medida: req.body.medida,
-            categoria: req.body.categoria,
-            precio: req.body.precio,
-            imagen_producto: req.files[0].filename
-        };
-        products.push(newProduct);
-        let productsJSON = JSON.stringify(products, null, 2);
-        fs.writeFileSync(__dirname + '/../data/products.json', productsJSON);
-        res.redirect('products/list');
+            unidad_id: req.body.medida,
+            categoria_id: req.body.categoria,
+            sub_categoria_id: req.body.subCategoria,
+            precio: req.body.precio
+        });
+        console.log(req.body.marca)
+        res.render('products/list');
     },
     
     productEdit: function(req, res, next) {
+        
         let pedidoProducto = db.Producto.findByPk(req.params.id);
         let pedidoMarca = db.Marca.findAll();
         let pedidoUnidad = db.Unidad.findAll();
         let pedidoCategoria = db.Categoria.findAll();
+        let pedidoSubCategoria = db.Sub_Categoria.findAll();
 
-        Promise.all([pedidoProducto, pedidoMarca, pedidoUnidad, pedidoCategoria])
-            .then(function([producto, marcas, unidades, categorias]){
-                res.render('products/productEdit', {producto:producto, marcas:marcas, unidades:unidades, categorias:categorias})
+        Promise.all([pedidoProducto, pedidoMarca, pedidoUnidad, pedidoCategoria, pedidoSubCategoria])
+            .then(function(result){
+                res.render('products/productEdit', {producto:result[0] , marcas:result[1], unidades:result[2], categorias:result[3], subcategorias:result[4]})
             })
             .catch(function(error){
-                res.render('error')
+                
                 console.log(error)
+                res.render('error')
             })
     },
 
     productUpdate: function(req, res, next) {
-        var idProduct = req.params.id;
-        var editProducts = products.map(function(product) {
-            if (product.id == idProduct) {
-                let productoEditado = req.body;
-                productoEditado.id = idProduct;
-                productoEditado.imagen_producto = req.files[0].filename
-                return productoEditado;
-            }
-            return product;
+        db.Producto.update({
+            descripcion: req.body.descripcion,
+            descripcion_completa: req.body.descripcion_completa,
+            marca_id: req.body.marca,
+            presentacion: req.body.presentacion,
+            unidad_id: req.body.medida,
+            categoria_id: req.body.categoria,
+            sub_categoria_id: req.body.subCategoria,
+            precio: req.body.precio
+        }, {
+            where: {
+                id: req.params.id
+            }    
         });
-        editProductsJSON = JSON.stringify(editProducts, null, 2);
-        fs.writeFileSync(__dirname + '/../data/products.json', editProductsJSON);
-        products = editProducts;
+
         res.redirect('products/list');
     },
 

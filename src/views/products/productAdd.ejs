@@ -9,26 +9,39 @@
             <a href="/home"><img src="/img/Logo.png" class="avatar" alt="imagen logo"></a>
             <h1>Agregar producto</h1>
             <form action="/products/agregar-producto" method="POST" enctype="multipart/form-data">
-                <input type="text" required name="item" placeholder="Item"><br>
+                <input type="text" required name="descripcion" placeholder="Descripcion"><br>
+                <input type="text" required name="descripcion_completa" placeholder="Descripcion Completa"><br>
                 <input type="text" required name="marca" placeholder="Marca"><br>
                 <div class="agregar-info1-producto">
                     <input class="presentacion" type="text" required name="presentacion" placeholder="Presentacion">
                     <div class="unidad-medida">
                         <label for="">Unidad de medida</label>
                         <select name="medida">
-                            <% for (let i = 0; i < medidas.lenght; i++) {%>
-                            <option value="<%=medidas[i].id">
-                            <%=medidas[i].medida%>
-                            </option>
+                            <% for (let i = 0; i < unidad.length; i++) {%>
+                                <option value="<%=unidad[i].id %>">
+                                    <%=unidad[i].medida %>
+                                </option>
+                            <% } %>
                         </select><br>
                     </div>
                     <div class="etiqueta-categoria">   
                         <label for="">Seleccionar categoria</label>
                         <select name="categoria" id="select-categoria" required>
-                            <% for (let i = 0; i < categorias.lenght; i++) {%>
-                                <option value="<%=categorias[i].id">
-                                <%=categorias[i].categoria%>
+                            <% for (let i = 0; i < categoria.length; i++) {%>
+                                <option value="<%= categoria[i].id %>">
+                                    <%= categoria[i].categoria %>
                                 </option>
+                            <% } %>
+                        </select><br>
+                    </div>
+                    <div class="etiqueta-categoria">   
+                        <label for="">Seleccionar Sub categoria</label>
+                        <select name="subCategoria" id="select-subcategoria" required>
+                            <% for (let i = 0; i < subcategoria.length; i++) {%>
+                                <option value="<%= subcategoria[i].id %>">
+                                    <%= subcategoria[i].sub_categoria %>
+                                </option>
+                            <% } %>
                         </select><br>
                     </div>
                 </div>
@@ -36,7 +49,7 @@
                     <label> $</label>
                     <input type="text" required name="precio" placeholder="Precio"><br><br>
                     <div class="input-file">
-                        <input type="file" required id="imagen_producto" name="imagen_producto">
+                        <input type="file" id="imagen_producto" name="imagen_producto">
                         <label for="imagen_producto">Seleccionar archivo de imagen</label>
                         <span id="file-name">Nombre del archivo</span>
                         <script>

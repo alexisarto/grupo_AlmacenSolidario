@@ -11,7 +11,9 @@ module.exports = function(sequelize, dataTypes) {
         }
     };
     let config = {
-        tableName: "sub_categorias"
+        tableName: "sub_categorias",
+        timestamps: false
+
     }
     let Sub_Categoria = sequelize.define(alias, cols, config);
     Sub_Categoria.associate = function(models) {

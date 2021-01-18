@@ -14,7 +14,7 @@
         <ol>
             <% for (let i = 0; i < productos.length; i++) { %>
                 <li>
-                    <%=productos[i].descripcion%>
+                    <a href="detalleProducto/<%=productos[i].id%>"><%=productos[i].descripcion%></a>
                     <br>
                     <%=productos[i].marca.marca%>
                     <br>
@@ -26,6 +26,7 @@
                     <form action="/products/destroy/<%=productos[i].id%>" method="POST">
                         <button type="submit">Borrar</button>
                     </form>
+
                 </li>
             <% } %>
         </ol>

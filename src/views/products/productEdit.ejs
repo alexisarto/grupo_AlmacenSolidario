@@ -8,10 +8,14 @@
         <div class="formulario-agregar-producto">
             <a href="/home"><img src="/img/Logo.png" class="avatar" alt="imagen logo"></a>
             <h1>Editar producto</h1>
-            <form action="/products/editar-producto/<%=producto.id %>" method="POST" enctype="multipart/form-data">
-                <input type="text" required name="item" value="<%=producto.descripcion%>" ><br>
-                <input type="text" required name="marca" value="<%=marcas.marca%>" ><br>
-                
+            <form action="/products/editar-producto/<%= producto.id %>" method="POST" enctype="multipart/form-data">
+                <input type="text" required name="descripcion" value="<%= producto.descripcion %>" ><br>
+                <input type="text" required name="descripcion_completa" value="<%= producto.descripcion_completa %>" ><br>
+                <% for (let i = 0; i < marcas.length; i++) { %>
+                    <% if (marcas[i].id == producto.unidad_id) { %>
+                        <input type="text" required name="marca" value="<%=marcas[i].marca%>" ><br>
+                        <% } %>
+                <% } %>
                 <div class="agregar-info1-producto">
                     <input class="presentacion" type="text" required name="presentacion" value="<%=producto.presentacion%>">
                     <div class="unidad-medida">
@@ -19,11 +23,11 @@
                             <select name="medida" id="select-medida" required>
                                 <% for (let i = 0; i < unidades.length; i++) { %>
                                     <% if (unidades[i].id == producto.unidad_id) { %>
-                                        <option value="<%=unidades[i].id%>" selected>
+                                        <option value="<%= unidades[i].id %>" selected>
                                             <%=unidades[i].medida%>
                                         </option>
                                     <% } else { %>
-                                        <option value="<%=unidades[i].id%>">
+                                        <option value="<%= unidades[i].id %>">
                                             <%=unidades[i].medida%>
                                         </option>
                                     <% } %>
@@ -35,13 +39,30 @@
                         <label for="">Seleccionar categoria</label>
                         <select name="categoria" id="select-categoria" required>
                             <% for (let i = 0; i < categorias.length; i++) { %>
-                                <% if (categorias[i].id == categorias.categoria_id) { %>
-                                    <option value="<%=categorias[i].id%>" selected>
+                                <% if (categorias[i].id == producto.categoria_id) { %>
+                                    <option value="<%= categorias[i].id %>" selected>
                                         <%=categorias[i].categoria%>
                                     </option>
                                 <% } else { %>
-                                    <option value="<%=categorias[i].id%>">
+                                    <option value="<%= categorias[i].id %>">
                                         <%=categorias[i].categoria%>
+                                    </option>
+                                <% } %>
+        
+                            <% } %>
+                        </select><br>
+                    </div>
+                    <div class="etiqueta-categoria">   
+                        <label for="">Seleccionar Sub categoria</label>
+                        <select name="subCategoria" id="select-subcategoria" required>
+                            <% for (let i = 0; i < subcategorias.length; i++) { %>
+                                <% if (subcategorias[i].id == producto.sub_categoria_id) { %>
+                                    <option value="<%= categorias[i].id %>" selected>
+                                        <%=subcategorias[i].sub_categoria%>
+                                    </option>
+                                <% } else { %>
+                                    <option value="<%= categorias[i].id %>">
+                                        <%=subcategorias[i].sub_categoria%>
                                     </option>
                                 <% } %>
         
@@ -51,12 +72,11 @@
                 </div>
                 <div class="agregar-info2-producto">
                     <label> $</label>
-                    <input type="text" required name="precio" value="<%=producto.precio%>"><br><br>
-                    <!--
+                    <input type="text" required name="precio" value="<%= producto.precio %>"><br><br>
                     <div class="input-file">
                         <input type="file" required id="imagen_producto" name="imagen_producto">
                         <label for="imagen_producto">Seleccionar archivo de imagen</label>
-                        <span id="file-name"><%= productFound.imagen_producto %></span>
+                        <span id="file-name"></span>
                         <script>
                             let inputFile = document.getElementById('imagen_producto');
                             let fileNameField = document.getElementById('file-name');
@@ -66,7 +86,6 @@
                             })
                         </script>
                     </div><br>
-                -->
                 </div><br>
                 <p class="texto-nota">* Todos los campos son requeridos</p>
                 <button type="submit">Editar Producto</button>
