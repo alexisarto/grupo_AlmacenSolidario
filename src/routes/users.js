@@ -12,24 +12,10 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-// *** Crear usuario ***
-router.get('/registro', guestMiddleware, usersController.register);
-router.post('/registro', validations.userRegister, usersController.store);
-
-// *** Login ***
-router.get('/login', guestMiddleware, usersController.login);
-router.post('/login', validations.userLogin, usersController.processLogin);
-
 // *** Logout ***
 router.get('/logout', authMiddleware, usersController.logout);
 
-// *** Mostrar perfil ***
-router.get('/mostrar-perfil/:id', usersController.detallePerfil);
-
-// *** Editar perfil ***
-router.get('/editar-perfil/:id', usersController.profileEdit);
-router.post('/editar-perfil/:id', validations.userProfileEdit, usersController.profileUpdate);
-
+// *** Resetear contrasenia ***
 router.get('/resetear-contrasenia', usersController.passwordReset);
 
 // *** Crear usuario sql ***

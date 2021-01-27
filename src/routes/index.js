@@ -13,5 +13,4 @@ router.get('/instituciones', indexController.instituciones);
 
 router.get('/nosotros', indexController.aboutUs);
 
-
 module.exports = router;
