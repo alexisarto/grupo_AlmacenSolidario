@@ -5,23 +5,26 @@ const db = require('../database/models');
 
 const productsController = {
     productAdd: function(req, res, next) {
-        res.render('products/productAdd');
-      },
+        let pedidoCategoria = db.Categoria.findAll();
+        let pedidoUnidad = db.Unidad.findAll();
+        Promise.all([pedidoCategoria, pedidoUnidad])
+        .then(function([categoria, unidad]) {
+            res.render('products/agregarProducto', {categoria: categoria, unidad: unidad});
+        })
+    },
     productStore: function(req, res, next) {
-        let newProduct = {
-            id: parseInt(products[products.length -1].id) + 1,
-            item: req.body.item,
-            marca: req.body.marca,
-            presentacion: req.body.presentacion,
-            medida: req.body.medida,
-            categoria: req.body.categoria,
+        db.Producto.create({
+            descripcion: req.body.descripcion,
+            descripcion_completa: req.body.descripcion_completa,
+            marca_id: req.body.marca_id,
+            categoria_id: req.body.categoria_id,
+            sub_categoria_id: req.body.subcategoria_id,
             precio: req.body.precio,
-            imagen_producto: req.files[0].filename
-        };
-        products.push(newProduct);
-        let productsJSON = JSON.stringify(products, null, 2);
-        fs.writeFileSync(__dirname + '/../data/products.json', productsJSON);
-        res.redirect('products/list');
+            presentacion: req.body.presentacion,
+            unidad_id: req.body.unidad_id,
+            imagen: req.files[0].filename
+        })
+        res.redirect('/products/list');
     },
     
     productEdit: function(req, res, next) {

@@ -12,17 +12,34 @@
                 <p style="color: red; text-align: left; margin-bottom: 3px">Error!</p>
                 <ul style="font-size: 13px">
                     <% for (let i = 0; i < errors.length; i++) { %>
-                        <%= errors[i].msg %>
+                        <li><%= errors[i].msg %></li>
                     <% } %>
                 </ul>
             <% } %>
-            <form action="/users/crear" method="POST">
-                <input type="text" name="name" placeholder="Nombre"><br>
-                <input type="email" name="email" placeholder="E-mail"><br>
-                <input type="password" name="password" placeholder="Contraseña"><br>
-                <input type="password" name="confContrasenia" placeholder="Confirmar contraseña"><br>
+            <div class="errores">
+                <ul></ul>
+            </div>
+            <form action="/users/crear" class="registro" method="POST">
+                <div>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Nombre"><br>
+                <div class="invalid-feedback"></div>
+                </div>
+                <div>
+                <input type="email" class="form-control" id="email" name="email" placeholder="E-mail"><br>
+                <div class="invalid-feedback"></div>
+                </div>
+                <div>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña"><br>
+                <div class="invalid-feedback"></div>
+                </div>
+                <div>
+                <input type="password" class="form-control" id="rePassword" name="confContrasenia" placeholder="Confirmar contraseña"><br>
+                <div class="invalid-feedback"></div>
+                </div>
+                <div class="invalid-form"></div>
                 <button type="submit">Crear Cuenta</button>
             </form>
         </div>
+        <script src="/js/registro2.js"></script>
     </body>
 </html>
