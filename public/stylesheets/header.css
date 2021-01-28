@@ -161,7 +161,8 @@ header section.navegacion nav ul li.subLogin ul.children li {
     }
 
     .show{
-        bottom: 0!important;
+        bottom: 250px!important;
+        padding-bottom: 50px;
     }
 
     header section.navegacion nav .links {
@@ -175,12 +176,22 @@ header section.navegacion nav ul li.subLogin ul.children li {
         width: auto;
         height: auto;
         flex-direction: column;
+        justify-content: space-around;
         background-color: rgba(0,0,0,.8);
         overflow: hidden;
         transition: all .5s ease-in-out;
     }
 
-    
+    header section.navegacion nav .links a {
+        font-size: 20px;
+        
+    }
+
+    header section.navegacion nav ul li.subLogin ul.children li {
+        background-color: rgba(0,0,0,0);
+        font-weight: 600;
+        padding-left: 30px;
+    }
     
 
 
