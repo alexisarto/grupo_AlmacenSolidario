@@ -12,7 +12,7 @@
                 <p style="color: red; text-align: left; margin-bottom: 3px">Error!</p>
                 <ul style="font-size: 13px">
                     <% for (let i = 0; i < errors.length; i++) { %>
-                        <%= errors[i].msg %>
+                        <li><%= errors[i].msg %></li>
                     <% } %>
                 </ul>
             <% } %>

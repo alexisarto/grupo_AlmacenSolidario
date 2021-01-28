@@ -98,3 +98,8 @@ body.form {
     font-size: 13px;
     color: gray;
 }
+body.form div.formulario div.errores ul li {
+    list-style: none;
+    color: red;
+    font-size: 13px;
+}
