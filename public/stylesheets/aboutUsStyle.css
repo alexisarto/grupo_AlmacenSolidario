@@ -9,6 +9,7 @@ main.about {
 
 main.about section {
     width: 85%;
+    padding-top: 55px;
 }
 
 section.imagenAbout {
@@ -19,6 +20,7 @@ section.imagenAbout {
 }
 
 section.imagenAbout img {
+    
     display: block;
     width: 100%;
 }
