@@ -11,7 +11,8 @@ module.exports = function(sequelize, dataTypes) {
         }
     };
     let config = {
-        tableName: "perfiles"
+        tableName: "perfiles",
+        timestamps: false
     }
     let Perfil = sequelize.define(alias, cols, config);
     Perfil.associate = function(models) {

@@ -17,7 +17,8 @@ module.exports = function(sequelize, dataTypes) {
         }
     };
     let config = {
-        tableName: "carritos"
+        tableName: "carritos",
+        timestamps: false
     }
     let Carrito = sequelize.define(alias, cols, config);
     Carrito.associate = function(models) {
