@@ -17,10 +17,10 @@ main.home {
 
 main.home section {
     width: 85%;
-    padding-top: 55px;
 }
 
 section.imagenPortada {
+    margin-top: 100px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;

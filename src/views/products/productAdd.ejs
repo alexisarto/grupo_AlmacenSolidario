@@ -5,25 +5,40 @@
         <title>Agregar Producto</title>
     </head>
     <body class = "form">
+
+        <%- include('../partials/headerAdmin')%>
+
         <div class="formulario-agregar-producto">
-            <a href="/home"><img src="/img/Logo.png" class="avatar" alt="imagen logo"></a>
             <h1>Agregar producto</h1>
             <form action="/products/agregar-producto" method="POST" enctype="multipart/form-data">
                 <input type="text" required name="descripcion" placeholder="Descripcion"><br>
                 <input type="text" required name="descripcion_completa" placeholder="Descripcion Completa"><br>
-                <input type="text" required name="marca" placeholder="Marca"><br>
+                <div class="listadoMarcas">   
+                    <label for="">Seleccionar marca</label>
+                    <select name="marca" id="select-marca" required>
+                        <% for (let i = 0; i < marca.length; i++) {%>
+                            <option value="<%= marca[i].id %>">
+                                <%= marca[i].marca %>
+                            </option>
+                        <% } %>
+                    </select>
+                    <a href="/products/agregarmarca" class="linkNewBrand">Nueva marca</a>
+                </div>
                 <div class="agregar-info1-producto">
                     <input class="presentacion" type="text" required name="presentacion" placeholder="Presentacion">
                     <div class="unidad-medida">
                         <label for="">Unidad de medida</label>
-                        <select name="medida">
+                        <select name="medida" id="select-medida">
                             <% for (let i = 0; i < unidad.length; i++) {%>
                                 <option value="<%=unidad[i].id %>">
                                     <%=unidad[i].medida %>
                                 </option>
                             <% } %>
-                        </select><br>
+                        </select>
+                        <a href="/products/agregarmarca" class="linkNewBrand">Nueva medida</a>
                     </div>
+                </div>
+                <div class="agregar-info3-producto">
                     <div class="etiqueta-categoria">   
                         <label for="">Seleccionar categoria</label>
                         <select name="categoria" id="select-categoria" required>
@@ -32,7 +47,8 @@
                                     <%= categoria[i].categoria %>
                                 </option>
                             <% } %>
-                        </select><br>
+                        </select>
+                        <a href="/products/agregarmarca" class="linkNewBrand">Nueva categoria</a>
                     </div>
                     <div class="etiqueta-categoria">   
                         <label for="">Seleccionar Sub categoria</label>
@@ -42,12 +58,16 @@
                                     <%= subcategoria[i].sub_categoria %>
                                 </option>
                             <% } %>
-                        </select><br>
+                        </select>
+                        <a href="/products/agregarmarca" class="linkNewBrand">Nueva sub-categoria</a>
                     </div>
                 </div>
+                    
                 <div class="agregar-info2-producto">
-                    <label> $</label>
-                    <input type="text" required name="precio" placeholder="Precio"><br><br>
+                    <div>
+                        <label> $</label>
+                        <input type="text" required name="precio" placeholder="Precio">
+                    </div>
                     <div class="input-file">
                         <input type="file" id="imagen_producto" name="imagen_producto">
                         <label for="imagen_producto">Seleccionar archivo de imagen</label>

@@ -30,4 +30,11 @@ router.post('/destroy/:id', productsController.destroy);
 /* GET products list. */
 router.get('/list', productsController.list);
 
+/* Products agregar marca, unidad, categoria y subcategoria*/
+router.get('/agregarmarca', productsController.brandAdd);
+router.post('/agregarmarca', productsController.brandStore);
+router.post('/agregarunidad', productsController.unidadStore);
+router.post('/agregarcategoria', productsController.categoryStore);
+router.post('/agregarsubcategoria', productsController.subCategoryStore);
+
 module.exports = router;

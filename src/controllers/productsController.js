@@ -8,11 +8,12 @@ const productsController = {
         let pedidoUnidad = db.Unidad.findAll();
         let pedidoCategoria = db.Categoria.findAll();
         let pedidoSubCategoria = db.Sub_Categoria.findAll();
+        let pedidoMarca = db.Marca.findAll();
         
 
-        Promise.all([pedidoUnidad, pedidoCategoria, pedidoSubCategoria])
+        Promise.all([pedidoUnidad, pedidoCategoria, pedidoSubCategoria, pedidoMarca])
             .then(function(result){
-                res.render('products/productAdd', {unidad:result[0], categoria:result[1], subcategoria:result[2]})
+                res.render('products/productAdd', {unidad:result[0], categoria:result[1], subcategoria:result[2], marca:result[3]})
             })
       },
 
@@ -25,10 +26,10 @@ const productsController = {
             unidad_id: req.body.medida,
             categoria_id: req.body.categoria,
             sub_categoria_id: req.body.subCategoria,
-            precio: req.body.precio
+            precio: req.body.precio,
+            imagen: req.files[0].filename
         });
-        console.log(req.body.marca)
-        res.render('products/list');
+        res.redirect('/products/list');
     },
     
     productEdit: function(req, res, next) {
@@ -59,14 +60,15 @@ const productsController = {
             unidad_id: req.body.medida,
             categoria_id: req.body.categoria,
             sub_categoria_id: req.body.subCategoria,
-            precio: req.body.precio
+            precio: req.body.precio,
+            imagen: req.files[0].filename
         }, {
             where: {
                 id: req.params.id
             }    
         });
 
-        res.redirect('products/list');
+        res.redirect('/products/list');
     },
 
     destroy: function(req, res, next) {
@@ -75,7 +77,7 @@ const productsController = {
                 id: req.params.id
             }
         });
-        res.render("products/list")
+        res.redirect("/products/list")
     },
 
     list: function(req, res, next) {
@@ -107,7 +109,39 @@ const productsController = {
     almacen: function(req,res,next){
         const usuarioLogueado = req.session.usuarioLogueado;
         res.render("products/almacen", {products, usuarioLogueado});
-    }
+    },
+
+    brandAdd: function(req,res,next){
+        res.render('products/brandAdd')
+    },
+
+    brandStore: function(req, res, next){
+        db.Marca.create({
+            marca: req.body.marca
+        });
+        res.redirect("/products/list")
+    },
+
+    unidadStore: function(req, res, next){
+        db.Unidad.create({
+            medida: req.body.unidad
+        });
+        res.redirect("/products/list")
+    },
+
+    categoryStore: function(req, res, next){
+        db.Categoria.create({
+            categoria: req.body.categoria
+        });
+        res.redirect("/products/list")
+    },
+
+    subCategoryStore: function(req, res, next){
+        db.Sub_Categoria.create({
+            sub_categoria: req.body.subCategoria
+        });
+        res.redirect("/products/list")
+    },
 
 }
 

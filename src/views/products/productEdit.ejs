@@ -5,17 +5,35 @@
         <title>Editar Producto</title>
     </head>
     <body class = "form">
+
+        <%- include('../partials/headerAdmin')%>
+
         <div class="formulario-agregar-producto">
-            <a href="/home"><img src="/img/Logo.png" class="avatar" alt="imagen logo"></a>
+            
             <h1>Editar producto</h1>
             <form action="/products/editar-producto/<%= producto.id %>" method="POST" enctype="multipart/form-data">
                 <input type="text" required name="descripcion" value="<%= producto.descripcion %>" ><br>
                 <input type="text" required name="descripcion_completa" value="<%= producto.descripcion_completa %>" ><br>
-                <% for (let i = 0; i < marcas.length; i++) { %>
-                    <% if (marcas[i].id == producto.unidad_id) { %>
-                        <input type="text" required name="marca" value="<%=marcas[i].marca%>" ><br>
-                        <% } %>
-                <% } %>
+                
+                <div class="listadoMarcas">
+                    <label for="">Seleccionar marca</label>
+                        <select name="marca" id="select-marca" required>
+                            <% for (let i = 0; i < marcas.length; i++) { %>
+                                <% if (marcas[i].id == producto.marca_id) { %>
+                                    <option value="<%= marcas[i].id %>" selected>
+                                        <%=marcas[i].marca%>
+                                    </option>
+                                <% } else { %>
+                                    <option value="<%= marcas[i].id %>">
+                                        <%=marcas[i].marca%>
+                                    </option>
+                                <% } %>
+        
+                            <% } %>
+                        </select>
+                        <a href="/products/agregarmarca" class="linkNewBrand">Nueva marca</a>
+                </div>
+                
                 <div class="agregar-info1-producto">
                     <input class="presentacion" type="text" required name="presentacion" value="<%=producto.presentacion%>">
                     <div class="unidad-medida">
@@ -33,8 +51,11 @@
                                     <% } %>
             
                                 <% } %>
-                            </select></p><br>
+                            </select>
+                            <a href="/products/agregarmarca" class="linkNewBrand">Nueva medida</a>
                     </div>
+                </div>
+                <div>
                     <div class="etiqueta-categoria">   
                         <label for="">Seleccionar categoria</label>
                         <select name="categoria" id="select-categoria" required>
@@ -50,7 +71,8 @@
                                 <% } %>
         
                             <% } %>
-                        </select><br>
+                        </select>
+                        <a href="/products/agregarmarca" class="linkNewBrand">Nueva categoria</a>
                     </div>
                     <div class="etiqueta-categoria">   
                         <label for="">Seleccionar Sub categoria</label>
@@ -67,16 +89,19 @@
                                 <% } %>
         
                             <% } %>
-                        </select><br>
+                        </select>
+                        <a href="/products/agregarmarca" class="linkNewBrand">Nueva sub-categoria</a>
                     </div>
                 </div>
                 <div class="agregar-info2-producto">
+                    <div>
                     <label> $</label>
-                    <input type="text" required name="precio" value="<%= producto.precio %>"><br><br>
+                    <input type="text" required name="precio" value="<%= producto.precio %>">
+                    </div>
                     <div class="input-file">
-                        <input type="file" required id="imagen_producto" name="imagen_producto">
+                        <input type="file" id="imagen_producto" name="imagen_producto">
                         <label for="imagen_producto">Seleccionar archivo de imagen</label>
-                        <span id="file-name"></span>
+                        <span id="file-name">"<%= producto.imagen %>"</span>
                         <script>
                             let inputFile = document.getElementById('imagen_producto');
                             let fileNameField = document.getElementById('file-name');

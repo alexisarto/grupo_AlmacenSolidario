@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../partials/head')%>
     <title>Listado de Productos</title>
 </head>
-<body>
-    <head>
-        
-    </head>
-    <main>
-        <h1>Listado de productos</h1>
-        <ol>
+<body class="admin">
+
+    <%- include('../partials/headerAdmin')%>
+
+    <main class= "productsList">
+        <h1 class ="h1Pl">Listado de productos</h1>
+        <ol class="olProductList">
             <% for (let i = 0; i < productos.length; i++) { %>
-                <li>
-                    <a href="detalleProducto/<%=productos[i].id%>"><%=productos[i].descripcion%></a>
-                    <br>
-                    <%=productos[i].marca.marca%>
-                    <br>
-                    <%= productos[i].descripcion_completa%>
-                    <br>
-                    <%=productos[i].categoria.categoria%>
-                    <br>                    
-                    $<%=productos[i].precio%>
-                    <form action="/products/destroy/<%=productos[i].id%>" method="POST">
-                        <button type="submit">Borrar</button>
-                    </form>
+                <li class="liProductList">
+                    <div class="productDetailL">
+                        <a href="detalleProducto/<%=productos[i].id%>"><%=productos[i].descripcion%></a>
+                        <p><%=productos[i].marca.marca%></p>
+                        <p><%= productos[i].descripcion_completa%></p>
+                        <p><%=productos[i].categoria.categoria%></p>                   
+                        <p>$<%=productos[i].precio%></p>
+                    </div>
+                    <div class="buttonList">
+                        <form action="/products/destroy/<%=productos[i].id%>" method="POST">
+                            <button type="submit" class="buttonPL">Borrar</button>
+                        </form>
+                        <form action="/products/editar-producto/<%=productos[i].id%>" method="GET">
+                            <button type="submit" class="buttonPL">Editar</button>
+                        </form>
+                    </div>
+
 
                 </li>
             <% } %>

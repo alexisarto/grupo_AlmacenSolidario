@@ -10,7 +10,17 @@ body.form {
     position: relative;
     background-color: #f4f8f9;
 }
-.formulario-agregar-producto input , .formulario-agregar-producto button , .formulario-agregar-producto #select-medida , .formulario-agregar-producto #select-categoria {
+
+.formulario-agregar-producto input {
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e1e1e1;
+    outline: none;
+}
+
+
+.formulario-agregar-producto button , .formulario-agregar-producto #select-medida , .formulario-agregar-producto #select-categoria, #select-subcategoria, #select-marca, #select-medida {
     padding: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -20,6 +30,10 @@ body.form {
 .formulario-agregar-producto h1 {
     font-size: 28px;
 }
+.formulario-agregar-producto label {
+    padding: 10px;
+}
+
 .formulario-agregar-producto label , .formulario-agregar-producto p , .formulario-agregar-producto span {
     font-size: 13px;
     color: gray;
@@ -44,7 +58,7 @@ body.form {
     width: 90%;
     position: absolute;
     left: 50vw;
-    top: 80px;
+    top: 120px;
     transform: translateX(-50%);
 }
 .formulario-agregar-producto input#imagen_producto {
@@ -70,7 +84,7 @@ body.form {
 }
 .formulario-agregar-producto .agregar-info1-producto {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 }
 .formulario-agregar-producto .agregar-info2-producto {
@@ -88,6 +102,8 @@ body.form {
 }
 .formulario-agregar-producto .texto-nota {
     text-align: left;
+    padding: 10px;
+    font-weight: bold;
 }
 .formulario-agregar-producto .agregar-info2-producto label {
     padding: 10px;
@@ -95,17 +111,32 @@ body.form {
 .formulario-agregar-producto .input-file {
     padding-left: 75px;
 }
+
+a.linkNewBrand {
+    text-decoration: none;
+    font-size: 13px;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    color:white;
+    background-color: #3ab0e2;
+}
+
+a.linkNewBrand:hover {
+    background-color: #2cb5c4;
+}
+
 @media (max-width: 768px) {
     .formulario-agregar-producto h1 {
         font-size: 24px;
         margin-bottom: 20px;
     }
-    .formulario-agregar-producto .agregar-info1-producto {
-        display: block;
+    .agregar-info1-producto, .agregar-info2-producto, .agregar-info3-producto {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start !important;
     }
-    .formulario-agregar-producto .agregar-info2-producto {
-        display: block;
-    }
+
     .formulario-agregar-producto .input-file {
         padding-left: 0;
     }
@@ -113,7 +144,7 @@ body.form {
         width: 50%
     }
 }
-@media (max-width: 320px) {
+@media (max-width: 650px) {
     .formulario-agregar-producto {
         top: 50px;
     }
@@ -125,12 +156,18 @@ body.form {
         top: -45px;
         left: calc(50% - 30px);
     }
-    .formulario-agregar-producto .agregar-info1-producto {
-        display: block;
+    .agregar-info1-producto, .agregar-info2-producto, .agregar-info3-producto {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start !important;
     }
-    .formulario-agregar-producto .agregar-info2-producto {
-        display: block;
+
+    div.unidad-medida, div.etiqueta-categoria, div.listadoMarcas {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
     }
+
     .formulario-agregar-producto .input-file {
         padding-left: 0;
     }
@@ -152,7 +189,7 @@ body.form {
     .formulario-agregar-producto .agregar-info1-producto .etiqueta-categoria label {
         align-self: center;
     }
-    .formulario-agregar-producto input , .formulario-agregar-producto label , .formulario-agregar-producto p , .formulario-agregar-producto span {
+    .formulario-agregar-producto input , .formulario-agregar-producto label , .formulario-agregar-producto p , .formulario-agregar-producto span, a.linkNewBrand {
         font-size: 10px;
     }
     .formulario-agregar-producto .agregar-info2-producto .input-file #file-name {
