@@ -114,8 +114,12 @@ const usersController = {
     if(req.body.recordame != undefined) {
       res.cookie('recordame', user.email, {maxAge: 7200000})
     }
-    console.log(req.session.usuarioLogueado);
-    res.redirect('/home');
+    if (req.session.usuarioLogueado.perfil_id == 2) {
+      res.redirect('/products/list');
+    } else {
+      res.redirect('/home');
+    }
+    
     });
   } else {
     return res.render('users/ingresar', { errors: errors.errors });

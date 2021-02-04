@@ -3,7 +3,7 @@ const productsController = require('../controllers/productsController');
 var router = express.Router();
 var path = require('path');
 const upload = require('../middlewares/productsMulter');
-
+var adminMiddleware = require('../middlewares/adminMiddleware');
 
 /* GET products add. */
 router.get('/agregar-producto', productsController.productAdd);
@@ -28,7 +28,7 @@ router.post('/editar-producto/:id', upload.any(), productsController.productUpda
 router.post('/destroy/:id', productsController.destroy);
 
 /* GET products list. */
-router.get('/list', productsController.list);
+router.get('/list', adminMiddleware, productsController.list);
 
 /* Products agregar marca, unidad, categoria y subcategoria*/
 router.get('/agregarmarca', productsController.brandAdd);

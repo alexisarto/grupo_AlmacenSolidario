@@ -1,24 +1,19 @@
-const fs = require('fs');
+var db = require('../database/models');
 
 function recordameMiddleware(req, res, next) {
     if (req.cookies.recordame != undefined &&
         req.session.usuarioLogueado == undefined) {
-            let usersJson = fs.readFileSync(__dirname + '/../data/users.json', {encoding: 'utf-8'});
-            let users;
-            if(usersJson == "") {
-                users = [];
-            } else {
-                users = JSON.parse(usersJson);
-            }
-            let usuarioALoguearse;
-            for (let i = 0; i < users.length; i++) {
-                if(users[i].email == req.cookies.recordame) {
-                    usuarioALoguearse = users[i];
-                    break;
+            db.Usuario.findOne({
+                where: {
+                  email: req.cookies.recordame
                 }
-            }
-            req.session.usuarioLogueado = usuarioALoguearse;
+              }).then(function(user) {
+                  req.session.usuarioLogueado = user;
+                  next();
+            });
         }
-        next();
-    }
+        else {
+            next();
+        }
+}
 module.exports = recordameMiddleware;
