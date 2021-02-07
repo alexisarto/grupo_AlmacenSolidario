@@ -10,9 +10,17 @@
 
         <div class="formulario-agregar-producto">
             <h1>Agregar producto</h1>
+            <% if (typeof errors != 'undefined') { %>
+                <p style="color: red; text-align: left; margin-bottom: 3px">Error!</p>
+                <ul style="font-size: 13px">
+                    <% for (let i = 0; i < errors.length; i++) { %>
+                        <li><%= errors[i].msg %></li>
+                    <% } %>
+                </ul>
+            <% } %>            
             <form action="/products/agregar-producto" method="POST" enctype="multipart/form-data">
-                <input type="text" required name="descripcion" placeholder="Descripcion"><br>
-                <input type="text" required name="descripcion_completa" placeholder="Descripcion Completa"><br>
+                <input type="text" name="descripcion" placeholder="Descripcion"><br>
+                <input type="text" name="descripcion_completa" placeholder="Descripcion Completa"><br>
                 <div class="listadoMarcas">   
                     <label for="">Seleccionar marca</label>
                     <select name="marca" id="select-marca" required>
@@ -25,7 +33,7 @@
                     <a href="/products/agregarmarca" class="linkNewBrand">Nueva marca</a>
                 </div>
                 <div class="agregar-info1-producto">
-                    <input class="presentacion" type="text" required name="presentacion" placeholder="Presentacion">
+                    <input class="presentacion" type="text" name="presentacion" placeholder="Presentacion">
                     <div class="unidad-medida">
                         <label for="">Unidad de medida</label>
                         <select name="medida" id="select-medida">
@@ -41,7 +49,7 @@
                 <div class="agregar-info3-producto">
                     <div class="etiqueta-categoria">   
                         <label for="">Seleccionar categoria</label>
-                        <select name="categoria" id="select-categoria" required>
+                        <select name="categoria" id="select-categoria">
                             <% for (let i = 0; i < categoria.length; i++) {%>
                                 <option value="<%= categoria[i].id %>">
                                     <%= categoria[i].categoria %>
@@ -52,7 +60,7 @@
                     </div>
                     <div class="etiqueta-categoria">   
                         <label for="">Seleccionar Sub categoria</label>
-                        <select name="subCategoria" id="select-subcategoria" required>
+                        <select name="subCategoria" id="select-subcategoria">
                             <% for (let i = 0; i < subcategoria.length; i++) {%>
                                 <option value="<%= subcategoria[i].id %>">
                                     <%= subcategoria[i].sub_categoria %>
@@ -66,7 +74,7 @@
                 <div class="agregar-info2-producto">
                     <div>
                         <label> $</label>
-                        <input type="text" required name="precio" placeholder="Precio">
+                        <input type="text" name="precio" placeholder="Precio">
                     </div>
                     <div class="input-file">
                         <input type="file" id="imagen_producto" name="imagen_producto">

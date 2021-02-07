@@ -1,10 +1,12 @@
 const { decodeBase64 } = require('bcryptjs');
+const { validationResult } = require('express-validator');
 const fs = require('fs');
 var products = JSON.parse(fs.readFileSync(__dirname + '/../data/products.json', 'utf-8'));
 const db = require('../database/models');
 
 const productsController = {
     productAdd: function(req, res, next) {
+        
         let pedidoUnidad = db.Unidad.findAll();
         let pedidoCategoria = db.Categoria.findAll();
         let pedidoSubCategoria = db.Sub_Categoria.findAll();
@@ -18,18 +20,32 @@ const productsController = {
       },
 
     productStore: function(req, res, next) {
-        db.Producto.create({
-            descripcion: req.body.descripcion,
-            descripcion_completa: req.body.descripcion_completa,
-            marca_id: req.body.marca,
-            presentacion: req.body.presentacion,
-            unidad_id: req.body.medida,
-            categoria_id: req.body.categoria,
-            sub_categoria_id: req.body.subCategoria,
-            precio: req.body.precio,
-            imagen: req.files[0].filename
-        });
-        res.redirect('/products/list');
+        let errors = validationResult(req);
+        if (errors.isEmpty()) {
+            db.Producto.create({
+                descripcion: req.body.descripcion,
+                descripcion_completa: req.body.descripcion_completa,
+                marca_id: req.body.marca,
+                presentacion: req.body.presentacion,
+                unidad_id: req.body.medida,
+                categoria_id: req.body.categoria,
+                sub_categoria_id: req.body.subCategoria,
+                precio: req.body.precio,
+                imagen: req.files[0].filename
+            });
+            res.redirect('/products/list');
+        } else {
+            let pedidoUnidad = db.Unidad.findAll();
+            let pedidoCategoria = db.Categoria.findAll();
+            let pedidoSubCategoria = db.Sub_Categoria.findAll();
+            let pedidoMarca = db.Marca.findAll();
+        
+
+            Promise.all([pedidoUnidad, pedidoCategoria, pedidoSubCategoria, pedidoMarca])
+                .then(function(result){
+                    res.render('products/productAdd', {unidad:result[0], categoria:result[1], subcategoria:result[2], marca:result[3], errors:errors.errors})
+                })
+        }
     },
     
     productEdit: function(req, res, next) {

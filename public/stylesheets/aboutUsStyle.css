@@ -4,12 +4,13 @@ main.about {
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
-    background-color: #f4f8f9;   
+    background-color: #f4f8f9;
+   
 }
 
 main.about section {
     width: 85%;
-    padding-top: 55px;
+
 }
 
 section.imagenAbout {
@@ -17,6 +18,7 @@ section.imagenAbout {
     flex-wrap: wrap;
     flex-direction: column;
     position: relative;
+    margin-top: 100px;
 }
 
 section.imagenAbout img {

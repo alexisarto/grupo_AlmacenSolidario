@@ -4,11 +4,12 @@ var router = express.Router();
 var path = require('path');
 const upload = require('../middlewares/productsMulter');
 var adminMiddleware = require('../middlewares/adminMiddleware');
+const validations = require('../middlewares/validations');
 
 /* GET products add. */
 router.get('/agregar-producto', productsController.productAdd);
 /* POST products store. */
-router.post('/agregar-producto', upload.any(), productsController.productStore);
+router.post('/agregar-producto', upload.any(), validations.productAddForm, productsController.productStore);
 
 /* GET carrito*/
 router.get('/carrito', productsController.carrito);
