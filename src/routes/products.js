@@ -11,9 +11,6 @@ router.get('/agregar-producto', productsController.productAdd);
 /* POST products store. */
 router.post('/agregar-producto', upload.any(), validations.productAddForm, productsController.productStore);
 
-/* GET carrito*/
-router.get('/carrito', productsController.carrito);
-
 /* GET detalle producto*/
 router.get('/detalleProducto/:id', productsController.detalleProducto);
 

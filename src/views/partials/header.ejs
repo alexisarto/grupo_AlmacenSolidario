@@ -24,8 +24,8 @@
             </div>
 
             <div class="carrito">
-                <a href=""><i class="fas fa-shopping-cart"></i></a>
-                <p>$3.500</p>
+                <a href="/users/carrito"><i class="fas fa-shopping-cart"></i></a>
+                <p>$<% if (typeof usuarioLogueado != 'undefined') { %> <%= importe %> <% } else { %> <% } %></p>
             </div>
 
         </div>

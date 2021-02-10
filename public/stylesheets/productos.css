@@ -111,7 +111,7 @@
 .fotoProducto{
     position: relative;
     height: 120px;
-    width: 120px;
+    width: auto;
 }
 
 .moldefoto{
@@ -232,7 +232,6 @@
 
 .producto_almacen{
     border: 2px solid black;
-    height: 300px;
     width: 300px;
     margin-top: 2px;
     margin-left: 2px;
@@ -252,18 +251,15 @@
 .precioProd_almacen{
     position: relative;
     align-self: flex-start;
-    top:50%;
-    left:10%;
 }
 
 .botonAgregar_almacen{
     position: relative;
-    align-self: flex-end;
     background-color: #0022aa;
     color:white;
     border-radius: 5px;
     border: 0;
-    height: 50px;
+    height: 40px;
     width: 100px;
     right: 5%;
     bottom: 15%;
@@ -274,16 +270,32 @@
 }
 .precioyboton_infoProd_almacen{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     height: 20%;
 }
 .fotoeInfo_almacen{
     display: flex;
     flex-direction: row;
-    height: 80%;
 }
 .detalle_producto_almacen{
     margin-top:5px;
 }
 
+/* Carrito */
+div#quantityInCart {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    width: 20%;
+}
+
+input#quantityInCart {
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+}
+
+.texto_producto_carrito {
+    position: relative;
+    width: 100%;
+}

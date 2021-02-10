@@ -20,9 +20,18 @@ module.exports = function(sequelize, dataTypes) {
         }
     };
     let config = {
-        tableName: "carrito_producto"
-    }
+        tableName: "carrito_producto",
+        timestamps: false
+    };
+
     let Carrito_Producto = sequelize.define(alias, cols, config);
+
+    Carrito_Producto.assignProductos = function (idUser, idCart) {
+        return sequelize.query(
+          `UPDATE carrito_producto SET carrito_id = ${idCart} WHERE usuario_id = ${idUser} AND carrito_id IS NULL`
+        );
+      };
+
     Carrito_Producto.associate = function(models) {
         Carrito_Producto.belongsTo(models.Producto, {
             as: "productos",
