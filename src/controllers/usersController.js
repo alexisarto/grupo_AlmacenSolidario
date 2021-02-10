@@ -124,7 +124,140 @@ const usersController = {
   } else {
     return res.render('users/ingresar', { errors: errors.errors });
   }
-}    
+},
+
+  carrito(req, res) {
+    db.Carrito.findOne({
+      where: {
+        usuario_id: req.session.usuarioLogueado.id,
+        estado: "abierto"
+      },
+    }).then((carritoId) => {
+        db.Carrito_Producto.findAll( {
+        where: {
+          carrito_id: carritoId.id
+        },
+        include: [{all: true, nested: true}]
+      }).then((items) => {
+        db.sequelize.query('SELECT SUM(cantidad * precio) AS total FROM carrito_producto', {type: db.sequelize.QueryTypes.SELECT})
+          .then(resultado => {
+            db.Carrito.update({
+              total: resultado[0].total
+            }, {
+              where: {
+                usuario_id: req.session.usuarioLogueado.id
+              }
+          })
+        })
+        .then(() => {
+          res.cookie('importe', carritoId.total, {maxAge: 7200000})
+          return res.render("users/carrito", {items, carritoId, usuarioLogueado: req.session.usuarioLogueado, importe: req.cookies.importe});
+        })
+      })
+    });
+  },
+
+  modificarCantidad(req, res) {
+    db.Carrito_Producto.update({
+      cantidad: req.body.cantidad
+    }, {
+      where: {
+        producto_id: req.body.productId
+      }
+    }).then(() => {
+      return res.redirect('/users/carrito');
+    });
+  },
+
+  incrementar(req, res) {
+    db.Carrito_Producto.update({
+      cantidad: parseInt(req.body.cantidad) + 1
+    }, {
+      where: {
+        producto_id: req.body.productId
+      }
+    }).then(() => {
+      return res.redirect('/users/carrito');
+    });
+  },
+
+  reducir(req, res) {
+    db.Carrito_Producto.update({
+      cantidad: parseInt(req.body.cantidad) - 1
+    }, {
+      where: {
+        producto_id: req.body.productId
+      }
+    }).then(() => {
+      return res.redirect('/users/carrito');
+    });
+  },
+
+  eliminarItem(req, res) {
+    db.Carrito_Producto.destroy({
+      where: {
+        producto_id: req.body.productId
+      }
+    }).then(() => {
+      return res.redirect('/users/carrito');
+    });
+  },
+
+  addToCart(req, res) {
+    db.Carrito.findOne({
+      where: {
+        usuario_id: req.session.usuarioLogueado.id,
+        estado: "abierto"
+      },
+    }).then((carritoId) => {
+      var carritoId = carritoId.id;
+    
+    const errors = validationResult(req);
+
+    if (errors.isEmpty()) {
+      // Busco el producto que voy a agregar como Item.
+      db.Producto.findByPk(req.body.productId)
+        .then((product) => {
+          return db.Carrito_Producto.create({
+            carrito_id: carritoId,
+            precio: req.body.precio,
+            cantidad: 1,
+            producto_id: product.id,
+          });
+        })
+        .then(() => {
+          db.sequelize.query('SELECT SUM(cantidad * precio) AS total FROM carrito_producto', {type: db.sequelize.QueryTypes.SELECT})
+          .then(resultado => {
+            db.Carrito.update({
+              total: resultado[0].total
+            }, {
+              where: {
+                usuario_id: req.session.usuarioLogueado.id
+              }
+          })
+        })
+        .then(() => res.redirect("/users/carrito"))
+        .catch((e) => console.log(e));
+    })
+    } else {
+       Product.findByPk(req.body.productId)
+         .then(product => {
+            return res.render('products/productDetail', {product, errors: errors.mapped()})
+         })
+    }
+  })
+  },
+
+  deleteFromCart(req, res) {
+    db.Carrito_Producto.destroy({
+      where: {
+        id: req.body.itemId,
+      },
+      force: true,
+    })
+      .then((response) => res.redirect("/users/carrito"))
+      .catch((e) => console.log(e));
+  },
 }
 
 module.exports = usersController;

@@ -53,6 +53,12 @@ const validations = {
         check('password')
           .isLength({min: 8}).withMessage('La contraseña debe tener al menos 8 caracteres')
           .isAlphanumeric().withMessage('La contraseña debe ser alfanumérica')
+      ],
+      addToCart: [
+        check('quantity').isInt(),
+        body("quantity")
+          .custom((value) => value > 0)
+          .withMessage("Debe agregar al menos 1 producto al carrito"),
       ]
 }
 

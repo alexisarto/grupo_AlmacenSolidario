@@ -19,8 +19,16 @@ module.exports = function(sequelize, dataTypes) {
     let config = {
         tableName: "carritos",
         timestamps: false
-    }
+    };
+    
     let Carrito = sequelize.define(alias, cols, config);
+
+    Carrito.closeCarrito = function (idUser) {
+        return sequelize.query(
+          `UPDATE carrito SET estado = "cerrado" WHERE usuario_id = ${idUser} AND estado = "abierto"`
+        );
+      };
+    
     Carrito.associate = function(models) {
         Carrito.belongsTo(models.Usuario, {
             as: "usuario",

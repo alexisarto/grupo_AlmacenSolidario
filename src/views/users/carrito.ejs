@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head')%>
+    <title>Carrito</title>
+</head>
+<body>
+    <div class="container"> 
+    <%- include('../partials/header')%>
+    <main class="body">
+        <section class="Contenedor_productos">
+            
+            <% for (let i = 0; i < items.length; i++) { %>
+            <div class="producto">
+                <div class="moldefoto">
+                    <img class="fotoProducto" src="/images/products/<%= items[i].productos.imagen %>" alt="Foto Producto">
+                </div>
+                <div class="texto_producto_carrito">
+                    <h3>
+                        <%= items[i].productos.descripcion_completa %>
+                        <span><%= items[i].productos.marca.marca %></span>
+                        <span> x <%= items[i].productos.presentacion %></span>
+                        <span> <%= items[i].productos.unidad.medida %></span>
+                    </h3><br>
+                    <h5>$ <%= items[i].productos.precio %></h5><br>
+                    <div id="quantityInCart">
+                    <form action="reducir" method="POST">
+                        <input type="hidden" name="productId" value="<%= items[i].productos.id %>">
+                        <input type="hidden" name="cantidad" id="quantity" value=<%= items[i].cantidad %>>
+                        <button type="submit" id="red"><i class="fas fa-minus"></i></button>
+                    </form>
+                    <form action="/users/modificarCantidad" method="POST">
+                        <input type="hidden" name="productId" value="<%= items[i].productos.id %>">
+                        <input type="text" name="cantidad" id="quantityInCart" value=<%= items[i].cantidad %>>
+                        <p class="error"><%= typeof errors == 'undefined' ? '' : errors.quantity ? errors.quantity.msg : '' %></p>
+                    </form>
+                    <form action="/users/incrementar" method="POST">
+                        <input type="hidden" name="productId" value="<%= items[i].productos.id %>">
+                        <input type="hidden" name="cantidad" id="quantity" value=<%= items[i].cantidad %>>
+                        <button type="submit" id="inc"><i class="fas fa-plus"></i></button>
+                    </form>
+                    </div><br>
+                    <form action="/users/eliminarItem" method="POST">
+                        <input type="hidden" name="productId" value="<%= items[i].productos.id %>">
+                        <button type="submit" id="inc"><i class="far fa-trash-alt"></i></button>
+                    </form>
+                    
+                </div>
+            </div> 
+            <% } %>
+            
+        </section>
+        <div class="Contenedor_precio">
+            <section class="preciosproductos">
+                <% for (let i = 0; i < items.length; i++) { %>
+                <div class="contenedor_info_producto">
+                    <div class="producto_precio">
+                        <h3 class="precioProd"><%= items[i].productos.descripcion_completa %>
+                            <span><%= items[i].productos.marca.marca %></span>
+                            <span> x <%= items[i].productos.presentacion %></span>
+                            <span> <%= items[i].productos.unidad.medida %></span><h4 class="cantidad_producto">X <%= items[i].cantidad %></h4></h3>
+                    </div>
+                    <div class="precio_producto">
+                        <h4>$ <%= items[i].productos.precio %></h4>
+                    </div>
+                </div>
+                <% } %>
+            </section>
+
+            <section class="totalypagar">
+                <h1 class="textopagar">Total a pagar: $ <%= carritoId.total %></h1>
+                <input type="button" class="botonpagar" value="Pagar">
+            </section>
+            
+        </div>
+    </main>
+    
+    <%- include('../partials/footer') %>
+       
+    <script src="/js/carrito.js"></script>
+</body>
+</html>

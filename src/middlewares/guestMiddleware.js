@@ -2,7 +2,7 @@ function guestMiddleware(req, res, next) {
     if (req.session.usuarioLogueado == undefined) {
         next();
     } else {
-        res.render('users/profileDetail', {user: req.session.usuarioLogueado});
+        res.render('users/detallePerfil', {user: req.session.usuarioLogueado});
     }
 }
 

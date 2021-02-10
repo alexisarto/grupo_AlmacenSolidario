@@ -91,10 +91,6 @@ const productsController = {
         })   
     },
 
-    carrito: function(req,res,next){
-        res.render("products/productCart",);
-    },
-
     detalleProducto: function(req,res,next){
         db.Producto.findByPk(req.params.id, {include: [{association: "marca"}, {association: "categoria"}]})
         .then(function(producto){
@@ -108,7 +104,14 @@ const productsController = {
 
     almacen: function(req,res,next){
         const usuarioLogueado = req.session.usuarioLogueado;
-        res.render("products/almacen", {products, usuarioLogueado});
+        db.Producto.findAll({include: [{association: "marca"}, {association: "categoria"}, {association: "unidad"}, {association: "sub_categoria"}]})
+        .then(function(products){
+            res.render('products/almacen', {products:products, usuarioLogueado, importe: req.cookies.importe})
+        })
+        .catch(function(error){
+            res.render('error')
+            console.log(error)
+        })
     },
 
     brandAdd: function(req,res,next){
