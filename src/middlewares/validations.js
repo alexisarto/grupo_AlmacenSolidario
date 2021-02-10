@@ -63,6 +63,7 @@ const validations = {
         check('precio')
           .isNumeric().withMessage('El precio debe ser un numero')
           .isLength().withMessage('El precio no puede quedar vacio')
+      ],
       addToCart: [
         check('quantity').isInt(),
         body("quantity")
