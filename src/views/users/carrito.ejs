@@ -61,15 +61,17 @@
                             <span> <%= items[i].productos.unidad.medida %></span><h4 class="cantidad_producto">X <%= items[i].cantidad %></h4></h3>
                     </div>
                     <div class="precio_producto">
-                        <h4>$ <%= items[i].productos.precio %></h4>
+                        <h4>$ <%= (items[i].productos.precio * items[i].cantidad).toFixed(2) %></h4>
                     </div>
                 </div>
                 <% } %>
             </section>
 
             <section class="totalypagar">
+                <form action="/users/shop" method="POST">
                 <h1 class="textopagar">Total a pagar: $ <%= carritoId.total %></h1>
-                <input type="button" class="botonpagar" value="Pagar">
+                <input type="submit" class="botonpagar" value="Pagar">
+                </form>
             </section>
             
         </div>

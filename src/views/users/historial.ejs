@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head')%>
+    <title>Historial de compras</title>
+</head>
+<body>
+    <div> 
+        
+        <main>
+            <h1>Historial de compras</h1>
+            <% carts.forEach(cart => { %>
+                <p><%= cart.total %></p>
+            <% }) %>
+            <p><%= carts[0].carrito_producto %></p>
+        </main>
+    </div>
+    <!-- footer -->
+   
+   <!-- /footer -->
+</body>
+</html>

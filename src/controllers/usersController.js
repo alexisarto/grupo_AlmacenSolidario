@@ -95,7 +95,7 @@ const usersController = {
   res.render('users/ingresar');
 },
 
- ingresar: function (req, res, next) {
+ingresar: function (req, res, next) {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
     db.Usuario.findOne({
@@ -117,9 +117,25 @@ const usersController = {
     if (req.session.usuarioLogueado.perfil_id == 2) {
       res.redirect('/products/list');
     } else {
-      res.redirect('/home');
+      db.Carrito.findOne( {
+          where: {
+              usuario_id: req.session.usuarioLogueado.id,
+              estado: "abierto"
+          }
+      }).then(function(carrito) {
+          if (!carrito) {
+              db.Carrito.create( {
+                  usuario_id: req.session.usuarioLogueado.id,
+                  estado: "abierto"
+              })
+              .then(function() {
+                res.redirect('/home');
+              })
+          } else {
+            res.redirect('/home');
+          }
+      })
     }
-    
     });
   } else {
     return res.render('users/ingresar', { errors: errors.errors });
@@ -127,6 +143,7 @@ const usersController = {
 },
 
   carrito(req, res) {
+    let totalGlobal = 0;
     db.Carrito.findOne({
       where: {
         usuario_id: req.session.usuarioLogueado.id,
@@ -138,21 +155,57 @@ const usersController = {
           carrito_id: carritoId.id
         },
         include: [{all: true, nested: true}]
-      }).then((items) => {
-        db.sequelize.query('SELECT SUM(cantidad * precio) AS total FROM carrito_producto', {type: db.sequelize.QueryTypes.SELECT})
-          .then(resultado => {
-            db.Carrito.update({
-              total: resultado[0].total
-            }, {
+      }).then((articulos) => {
+        console.log('tipo de datos de articulos');
+        console.log(typeof articulos);
+        if (articulos.length != 0) {
+          var total = 0;
+          console.log('cantidad de datos en items:');
+          console.log(articulos.length);
+          console.log('tipo de dato precio:')
+          console.log(typeof articulos[0].precio);
+          console.log('tipo de dato cantidad:')
+          console.log(typeof articulos[0].cantidad);
+          console.log('tipo de dato productos.precio:');
+          console.log(typeof articulos[0].productos.precio);
+          console.log(articulos[0].productos.precio);
+          for (let i = 0; i < articulos.length; i++) {
+            total += articulos[i].cantidad * articulos[i].productos.precio;
+          }
+          total = total.toFixed(2);
+          console.log('el total es:');
+          console.log(total);
+          totalGlobal = total;
+          db.Carrito.update({
+            total: total
+          }, {
+            where: {
+              usuario_id: req.session.usuarioLogueado.id,
+              estado: "abierto"
+            },
+          }).then(() => {
+            db.Carrito.findOne({
               where: {
-                usuario_id: req.session.usuarioLogueado.id
-              }
+                usuario_id: req.session.usuarioLogueado.id,
+                estado: "abierto"
+              },
+            }).then((carritoId) => {
+            db.Carrito_Producto.findAll( {
+              where: {
+                carrito_id: carritoId.id
+              },
+              include: [{all: true, nested: true}]
+            }).then((items) => {
+              res.cookie('importe', totalGlobal, {maxAge: 7200000});
+              return res.render("users/carrito", {items, carritoId, usuarioLogueado: req.session.usuarioLogueado, importe: totalGlobal});
+            })
           })
-        })
-        .then(() => {
-          res.cookie('importe', carritoId.total, {maxAge: 7200000})
-          return res.render("users/carrito", {items, carritoId, usuarioLogueado: req.session.usuarioLogueado, importe: req.cookies.importe});
-        })
+          })
+        } else {
+          //alert("No tenés productos en el carrito");
+          res.redirect('/products/almacen');
+        }
+
       })
     });
   },
@@ -215,6 +268,19 @@ const usersController = {
     const errors = validationResult(req);
 
     if (errors.isEmpty()) {
+      // Verifico que el producto no exista ya en el carrito
+      db.Carrito_Producto.findOne({
+        where: {
+          carrito_id: carritoId,
+          producto_id: req.body.productId
+        },
+        include: [{all: true, nested: true}]
+      }).then((productoYaAgregado) => {
+        if (productoYaAgregado != null) {
+          console.log('ese producto ya fue ingresado al carrito');
+          //alert('El producto ' + productoYaAgregado.productos.descripcion + 'ya está en el carrito')
+          res.redirect("carrito");
+        } else {
       // Busco el producto que voy a agregar como Item.
       db.Producto.findByPk(req.body.productId)
         .then((product) => {
@@ -226,19 +292,39 @@ const usersController = {
           });
         })
         .then(() => {
-          db.sequelize.query('SELECT SUM(cantidad * precio) AS total FROM carrito_producto', {type: db.sequelize.QueryTypes.SELECT})
-          .then(resultado => {
-            db.Carrito.update({
-              total: resultado[0].total
-            }, {
+          db.Carrito.findOne({
+            where: {
+              usuario_id: req.session.usuarioLogueado.id,
+              estado: "abierto"
+            },
+          }).then((carritoId) => {
+              db.Carrito_Producto.findAll( {
               where: {
-                usuario_id: req.session.usuarioLogueado.id
+                carrito_id: carritoId.id
+              },
+              include: [{all: true, nested: true}]
+            }).then((articulos) => {
+              var total = 0;
+              for (let i = 0; i < articulos.length; i++) {
+                total += articulos[i].cantidad * articulos[i].productos.precio;
               }
+              total = total.toFixed(2);
+              res.cookie('importe', total, {maxAge: 7200000});
+              db.Carrito.update({
+                total: total
+              }, {
+                where: {
+                  usuario_id: req.session.usuarioLogueado.id,
+                  estado: "abierto"
+                },
+              }).then(() => {
+                return res.redirect("carrito");
+              })
+            })
           })
-        })
-        .then(() => res.redirect("/users/carrito"))
-        .catch((e) => console.log(e));
-    })
+        });
+        }
+      }) 
     } else {
        Product.findByPk(req.body.productId)
          .then(product => {
@@ -258,6 +344,57 @@ const usersController = {
       .then((response) => res.redirect("/users/carrito"))
       .catch((e) => console.log(e));
   },
+
+shop(req, res) {
+  // cierro el carrito
+  db.Carrito.update({
+    estado: "cerrado"
+  }, {
+    where: {
+      usuario_id: req.session.usuarioLogueado.id,
+      estado: "abierto"
+    }
+  })
+      // elimino cookie importe del carrito
+    .then(() => {
+      res.clearCookie('importe')
+      return res.redirect('/home')})
+    .catch((e) => console.log(e));
+  },
+
+  history(req, res) {
+    db.Carrito.findAll({
+      where: {
+        usuario_id: req.session.usuarioLogueado.id,
+        estado: "cerrado"
+      },
+      include: {
+        all: true,
+        nested: true,
+        paranoid: false,
+      },
+      order: [["updated_at", "DESC"]],
+    })
+      .then((carts) => {
+        console.log('estos son los carritos de samuel:')
+        console.log(carts);
+
+        // console.log(carts[1].id);
+      //   db.Carrito_Producto.findAll( {
+      //   where: {
+      //     carrito_id: carts[0].id
+      //   },
+      //   include: [{all: true, nested: true}]
+      // }).then((items) => {
+      //   console.log('que carrito es este?')
+      //   console.log(items[0]);
+        
+        res.render("users/historial", { carts });
+      })
+      .catch((e) => console.log(e));
+    // })
+  }
 }
+
 
 module.exports = usersController;

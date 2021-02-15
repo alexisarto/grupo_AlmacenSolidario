@@ -299,3 +299,7 @@ input#quantityInCart {
     position: relative;
     width: 100%;
 }
+
+.items-carrito {
+    font-size: 12px;
+}

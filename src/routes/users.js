@@ -35,9 +35,8 @@ router.post('/ingresar', validations.loginUsuario, usersController.ingresar);
 
 router.get('/carrito', authMiddleware, usersController.carrito);
 router.post('/addToCart', authMiddleware, validations.addToCart, usersController.addToCart);
-//router.get('/history', authMiddleware, usersController.history);
-//router.post('/shop', authMiddleware, usersController.shop);
-//router.post('/deleteFromCart', authMiddleware, usersController.deleteFromCart);
+router.get('/historial', authMiddleware, usersController.history);
+router.post('/shop', authMiddleware, usersController.shop);
 //router.get('/buy-detail/:id', authMiddleware, usersController.showBuyDetail);
 
 router.post('/modificarCantidad', authMiddleware, usersController.modificarCantidad);
