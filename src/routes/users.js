@@ -34,15 +34,14 @@ router.get('/ingresar', guestMiddleware, usersController.formularioLogin);
 router.post('/ingresar', validations.loginUsuario, usersController.ingresar);
 
 router.get('/carrito', authMiddleware, usersController.carrito);
-router.post('/addToCart', authMiddleware, validations.addToCart, usersController.addToCart);
+router.post('/addToCart', authMiddleware, usersController.addToCart);
 router.get('/historial', authMiddleware, usersController.history);
 router.post('/shop', authMiddleware, usersController.shop);
-//router.get('/buy-detail/:id', authMiddleware, usersController.showBuyDetail);
+router.get('/buy-detail/:id', authMiddleware, usersController.showBuyDetail);
 
-router.post('/modificarCantidad', authMiddleware, usersController.modificarCantidad);
+router.post('/modificarCantidad', authMiddleware, validations.carrito, usersController.modificarCantidad);
 router.post('/incrementar', authMiddleware, usersController.incrementar);
 router.post('/reducir', authMiddleware, usersController.reducir);
 router.post('/eliminarItem', authMiddleware, usersController.eliminarItem);
-
 
 module.exports = router;

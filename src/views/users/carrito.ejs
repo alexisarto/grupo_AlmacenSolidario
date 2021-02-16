@@ -32,7 +32,6 @@
                     <form action="/users/modificarCantidad" method="POST">
                         <input type="hidden" name="productId" value="<%= items[i].productos.id %>">
                         <input type="text" name="cantidad" id="quantityInCart" value=<%= items[i].cantidad %>>
-                        <p class="error"><%= typeof errors == 'undefined' ? '' : errors.quantity ? errors.quantity.msg : '' %></p>
                     </form>
                     <form action="/users/incrementar" method="POST">
                         <input type="hidden" name="productId" value="<%= items[i].productos.id %>">
@@ -58,7 +57,7 @@
                         <h3 class="precioProd"><%= items[i].productos.descripcion_completa %>
                             <span><%= items[i].productos.marca.marca %></span>
                             <span> x <%= items[i].productos.presentacion %></span>
-                            <span> <%= items[i].productos.unidad.medida %></span><h4 class="cantidad_producto">X <%= items[i].cantidad %></h4></h3>
+                            <span> <%= items[i].productos.unidad.medida %></span><h4 class="cantidad_producto">x <%= items[i].cantidad %></h4></h3>
                     </div>
                     <div class="precio_producto">
                         <h4>$ <%= (items[i].productos.precio * items[i].cantidad).toFixed(2) %></h4>

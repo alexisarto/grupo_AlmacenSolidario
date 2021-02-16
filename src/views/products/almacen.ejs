@@ -60,7 +60,6 @@
                         
                         <form action="/users/addToCart" method="POST">
                             <input type="hidden" id="quantity" name="quantity" value="1">
-                            <p class="error"><%= typeof errors == 'undefined' ? '' : errors.quantity ? errors.quantity.msg : '' %></p>
                             <input type="hidden" name="productId" value="<%= product.id %>">
                             <input type="hidden" name="precio" value="<%= product.precio %>">
                             <input type="submit" class="botonAgregar_almacen" value="Agregar">

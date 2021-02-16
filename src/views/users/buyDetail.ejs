@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head')%>
+    <title>Detalle orden de compra</title>
+</head>
+<body>
+    <div> 
+        
+        <main>
+            <h1>Detalle orden de compra</h1><br>
+                
+                <p>Orden de compra nro: <%= cart.id %> - Importe $<%= cart.total %></p>
+                <br>
+                <ul>
+                    <% for (let i = 0; i < items.length; i++) { %>
+                        <li><%= items[i].productos.descripcion %> - <%= items[i].productos.marca.marca %> x <%= items[i].productos.presentacion %> <%= items[i].productos.unidad.medida %> x <%= items[i].cantidad %> = $ <%= (items[i].productos.precio * items[i].cantidad) %></li>
+                    <% } %>
+                </ul>
+                <br>
+
+        </main>
+    </div>
+    <!-- footer -->
+   
+   <!-- /footer -->
+</body>
+</html>

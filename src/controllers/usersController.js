@@ -3,6 +3,7 @@ const bcryptjs = require('bcryptjs');
 var { check, validationResult, body } = require('express-validator');
 var users = JSON.parse(fs.readFileSync(__dirname + '/../data/users.json', 'utf-8'));
 var db = require('../database/models');
+const { types } = require('util');
 const usersController = {
   logout: function (req, res, next) {
     res.cookie("recordame", "", { expires: new Date() }); 
@@ -156,25 +157,12 @@ ingresar: function (req, res, next) {
         },
         include: [{all: true, nested: true}]
       }).then((articulos) => {
-        console.log('tipo de datos de articulos');
-        console.log(typeof articulos);
         if (articulos.length != 0) {
           var total = 0;
-          console.log('cantidad de datos en items:');
-          console.log(articulos.length);
-          console.log('tipo de dato precio:')
-          console.log(typeof articulos[0].precio);
-          console.log('tipo de dato cantidad:')
-          console.log(typeof articulos[0].cantidad);
-          console.log('tipo de dato productos.precio:');
-          console.log(typeof articulos[0].productos.precio);
-          console.log(articulos[0].productos.precio);
           for (let i = 0; i < articulos.length; i++) {
             total += articulos[i].cantidad * articulos[i].productos.precio;
           }
           total = total.toFixed(2);
-          console.log('el total es:');
-          console.log(total);
           totalGlobal = total;
           db.Carrito.update({
             total: total
@@ -211,15 +199,34 @@ ingresar: function (req, res, next) {
   },
 
   modificarCantidad(req, res) {
-    db.Carrito_Producto.update({
-      cantidad: req.body.cantidad
-    }, {
-      where: {
-        producto_id: req.body.productId
+    if (parseInt(req.body.cantidad) == 0) {
+      db.Carrito_Producto.destroy({
+        where: {
+          producto_id: req.body.productId
+        }
+      }).then(() => {
+        return res.redirect('/users/carrito');
+      });
+    } else {
+      const errors = validationResult(req);
+      if (errors.isEmpty()) {
+        db.Carrito_Producto.update({
+          cantidad: req.body.cantidad
+        }, {
+          where: {
+            producto_id: req.body.productId
+          }
+        }).then(() => {
+          return res.redirect('/users/carrito');
+        });
+      } else {
+        db.Producto.findByPk(req.body.productId, {
+          include: [{all: true, nested: true}]
+        }).then(producto => {
+          return res.render('products/productDetail', {producto: producto, errors: errors.errors, usuarioLogueado: req.session.usuarioLogueado, importe: req.cookies.importe})
+        })
       }
-    }).then(() => {
-      return res.redirect('/users/carrito');
-    });
+    }
   },
 
   incrementar(req, res) {
@@ -235,15 +242,25 @@ ingresar: function (req, res, next) {
   },
 
   reducir(req, res) {
-    db.Carrito_Producto.update({
-      cantidad: parseInt(req.body.cantidad) - 1
-    }, {
-      where: {
-        producto_id: req.body.productId
-      }
-    }).then(() => {
-      return res.redirect('/users/carrito');
-    });
+    if (parseInt(req.body.cantidad) == 1) {
+      db.Carrito_Producto.destroy({
+        where: {
+          producto_id: req.body.productId
+        }
+      }).then(() => {
+        return res.redirect('/users/carrito');
+      });
+    } else { 
+      db.Carrito_Producto.update({
+        cantidad: parseInt(req.body.cantidad) - 1
+      }, {
+        where: {
+          producto_id: req.body.productId
+        }
+      }).then(() => {
+        return res.redirect('/users/carrito');
+      });
+    }
   },
 
   eliminarItem(req, res) {
@@ -277,7 +294,6 @@ ingresar: function (req, res, next) {
         include: [{all: true, nested: true}]
       }).then((productoYaAgregado) => {
         if (productoYaAgregado != null) {
-          console.log('ese producto ya fue ingresado al carrito');
           //alert('El producto ' + productoYaAgregado.productos.descripcion + 'ya está en el carrito')
           res.redirect("carrito");
         } else {
@@ -330,19 +346,8 @@ ingresar: function (req, res, next) {
          .then(product => {
             return res.render('products/productDetail', {product, errors: errors.mapped()})
          })
-    }
-  })
-  },
-
-  deleteFromCart(req, res) {
-    db.Carrito_Producto.destroy({
-      where: {
-        id: req.body.itemId,
-      },
-      force: true,
+        }
     })
-      .then((response) => res.redirect("/users/carrito"))
-      .catch((e) => console.log(e));
   },
 
 shop(req, res) {
@@ -368,33 +373,46 @@ shop(req, res) {
         usuario_id: req.session.usuarioLogueado.id,
         estado: "cerrado"
       },
-      include: {
-        all: true,
-        nested: true,
-        paranoid: false,
-      },
       order: [["updated_at", "DESC"]],
     })
       .then((carts) => {
-        console.log('estos son los carritos de samuel:')
-        console.log(carts);
-
-        // console.log(carts[1].id);
-      //   db.Carrito_Producto.findAll( {
-      //   where: {
-      //     carrito_id: carts[0].id
-      //   },
-      //   include: [{all: true, nested: true}]
-      // }).then((items) => {
-      //   console.log('que carrito es este?')
-      //   console.log(items[0]);
-        
-        res.render("users/historial", { carts });
+        let carritosId = [];
+        let carritos = [];
+        for (let i = 0; i < carts.length; i++) {
+          carritosId[i]= carts[i].id;
+          carritos[i] = db.Carrito_Producto.findAll({
+            where: {
+              carrito_id: carritosId[i]
+            },
+            include: [{all: true, nested: true}]
+          });
+        };
+        Promise.all(carritos)
+        .then(function(items) {
+          console.log(items[0][0].productos.descripcion);
+          console.log(carts[0].total);
+          console.log(carts[0].id);
+          console.log(typeof items[0][0].productos.precio)
+          //console.log(items[0].productos[0].descripcion);
+          res.render("users/historial", { carts, items, usuarioLogueado: req.session.usuarioLogueado });
+        })
       })
       .catch((e) => console.log(e));
-    // })
+  },
+
+  showBuyDetail(req, res) {
+    db.Carrito.findByPk(req.params.id)
+   .then((cart) => {
+     db.Carrito_Producto.findAll({
+       where: {
+         carrito_id: cart.id
+       },
+       include: [{all: true, nested: true}]
+     }).then((items) => {
+      res.render("users/buyDetail", { cart, items });
+     })
+   });     
   }
 }
-
 
 module.exports = usersController;

@@ -45,7 +45,7 @@
             <div class="detalle_producto">
                 <div class="containerProd">
                     <div class="moldeFotoDetalle">
-                        <img src="/imgs/imagen.jpg" alt="Foto Producto">
+                        <img src="/images/products/<%= producto.imagen %>" alt="Foto Producto">
                     </div>
                     <div class="detallesProd">
                         <h1 class="nombreProd"><%=producto.descripcion%></h1>
@@ -55,6 +55,14 @@
                     </div>
                     <div class="agregarYpagar">
                         <h2 class="precio">Precio: <%=producto.precio%>$</h2>
+                        <% if (typeof errors != 'undefined') { %>
+                            <p style="color: red; text-align: left; margin-bottom: 3px">Error!</p>
+                            <ul style="font-size: 13px">
+                                <% for (let i = 0; i < errors.length; i++) { %>
+                                    <li><%= errors[i].msg %></li>
+                                <% } %>
+                            </ul>
+                        <% } %>
                         <input type="button" class="botonAgregar" value="AGREGAR">
                     </div>
                 </div>

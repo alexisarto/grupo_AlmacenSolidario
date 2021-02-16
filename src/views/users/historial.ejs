@@ -8,11 +8,18 @@
     <div> 
         
         <main>
-            <h1>Historial de compras</h1>
-            <% carts.forEach(cart => { %>
-                <p><%= cart.total %></p>
-            <% }) %>
-            <p><%= carts[0].carrito_producto %></p>
+            <h1>Historial de compras</h1><br>
+            Usuario: <%= usuarioLogueado.nombre %><br><br>
+            <% for (let i = 0; i < carts.length; i++) { %>
+                <p><a href="/users/buy-detail/<%= carts[i].id %>">Orden de compra nro: <%= carts[i].id %></a> - Importe $<%= carts[i].total %></p>
+                Detalle:
+                <ul>
+                    <% for (let j = 0; j < items[i].length; j++) { %>
+                        <li><%= items[i][j].productos.descripcion %> - <%= items[i][j].productos.marca.marca %> x <%= items[i][j].productos.presentacion %> <%= items[i][j].productos.unidad.medida %> x <%= items[i][j].cantidad %> = $ <%= (items[i][j].productos.precio * items[i][j].cantidad) %></li>
+                    <% } %>
+                </ul>
+                <br>
+            <% } %>
         </main>
     </div>
     <!-- footer -->
