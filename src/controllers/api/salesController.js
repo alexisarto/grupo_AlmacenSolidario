@@ -18,9 +18,9 @@ const salesController = {
             };
             Promise.all(carritos)
             .then(function(sales){
-                //for (let i = 0; i < sales.length; i++) {
-                //    sales[i].setDataValue("endpoint", "/api/sales/" + sales[i].id);
-                //}
+                for (let i = 0; i < sales.length; i++) {
+                    sales[i][0].setDataValue("endpoint", "/api/sales/" + sales[i][0].carrito_id);
+                }
                 let respuesta = {
                     meta: {
                         status: 200,

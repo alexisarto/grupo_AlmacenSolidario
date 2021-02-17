@@ -389,12 +389,6 @@ shop(req, res) {
         };
         Promise.all(carritos)
         .then(function(items) {
-          console.log(items[0][0].productos.descripcion);
-          console.log(carts[0].total);
-          console.log(carts[0].id);
-          console.log(typeof items[0][0].productos.precio)
-          console.log(carts[0].updated_at);
-          //console.log(items[0].productos[0].descripcion);
           res.render("users/historial", { carts, items, usuarioLogueado: req.session.usuarioLogueado });
         })
       })
