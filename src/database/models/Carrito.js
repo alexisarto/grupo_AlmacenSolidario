@@ -14,11 +14,17 @@ module.exports = function(sequelize, dataTypes) {
         },
         usuario_id: {
             type: dataTypes.INTEGER,
+        },
+        created_at: {
+            type: dataTypes.DATE,
+        },
+        updated_at: {
+            type: dataTypes.DATE,
         }
     };
     let config = {
         tableName: "carritos",
-        timestamps: false
+        underscored: true
     };
     
     let Carrito = sequelize.define(alias, cols, config);

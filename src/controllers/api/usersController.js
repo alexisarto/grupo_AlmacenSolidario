@@ -1,27 +1,42 @@
 var db = require('../../database/models');
 const usersController = {
+    cantidadUsuarios: function(req, res) {
+        db.Usuario.findAll()
+        .then(function(usuarios) {
+            let respuesta = {
+                meta: {
+                    status: 200,
+                    url: "/api/users/totalUsuarios"
+                },
+                data: usuarios.length
+            };
+            res.json(respuesta);
+        })
+    },
+
     list: function(req, res) {
-        db.Usuario.findAll({
+        db.Usuario.findAll({attributes: { exclude: ['password'] },
             include: [{association: "perfil"}, {association: "carritos"}]})
             .then(function(usuarios){
-                for (let i = 0; i < usuarios.length; i++) {
-                    usuarios[i].setDataValue("endpoint", "/api/users/" + usuarios[i].id);
-                }
+                const nuevoUsuarios = usuarios.map(usuario => {
+                    usuario.setDataValue("endpoint", "/api/users/" + usuario.id);
+                    return usuario;
+                })
                 let respuesta = {
                     meta: {
                         status: 200,
-                        total: usuarios.length,
+                        total: nuevoUsuarios.length,
                         url: "/api/users"
                     },
-                    data: usuarios
+                    data: nuevoUsuarios
                 };
                 res.json(respuesta);
             })
         },
     find: function(req, res) {
-        db.Usuario.findByPk(req.params.id)
+        db.Usuario.findByPk(req.params.id, {attributes: { exclude: ['password'] }})
         .then(function(user) {
-            res.send(user)
+            res.json(user)
             });
         },
     }

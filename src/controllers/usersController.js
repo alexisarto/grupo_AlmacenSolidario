@@ -404,7 +404,7 @@ shop(req, res) {
        },
        include: [{all: true, nested: true}]
      }).then((items) => {
-      res.render("users/buyDetail", { cart, items });
+      res.render("users/buyDetail", { cart, items, usuarioLogueado: req.session.usuarioLogueado });
      })
    });     
   }

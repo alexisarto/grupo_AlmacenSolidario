@@ -11,7 +11,9 @@
             <h1>Historial de compras</h1><br>
             Usuario: <%= usuarioLogueado.nombre %><br><br>
             <% for (let i = 0; i < carts.length; i++) { %>
-                <p><a href="/users/buy-detail/<%= carts[i].id %>">Orden de compra nro: <%= carts[i].id %></a> - Importe $<%= carts[i].total %></p>
+                <p><a href="/users/buy-detail/<%= carts[i].id %>">Orden de compra nro: <%= carts[i].id %></a></p>
+                <p>Fecha: <%= carts[i].updated_at.toDateString() %></p>
+                <p>Importe $<%= carts[i].total %></p><br>
                 Detalle:
                 <ul>
                     <% for (let j = 0; j < items[i].length; j++) { %>
