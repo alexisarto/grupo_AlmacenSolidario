@@ -15,11 +15,19 @@ module.exports = function(sequelize, dataTypes) {
         password: {
             type: dataTypes.STRING
         },
-        perfil_id: dataTypes.INTEGER
+        perfil_id: { 
+            type: dataTypes.INTEGER
+        },
+        created_at: {
+            type: dataTypes.DATE,
+        },
+        updated_at: {
+            type: dataTypes.DATE,
+        }
     };
     let config = {
         tableName: "usuarios",
-        timestamps: false
+        underscored: true
     }
     let Usuario = sequelize.define(alias, cols, config);
     Usuario.associate = function(models) {

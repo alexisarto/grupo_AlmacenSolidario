@@ -4,6 +4,7 @@ var {check, validationResult, body} = require('express-validator');
 var fs = require('fs');
 var guestMiddleware = require('../middlewares/guestMiddleware');
 var authMiddleware = require('../middlewares/authMiddleware');
+var adminMiddleware = require('../middlewares/adminMiddleware');
 var validations = require('../middlewares/validations')
 var router = express.Router();
 
@@ -32,6 +33,12 @@ router.post('/modificar-perfil/:id', validations.edicionPerfil, usersController.
 // *** Ingresar ***
 router.get('/ingresar', guestMiddleware, usersController.formularioLogin);
 router.post('/ingresar', validations.loginUsuario, usersController.ingresar);
+
+// *** Listar ***
+router.get('/list', adminMiddleware, usersController.list);
+
+// *** Eliminar ***
+router.get('/destroy/:id', adminMiddleware, usersController.destroy);
 
 router.get('/carrito', authMiddleware, usersController.carrito);
 router.post('/addToCart', authMiddleware, usersController.addToCart);

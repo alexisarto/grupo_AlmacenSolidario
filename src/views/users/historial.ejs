@@ -4,12 +4,12 @@
     <%- include('../partials/head')%>
     <title>Historial de compras</title>
 </head>
-<body>
-    <div> 
-        
-        <main>
+<body class="form">
+    <div class="historial"> 
+            <a href="/home"><img src="/img/Logo.png" class="avatar" alt="imagen logo"></a>
             <h1>Historial de compras</h1><br>
             Usuario: <%= usuarioLogueado.nombre %><br><br>
+            <% if (carts.length == 0) { %> Aún no tenes compras realizadas <% } else { %> 
             <% for (let i = 0; i < carts.length; i++) { %>
                 <p><a href="/users/buy-detail/<%= carts[i].id %>">Orden de compra nro: <%= carts[i].id %></a></p>
                 <p>Fecha: <%= carts[i].updated_at.toDateString() %></p>
@@ -22,7 +22,7 @@
                 </ul>
                 <br>
             <% } %>
-        </main>
+            <% } %>
     </div>
     <!-- footer -->
    

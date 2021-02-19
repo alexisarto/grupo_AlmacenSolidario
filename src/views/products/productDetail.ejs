@@ -45,13 +45,12 @@
             <div class="detalle_producto">
                 <div class="containerProd">
                     <div class="moldeFotoDetalle">
-                        <img src="/images/products/<%= producto.imagen %>" alt="Foto Producto">
+                        <img class="fotoDetalle" src="/images/products/<%= producto.imagen %>" alt="Foto Producto">
                     </div>
                     <div class="detallesProd">
-                        <h1 class="nombreProd"><%=producto.descripcion%></h1>
+                        <h1 class="nombreProd"><%=producto.descripcion_completa %></h1>
                         <p class=><%=producto.marca.marca%></p>
-                        <p class=><%=producto.categoria.categoria%></p>
-                        <p class="infoProd"><%=producto.descripcion_completa%></p>
+                        <p class="detalle_presentacion_producto_almacen"><%= producto.presentacion %><%= producto.unidad.medida %></p>
                     </div>
                     <div class="agregarYpagar">
                         <h2 class="precio">Precio: <%=producto.precio%>$</h2>
@@ -63,7 +62,12 @@
                                 <% } %>
                             </ul>
                         <% } %>
-                        <input type="button" class="botonAgregar" value="AGREGAR">
+                        <form action="/users/addToCart" method="POST">
+                            <input type="hidden" id="quantity" name="quantity" value="1">
+                            <input type="hidden" name="productId" value="<%= producto.id %>">
+                            <input type="hidden" name="precio" value="<%= producto.precio %>">
+                            <input type="submit" class="botonAgregar" value="Agregar">
+                        </form>
                     </div>
                 </div>
             </div>

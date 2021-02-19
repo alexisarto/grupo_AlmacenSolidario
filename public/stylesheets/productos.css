@@ -136,11 +136,19 @@
 
 .moldeFotoDetalle{
     position: relative;
-    height: 150px;
-    width: 150px;
+    height: 300px;
+    width: 250px;
     border:2px solid black;
     top:10px;
     left:10px;
+}
+
+.fotoDetalle {
+    display: flex;
+    height: 190px;
+    width: auto;
+    justify-content: center;
+    margin: 10px 10px;
 }
 
 .containerProd{
@@ -277,6 +285,12 @@
     display: flex;
     flex-direction: row;
 }
+
+.linkProducto {
+    text-decoration: none;
+    color: black;
+}
+
 .detalle_producto_almacen{
     margin-top:5px;
 }

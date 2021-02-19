@@ -108,7 +108,7 @@ const productsController = {
     },
 
     detalleProducto: function(req,res,next){
-        db.Producto.findByPk(req.params.id, {include: [{association: "marca"}, {association: "categoria"}]})
+        db.Producto.findByPk(req.params.id, {include: [{association: "marca"}, {association: "categoria"}, {association: "unidad"}, {association: "sub_categoria"}]})
         .then(function(producto){
             res.render('products/productDetail', {producto:producto})
         })

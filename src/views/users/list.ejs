@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Usuarios</title>
+</head>
+<body>
+    <h1>Listado de Usuarios</h1>
+    <ul>
+        <% for (let i = 0; i < usuarios.length; i++) { %>
+            <li>
+                Ingreso: <%= usuarios[i].created_at.toDateString() %>
+                 - Nombre: <%= usuarios[i].nombre %>
+                 - E-mail: <%= usuarios[i].email %>
+                 - Perfil: <%= usuarios[i].perfil.nombre %>
+                 - <a href='/users/destroy/<%= usuarios[i].id %>'>Eliminar</a>
+            </li>
+        <% } %>
+    </ul>
+</body>
+</html>

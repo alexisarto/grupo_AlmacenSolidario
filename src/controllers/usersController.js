@@ -124,6 +124,7 @@ ingresar: function (req, res, next) {
               estado: "abierto"
           }
       }).then(function(carrito) {
+        res.clearCookie('importe');
           if (!carrito) {
               db.Carrito.create( {
                   usuario_id: req.session.usuarioLogueado.id,
@@ -133,6 +134,7 @@ ingresar: function (req, res, next) {
                 res.redirect('/home');
               })
           } else {
+            res.cookie('importe', carrito.total, {maxAge: 7200000});
             res.redirect('/home');
           }
       })
@@ -141,6 +143,47 @@ ingresar: function (req, res, next) {
   } else {
     return res.render('users/ingresar', { errors: errors.errors });
   }
+},
+
+list: function(req, res, next) {
+  db.Usuario.findAll({include: [{all: true, nested: true}]})
+  .then(function(usuarios){
+      res.render('users/list', {usuarios:usuarios})
+  })
+  .catch(function(error){
+      res.render('error')
+      console.log(error)
+  })   
+},
+
+destroy: function(req, res, next) {
+  console.log('estoy listo para borrar este usuario')
+  db.Carrito.findAll({
+    where: {
+      usuario_id: req.params.id,
+      estado: "cerrado"
+    },
+    include: [{association: "usuario"}]
+  }).then((compras) => {
+    console.log(compras[0]);
+    if (compras.length != 0) {
+      res.send('El usuario ' + compras[0].usuario.email + ' tiene compras realizadas. No puede ser eliminado.');
+    } else {
+      db.Carrito.destroy({
+        where: {
+          usuario_id: req.params.id
+        }
+      }).then(function() {
+        db.Usuario.destroy({
+          where: {
+              id: req.params.id
+          }
+      }).then(function() {
+        res.redirect("/users/list")
+      });
+      })
+    }
+  })
 },
 
   carrito(req, res) {
@@ -190,87 +233,151 @@ ingresar: function (req, res, next) {
           })
           })
         } else {
-          //alert("No tenés productos en el carrito");
+          db.Carrito.update({
+            total: 0
+          }, {
+            where: {
+              usuario_id: req.session.usuarioLogueado.id,
+              estado: "abierto"
+            },
+          }).then(() => {
+            res.clearCookie('importe');
           res.redirect('/products/almacen');
-        }
-
-      })
+        })
+      }
     });
+  })
   },
 
   modificarCantidad(req, res) {
-    if (parseInt(req.body.cantidad) == 0) {
-      db.Carrito_Producto.destroy({
-        where: {
-          producto_id: req.body.productId
-        }
-      }).then(() => {
-        return res.redirect('/users/carrito');
-      });
-    } else {
-      const errors = validationResult(req);
-      if (errors.isEmpty()) {
-        db.Carrito_Producto.update({
-          cantidad: req.body.cantidad
-        }, {
+    db.Carrito.findOne({
+      where: {
+        usuario_id: req.session.usuarioLogueado.id,
+        estado: "abierto"
+      },
+    }).then((carritoId) => {
+      if (parseInt(req.body.cantidad) == 0) {
+        db.Carrito_Producto.destroy({
           where: {
-            producto_id: req.body.productId
+            producto_id: req.body.productId,
+            carrito_id: carritoId.id
           }
         }).then(() => {
           return res.redirect('/users/carrito');
         });
       } else {
-        db.Producto.findByPk(req.body.productId, {
-          include: [{all: true, nested: true}]
-        }).then(producto => {
-          return res.render('products/productDetail', {producto: producto, errors: errors.errors, usuarioLogueado: req.session.usuarioLogueado, importe: req.cookies.importe})
-        })
+        const errors = validationResult(req);
+        if (errors.isEmpty()) {
+          db.Carrito_Producto.update({
+            cantidad: req.body.cantidad
+          }, {
+            where: {
+              producto_id: req.body.productId,
+              carrito_id: carritoId.id
+            }
+          }).then(() => {
+            return res.redirect('/users/carrito');
+          });
+        } else {
+          db.Producto.findByPk(req.body.productId, {
+            include: [{all: true, nested: true}]
+          }).then(producto => {
+            return res.render('products/productDetail', {producto: producto, errors: errors.errors, usuarioLogueado: req.session.usuarioLogueado, importe: req.cookies.importe})
+          })
+        }
       }
-    }
+    }) 
   },
 
   incrementar(req, res) {
-    db.Carrito_Producto.update({
-      cantidad: parseInt(req.body.cantidad) + 1
-    }, {
+    db.Carrito.findOne({
       where: {
-        producto_id: req.body.productId
-      }
-    }).then(() => {
-      return res.redirect('/users/carrito');
-    });
+        usuario_id: req.session.usuarioLogueado.id,
+        estado: "abierto"
+      },
+    }).then((carritoId) => {
+      db.Carrito_Producto.update({
+        cantidad: parseInt(req.body.cantidad) + 1
+      }, {
+        where: {
+          producto_id: req.body.productId,
+          carrito_id: carritoId.id
+        }
+      }).then(() => {
+        return res.redirect('/users/carrito');
+      });
+    })
   },
 
   reducir(req, res) {
-    if (parseInt(req.body.cantidad) == 1) {
-      db.Carrito_Producto.destroy({
-        where: {
-          producto_id: req.body.productId
-        }
-      }).then(() => {
-        return res.redirect('/users/carrito');
-      });
-    } else { 
-      db.Carrito_Producto.update({
-        cantidad: parseInt(req.body.cantidad) - 1
-      }, {
-        where: {
-          producto_id: req.body.productId
-        }
-      }).then(() => {
-        return res.redirect('/users/carrito');
-      });
-    }
+    db.Carrito.findOne({
+      where: {
+        usuario_id: req.session.usuarioLogueado.id,
+        estado: "abierto"
+      },
+    }).then((carritoId) => {
+      if (parseInt(req.body.cantidad) == 1) {
+        db.Carrito_Producto.destroy({
+          where: {
+            producto_id: req.body.productId,
+            carrito_id: carritoId.id
+          }
+        }).then(() => {
+          db.Carrito_Producto.findAll({
+            where: {
+              carrito_id: carritoId.id
+            }
+          }).then((productos) => {
+            if (productos.length == 0) {
+              res.clearCookie('importe');
+              return res.redirect('/users/carrito');
+            } else {
+              return res.redirect('/users/carrito');
+            }
+          })
+        });
+      } else { 
+        db.Carrito_Producto.update({
+          cantidad: parseInt(req.body.cantidad) - 1
+        }, {
+          where: {
+            producto_id: req.body.productId,
+            carrito_id: carritoId.id
+          }
+        }).then(() => {
+          return res.redirect('/users/carrito');
+        });
+      }
+    })
   },
 
   eliminarItem(req, res) {
-    db.Carrito_Producto.destroy({
+    db.Carrito.findOne({
       where: {
-        producto_id: req.body.productId
-      }
-    }).then(() => {
-      return res.redirect('/users/carrito');
-    });
+        usuario_id: req.session.usuarioLogueado.id,
+        estado: "abierto"
+      },
+    }).then((carritoId) => {
+          db.Carrito_Producto.destroy({
+            where: {
+              producto_id: req.body.productId,
+              carrito_id: carritoId.id
+            }
+          }).then(() => {
+            db.Carrito_Producto.findAll({
+              where: {
+                carrito_id: carritoId.id
+              }
+            }).then((productos) => {
+              if (productos.length == 0) {
+                res.clearCookie('importe');
+                return res.redirect('/users/carrito');
+              } else {
+                return res.redirect('/users/carrito');
+              }
+            })
+          });
+      })
   },
 
   addToCart(req, res) {
