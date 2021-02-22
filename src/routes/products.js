@@ -14,8 +14,40 @@ router.post('/agregar-producto', upload.any(), validations.productAddForm, produ
 /* GET detalle producto*/
 router.get('/detalleProducto/:id', productsController.detalleProducto);
 
-/* GET detalle producto*/
+/* GET todos los productos*/
 router.get('/almacen', productsController.almacen);
+
+router.get('/almacen/almacen/arrozYFideos', productsController.almacenArrozYFideos);
+router.get('/almacen/almacen/conservas', productsController.almacenConservas);
+router.get('/almacen/almacen/infusionesCacao', productsController.almacenInfusionesCacao);
+router.get('/almacen/almacen/sopasCaldosPure', productsController.almacenSopasCaldosPure);
+router.get('/almacen/almacen/mermeladasYDulces', productsController.almacenMermeladasYDulces);
+router.get('/almacen/almacen/premezclaPostres', productsController.almacenPremezclaPostres);
+router.get('/almacen/almacen/panaderiaGalletitas', productsController.almacenPanaderiaGalletitas);
+router.get('/almacen/almacen/harinas', productsController.almacenHarinas);
+router.get('/almacen/almacen/aceitesYAderezos', productsController.almacenAceitesYAderezos);
+router.get('/almacen/almacen', productsController.categoriaAlmacen);
+
+router.get('/almacen/lacteos/dulceDeLeche', productsController.lacteosDulceDeLeche);
+router.get('/almacen/lacteos/lecheLargaVida', productsController.lacteosLecheLargaVida);
+router.get('/almacen/lacteos/lecheEnPolvo', productsController.lacteosLecheEnPolvo);
+router.get('/almacen/lacteos', productsController.categoriaLacteos);
+
+router.get('/almacen/perfumeria', productsController.categoriaPerfumeria);
+
+router.get('/almacen/bebidas/aguaMineral', productsController.bebidasAguaMineral);
+router.get('/almacen/bebidas/gaseosas', productsController.bebidasGaseosas);
+router.get('/almacen/bebidas', productsController.categoriaBebidas);
+
+router.get('/almacen/limpieza/piso', productsController.limpiezaPiso);
+router.get('/almacen/limpieza/banio', productsController.limpiezaBanio);
+router.get('/almacen/limpieza/cocina', productsController.limpiezaCocina);
+router.get('/almacen/limpieza/papeles', productsController.limpiezaPapeles);
+router.get('/almacen/limpieza', productsController.categoriaLimpieza);
+
+router.get('/almacen/bebes/paniales', productsController.bebesPaniales);
+router.get('/almacen/bebes/oleoCalcareo', productsController.bebesOleoCalcareo);
+router.get('/almacen/bebes', productsController.categoriaBebes);
 
 /* GET product edit */
 router.get('/editar-producto/:id', productsController.productEdit);

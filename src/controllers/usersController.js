@@ -496,7 +496,7 @@ shop(req, res) {
         };
         Promise.all(carritos)
         .then(function(items) {
-          res.render("users/historial", { carts, items, usuarioLogueado: req.session.usuarioLogueado });
+          res.render("users/historial", { carts, items, usuarioLogueado: req.session.usuarioLogueado, importe: req.cookies.importe });
         })
       })
       .catch((e) => console.log(e));
@@ -511,7 +511,7 @@ shop(req, res) {
        },
        include: [{all: true, nested: true}]
      }).then((items) => {
-      res.render("users/buyDetail", { cart, items, usuarioLogueado: req.session.usuarioLogueado });
+      res.render("users/buyDetail", { cart, items, usuarioLogueado: req.session.usuarioLogueado, importe: req.cookies.importe });
      })
    });     
   }

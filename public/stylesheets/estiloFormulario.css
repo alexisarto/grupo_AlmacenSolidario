@@ -106,27 +106,47 @@ body.form div.formulario div.errores ul li {
 
 /* Historial */
 
-.historial .avatar {
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
-    position: absolute;
-    top: -50px;
-    left: calc(50% - 50px);
-}
-
 .historial {
-    background-color: white;
-    border: 1px solid #e1e1e1;
-    border-radius: 7px;
-    padding: 15px;
-    width: 100%;
-    position: absolute;
-    left: 50vw;
-    top: 50vh;
-    transform: translate(-50%, -50%);
+    padding-top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .historial ul li {
     list-style: none;
+
+}
+
+/* Users list */
+.usersList {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid grey;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.usersList h1 {
+    margin: 10px;
+}
+
+.usersList ol li {
+    font-size: 13px;
+}
+
+.eliminar-usuario-button {
+    margin: 2px;
+    padding: 3px;
+    background-color: #3ab0e2;
+    border-radius: 5px;
+}
+
+.eliminar-usuario-button a {
+    text-decoration: none;
+    color: black;
 }

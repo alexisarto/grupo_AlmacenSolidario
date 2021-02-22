@@ -5,8 +5,8 @@
     <title>Detalle orden de compra</title>
 </head>
 <body class="form">
+    <%- include('../partials/header')%>
     <div class="historial">
-        <a href="/home"><img src="/img/Logo.png" class="avatar" alt="imagen logo"></a>
             <h1>Detalle orden de compra</h1><br>
                 Usuario: <%= usuarioLogueado.nombre %><br><br>
                 <p>Orden de compra nro: <%= cart.id %></p>
