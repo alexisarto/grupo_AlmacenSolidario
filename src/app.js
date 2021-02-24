@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var recordameMiddleware = require('./middlewares/recordameMiddleware');
+var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -27,6 +28,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(session({secret: 'Secreto!!!', resave: true,
 saveUninitialized: true,}));
 app.use(recordameMiddleware);
+app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

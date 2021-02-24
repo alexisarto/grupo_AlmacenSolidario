@@ -16,7 +16,8 @@ const productsController = {
 
     list: function(req, res) {
         db.Producto.findAll({
-            include: [{association: "marca"}, {association: "categoria"}]})
+            order: ["descripcion"],
+            include: [{association: "marca"}, {association: "categoria"}, {association: "sub_categoria"}, {association: "unidad"}]})
             .then(function(productos){
                 for (let i = 0; i < productos.length; i++) {
                     productos[i].setDataValue("endpoint", "/api/products/" + productos[i].id);
@@ -39,6 +40,48 @@ const productsController = {
             res.json(product)
             });
         },
-    }
+
+    last: function(req, res) {
+        db.Producto.findOne({
+            order: [["created_at", "DESC"]],
+            include: [{association: "marca"}, {association: "categoria"}, {association: "sub_categoria"}, {association: "unidad"}]})
+            .then(function(producto){
+                let respuesta = {
+                    meta: {
+                        status: 200,
+                        url: "/api/products/ultimoProductoInsertado"
+                    },
+                    data: {
+                        id: producto.id,
+                        descripcion: producto.descripcion,
+                        descripcion_completa: producto.descripcion_completa,
+                        marca: producto.marca.marca,
+                        presentacion: producto.presentacion,
+                        precio: producto.precio,
+                        imagen: producto.imagen,
+                        imagen_url: "http://localhost:3001/" + producto.imagen,
+                        categoria: producto.categoria.categoria,
+                        subcategoria: producto.sub_categoria.sub_categoria,
+                        unidad: producto.unidad.medida
+                    },
+                };
+                res.json(respuesta);
+            })
+        },
+
+    categorias: function(req, res) {
+        db.Categoria.findAll()
+        .then(function(categorias) {
+            let respuesta = {
+                meta: {
+                    status: 200,
+                    url: "/api/products/categorias"
+                },
+                data: categorias
+            };
+            res.json(respuesta);
+        })
+    },
+}
 
     module.exports = productsController;
