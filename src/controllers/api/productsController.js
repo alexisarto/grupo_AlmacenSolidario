@@ -59,7 +59,7 @@ const productsController = {
                         presentacion: producto.presentacion,
                         precio: producto.precio,
                         imagen: producto.imagen,
-                        imagen_url: "http://localhost:3001/" + producto.imagen,
+                        imagen_url: "http://localhost:3001/images/products/" + producto.imagen,
                         categoria: producto.categoria.categoria,
                         subcategoria: producto.sub_categoria.sub_categoria,
                         unidad: producto.unidad.medida
