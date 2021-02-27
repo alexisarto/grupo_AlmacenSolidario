@@ -11,7 +11,8 @@
                 Usuario: <%= usuarioLogueado.nombre %><br><br>
                 <p>Orden de compra nro: <%= cart.id %></p>
                 <p>Fecha: <%= cart.updated_at.toDateString() %></p>
-                <p>Importe $<%= cart.total %></p><br>
+                <p>Importe $<%= cart.total %></p>
+                <p>Institución: <%= cart.institucion.nombre %></p><br>
                 <br>
                 <ul>
                     <% for (let i = 0; i < items.length; i++) { %>

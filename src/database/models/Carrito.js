@@ -20,6 +20,12 @@ module.exports = function(sequelize, dataTypes) {
         },
         updated_at: {
             type: dataTypes.DATE,
+        },
+        institucion_id: {
+            type: dataTypes.INTEGER,
+        },
+        personas_alcanzadas: {
+            type: dataTypes.FLOAT,
         }
     };
     let config = {
@@ -39,6 +45,10 @@ module.exports = function(sequelize, dataTypes) {
         Carrito.belongsTo(models.Usuario, {
             as: "usuario",
             foreignKey: "usuario_id"
+        });
+        Carrito.belongsTo(models.Institucion, {
+            as: "institucion",
+            foreignKey: "institucion_id"
         });
         Carrito.hasMany(models.Carrito_Producto, {
             as: "carrito_producto",

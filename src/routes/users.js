@@ -17,7 +17,8 @@ router.get('/', function(req, res, next) {
 router.get('/logout', authMiddleware, usersController.logout);
 
 // *** Resetear contrasenia ***
-router.get('/resetear-contrasenia', usersController.passwordReset);
+router.get('/resetear-contrasenia', usersController.passwordForgot);
+router.post('/resetear-contrasenia', usersController.passwordReset);
 
 // *** Crear usuario sql ***
 router.get('/crear', guestMiddleware, usersController.crear);
@@ -43,6 +44,7 @@ router.get('/destroy/:id', adminMiddleware, usersController.destroy);
 router.get('/carrito', authMiddleware, usersController.carrito);
 router.post('/addToCart', authMiddleware, usersController.addToCart);
 router.get('/historial', authMiddleware, usersController.history);
+router.post('/donar', usersController.donar);
 router.post('/shop', authMiddleware, usersController.shop);
 router.get('/buy-detail/:id', authMiddleware, usersController.showBuyDetail);
 

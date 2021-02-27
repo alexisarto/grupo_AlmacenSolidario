@@ -15,6 +15,23 @@ const usersController = {
     res.render('users/passwordReset');
   },
 
+  passwordForgot: function (req, res, next) {
+    db.Usuario.findOne({
+      where: {
+        email: req.body.email
+      }
+    }).then(function(user) {
+      if(!user) {
+        return res.render('users/passwordReset', {
+          errors: [
+            { msg: 'e-mail inválido' }
+          ], email: req.body.email
+        });
+      }
+    res.render('users/passwordReset');
+    })
+  },
+
   crear: function(req, res, next) {
     res.render('users/crear');
   },
@@ -35,9 +52,14 @@ const usersController = {
           }
         }).then((newUser) =>{
           req.session.usuarioLogueado = newUser;
-          res.redirect('/home');
+          db.Carrito.create({
+            usuario_id: req.session.usuarioLogueado.id,
+                  estado: "abierto"
+          }).then(function() {
+            res.redirect('/home');
           });
-      });
+        });
+      })
     } else {
     res.render('users/crear', { errors: errors.errors });
     }
@@ -458,20 +480,56 @@ destroy: function(req, res, next) {
   },
 
 shop(req, res) {
-  // cierro el carrito
+  // cambio estado del carrito
   db.Carrito.update({
-    estado: "cerrado"
+    estado: "proceso"
   }, {
     where: {
       usuario_id: req.session.usuarioLogueado.id,
       estado: "abierto"
     }
-  })
-      // elimino cookie importe del carrito
-    .then(() => {
-      res.clearCookie('importe')
-      return res.redirect('/home')})
-    .catch((e) => console.log(e));
+  }).then(() => {
+    db.Carrito.findOne({
+      where: {
+        usuario_id: req.session.usuarioLogueado.id,
+        estado: "proceso"
+      }
+    }).then((carrito) => {
+      return res.render('index/instituciones', {carrito, usuarioLogueado: req.session.usuarioLogueado, importe: req.cookies.importe})})
+      .catch((e) => console.log(e));
+    })
+  },
+  
+  donar(req, res) {
+    if(req.body.institucion == "0") {
+      res.render('index/instituciones', {
+        errors: [
+          { msg: 'Debes seleccionar una institución' }
+        ]
+      });
+    } else {
+      db.Carrito.update({
+        estado: "cerrado",
+        institucion_id: req.body.institucion,
+        personas_alcanzadas: req.cookies.importe / 350
+      }, {
+        where: {
+          usuario_id: req.session.usuarioLogueado.id,
+          estado: "proceso"
+        }
+      }).then(() => {
+        res.clearCookie('importe');
+        if (req.body.institucion == 1) {
+          res.redirect('/losPiletones');
+        } else if (req.body.institucion == 2) {
+          res.redirect('/losNiniosPrimero');
+        } else if (req.body.institucion == 3) {
+          res.redirect('/losBajitos');
+        } else {
+          res.redirect('/manosEnAccion');
+        }
+      })
+    }
   },
 
   history(req, res) {
@@ -480,7 +538,8 @@ shop(req, res) {
         usuario_id: req.session.usuarioLogueado.id,
         estado: "cerrado"
       },
-      order: [["updated_at", "DESC"]],
+      order: [["id", "DESC"]],
+      include: [{all: true, nested: true}]
     })
       .then((carts) => {
         let carritosId = [];
@@ -503,7 +562,9 @@ shop(req, res) {
   },
 
   showBuyDetail(req, res) {
-    db.Carrito.findByPk(req.params.id)
+    db.Carrito.findByPk(req.params.id, {
+      include: [{all: true, nested: true}]
+    })
    .then((cart) => {
      db.Carrito_Producto.findAll({
        where: {

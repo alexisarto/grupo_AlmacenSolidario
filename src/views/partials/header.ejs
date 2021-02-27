@@ -25,7 +25,7 @@
             </div>
 
             <div class="carrito">
-                <span class="items-carrito"><a href="/users/carrito"><i class="fas fa-shopping-cart"></i></a><% if (typeof items != 'undefined') { %> <%= items.length %>items <% } else { %> <% } %></span>
+                <span class="items-carrito"><a href="/users/carrito"><i class="fas fa-shopping-cart"></i></a><% if (typeof usuarioLogueado != 'undefined' && typeof importe != 'undefined' && importe != 0 && typeof items != 'undefined') { %> <%= items.length %>items <% } else { %> <% } %></span>
                 <p>$<% if (typeof usuarioLogueado != 'undefined' && typeof importe != 'undefined') { %> <%= importe %> <% } else { %> <% } %></p>
             </div>
 

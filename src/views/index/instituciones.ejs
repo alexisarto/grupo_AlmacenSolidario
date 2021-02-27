@@ -9,6 +9,32 @@
     <%- include('../partials/header')%>
 
     <main class="insti">
+        <% if (typeof carrito != 'undefined' && carrito.estado == 'proceso') { %>
+        <section class="proceso">
+            <div>
+                <i class="fas fa-hotel"></i>
+                <h3>Elegis la institucion</h3>
+            </div>
+       
+        
+            <form action="/users/donar" method="POST">
+                <select name="institucion" id="elegirInstitucion">
+                    <option value="0">Elegí institución</option>
+                    <option value="1">Los piletones</option>
+                    <option value="2">Los niños primero</option>
+                    <option value="3">Los bajitos</option>
+                    <option value="4">Manos en accion</option>
+                </select>
+                <button class="sec-button" type="submit">Donar</button>
+            </form>
+            <div class="errorInstitucion">
+            <% if (typeof errors != 'undefined') { %>
+                <p style="color: red; text-align: left; margin-right: 5px">Error!</p>
+                <p style="font-size: 13px"><%= errors[0].msg %></p>
+            <% } %>
+            </div>
+        </section>
+        <% } %>
         <section class="insti1">
             <div class="infoInsti1">
                 <h3>Los piletones</h3>

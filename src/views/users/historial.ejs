@@ -13,11 +13,12 @@
             <% for (let i = 0; i < carts.length; i++) { %>
                 <p><a href="/users/buy-detail/<%= carts[i].id %>">Orden de compra nro: <%= carts[i].id %></a></p>
                 <p>Fecha: <%= carts[i].updated_at.toDateString() %></p>
-                <p>Importe $<%= carts[i].total %></p><br>
+                <p>Importe $<%= carts[i].total.toFixed(2) %></p>
+                <p>Institución: <%= carts[i].institucion.nombre %></p><br>
                 Detalle:
                 <ul>
                     <% for (let j = 0; j < items[i].length; j++) { %>
-                        <li><%= items[i][j].productos.descripcion %> - <%= items[i][j].productos.marca.marca %> x <%= items[i][j].productos.presentacion %> <%= items[i][j].productos.unidad.medida %> x <%= items[i][j].cantidad %> = $ <%= (items[i][j].productos.precio * items[i][j].cantidad) %></li>
+                        <li><%= items[i][j].productos.descripcion %> - <%= items[i][j].productos.marca.marca %> x <%= items[i][j].productos.presentacion %> <%= items[i][j].productos.unidad.medida %> x <%= items[i][j].cantidad %> = $ <%= (items[i][j].productos.precio * items[i][j].cantidad).toFixed(2) %></li>
                     <% } %>
                 </ul>
                 <br>

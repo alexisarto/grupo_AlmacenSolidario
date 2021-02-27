@@ -14,8 +14,34 @@ main.insti {
     flex-direction: column;
     align-items: center;
     background-color: #f4f8f9;
-    padding-top: 75px;
+    padding-top: 95px;
     
+}
+
+section.proceso {
+    width: 84%;
+}
+
+.selecInstitucion {
+    margin-top: 5px;
+    display:flex;
+    flex-direction: column;
+}
+
+.sec-button {
+    margin-left: 10px;
+    padding: 10px;
+    color: white;
+    background-color: #1e9e6b;
+    border-radius: 5px;
+}
+.sec-button:hover {
+    background-color: #069059;
+}
+
+.errorInstitucion {
+    display: flex;
+    align-items: center;
 }
 
 section.insti1,

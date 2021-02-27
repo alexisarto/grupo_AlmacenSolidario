@@ -13,4 +13,12 @@ router.get('/instituciones', indexController.instituciones);
 
 router.get('/nosotros', indexController.aboutUs);
 
+router.get('/losPiletones', indexController.losPiletones);
+
+router.get('/losNiniosPrimero', indexController.losNiniosPrimero);
+
+router.get('/losBajitos', indexController.losBajitos);
+
+router.get('/manosEnAccion', indexController.manosEnAccion);
+
 module.exports = router;
