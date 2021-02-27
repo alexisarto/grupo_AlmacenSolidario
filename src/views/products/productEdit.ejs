@@ -79,11 +79,11 @@
                         <select name="subCategoria" id="select-subcategoria" required>
                             <% for (let i = 0; i < subcategorias.length; i++) { %>
                                 <% if (subcategorias[i].id == producto.sub_categoria_id) { %>
-                                    <option value="<%= categorias[i].id %>" selected>
+                                    <option value="<%= subcategorias[i].id %>" selected>
                                         <%=subcategorias[i].sub_categoria%>
                                     </option>
                                 <% } else { %>
-                                    <option value="<%= categorias[i].id %>">
+                                    <option value="<%= subcategorias[i].id %>">
                                         <%=subcategorias[i].sub_categoria%>
                                     </option>
                                 <% } %>
@@ -99,17 +99,7 @@
                     <input type="text" required name="precio" value="<%= producto.precio %>">
                     </div>
                     <div class="input-file">
-                        <input type="file" id="imagen_producto" name="imagen_producto">
-                        <label for="imagen_producto">Seleccionar archivo de imagen</label>
-                        <span id="file-name">"<%= producto.imagen %>"</span>
-                        <script>
-                            let inputFile = document.getElementById('imagen_producto');
-                            let fileNameField = document.getElementById('file-name');
-                            inputFile.addEventListener('change', function(event) {
-                                let uploadedFilename = event.target.files[0].name;
-                                fileNameField.textContent = uploadedFilename;
-                            })
-                        </script>
+                        <a class = "modificarImagen" href="/products/editar-producto/<%= producto.id %>/image">Modificar Imagen</a>
                     </div><br>
                 </div><br>
                 <p class="texto-nota">* Todos los campos son requeridos</p>

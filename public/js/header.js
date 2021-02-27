@@ -1,5 +1,4 @@
 window.addEventListener('load', function(){
-    console.log("hola")
     let burger = document.querySelector(".icon-burger");
     var links = document.querySelector(".links");
 

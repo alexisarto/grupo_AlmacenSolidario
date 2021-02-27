@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../partials/head')%>
+        <title>Editar Producto</title>
+    </head>
+    <body class = "form">
+
+        <%- include('../partials/headerAdmin')%>
+
+        <div class="formulario-agregar-producto">
+            
+            <h1>Editar imagen <%= producto.descripcion %></h1>
+            <br>
+            <form action="/products/editar-producto/<%= producto.id %>/image" method="POST" enctype="multipart/form-data">
+              
+                <div class="agregar-info2-producto">
+                    
+                    <div class="input-file">
+                        <input type="file" id="imagen_producto" name="imagen_producto">
+                        <label for="imagen_producto">Seleccionar archivo de imagen</label>
+                        <span id="file-name"></span>
+                        <script>
+                            let inputFile = document.getElementById('imagen_producto');
+                            let fileNameField = document.getElementById('file-name');
+                            inputFile.addEventListener('change', function(event) {
+                                let uploadedFilename = event.target.files[0].name;
+                                fileNameField.textContent = uploadedFilename;
+                            })
+                        </script>
+                    </div>
+                </div><br>
+                <p class="texto-nota">* Todos los campos son requeridos</p>
+                <button type="submit">Editar Imagen</button>
+            </form>
+        </div>
+    </body>
+</html>

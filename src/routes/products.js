@@ -16,6 +16,10 @@ router.get('/detalleProducto/:id', productsController.detalleProducto);
 
 /* GET todos los productos*/
 router.get('/almacen', productsController.almacen);
+router.get('/almacen1', productsController.almacen1);
+router.get('/almacen2', productsController.almacen2);
+router.get('/almacen3', productsController.almacen3);
+
 
 router.get('/almacen/almacen/arrozYFideos', productsController.almacenArrozYFideos);
 router.get('/almacen/almacen/conservas', productsController.almacenConservas);
@@ -51,8 +55,10 @@ router.get('/almacen/bebes', productsController.categoriaBebes);
 
 /* GET product edit */
 router.get('/editar-producto/:id', productsController.productEdit);
+router.get('/editar-producto/:id/image', productsController.productEditImage);
 /* POST product edit */
 router.post('/editar-producto/:id', upload.any(), productsController.productUpdate);
+router.post('/editar-producto/:id/image', upload.any(), productsController.productUpdateImage);
 
 /* GET product destroy */
 router.post('/destroy/:id', productsController.destroy);

@@ -60,10 +60,11 @@ div.infoInsti4 {
     div.infoInsti3,
     div.infoInsti4 {
         width: 100%;
-        display: flex;
+        display: none;
         flex-direction: column;
         align-items: center;
     }
+
 }
 
 div.infoInsti1 p,

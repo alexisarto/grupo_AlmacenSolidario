@@ -67,6 +67,22 @@ const productsController = {
             })
     },
 
+    productEditImage: function(req, res, next) {
+        let pedidoProducto = db.Producto.findByPk(req.params.id);
+
+        Promise.all([pedidoProducto])
+            .then(function(result){
+                res.render('products/productEditImage', {producto:result[0]})
+            })
+            .catch(function(error){
+                
+                console.log(error)
+                res.render('error')
+            })
+
+
+    },
+
     productUpdate: function(req, res, next) {
         db.Producto.update({
             descripcion: req.body.descripcion,
@@ -77,6 +93,17 @@ const productsController = {
             categoria_id: req.body.categoria,
             sub_categoria_id: req.body.subCategoria,
             precio: req.body.precio,
+        }, {
+            where: {
+                id: req.params.id
+            }    
+        });
+
+        res.redirect('/products/list');
+    },
+
+    productUpdateImage: function(req, res, next) {
+        db.Producto.update({
             imagen: req.files[0].filename
         }, {
             where: {
@@ -120,7 +147,43 @@ const productsController = {
 
     almacen: function(req,res,next){
         const usuarioLogueado = req.session.usuarioLogueado;
-        db.Producto.findAll({include: [{association: "marca"}, {association: "categoria"}, {association: "unidad"}, {association: "sub_categoria"}]})
+        db.Producto.findAll({include: [{association: "marca"}, {association: "categoria"}, {association: "unidad"}, {association: "sub_categoria"}], limit: 12})
+        .then(function(products){
+            res.render('products/almacen', {products:products, usuarioLogueado, importe: req.cookies.importe})
+        })
+        .catch(function(error){
+            res.render('error')
+            console.log(error)
+        })
+    },
+
+    almacen1: function(req,res,next){
+        const usuarioLogueado = req.session.usuarioLogueado;
+        db.Producto.findAll({include: [{association: "marca"}, {association: "categoria"}, {association: "unidad"}, {association: "sub_categoria"}], offset: 12 , limit: 12})
+        .then(function(products){
+            res.render('products/almacen', {products:products, usuarioLogueado, importe: req.cookies.importe})
+        })
+        .catch(function(error){
+            res.render('error')
+            console.log(error)
+        })
+    },
+
+    almacen2: function(req,res,next){
+        const usuarioLogueado = req.session.usuarioLogueado;
+        db.Producto.findAll({include: [{association: "marca"}, {association: "categoria"}, {association: "unidad"}, {association: "sub_categoria"}], offset: 24 , limit: 12})
+        .then(function(products){
+            res.render('products/almacen', {products:products, usuarioLogueado, importe: req.cookies.importe})
+        })
+        .catch(function(error){
+            res.render('error')
+            console.log(error)
+        })
+    },
+
+    almacen3: function(req,res,next){
+        const usuarioLogueado = req.session.usuarioLogueado;
+        db.Producto.findAll({include: [{association: "marca"}, {association: "categoria"}, {association: "unidad"}, {association: "sub_categoria"}], offset: 36 , limit: 12})
         .then(function(products){
             res.render('products/almacen', {products:products, usuarioLogueado, importe: req.cookies.importe})
         })

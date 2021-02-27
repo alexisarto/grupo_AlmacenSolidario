@@ -126,6 +126,21 @@ a.linkNewBrand:hover {
     background-color: #2cb5c4;
 }
 
+a.modificarImagen {
+    text-decoration: none;
+    font-size: 13px;
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    color:white;
+    background-color: #dc7a07;
+}
+
+a.modificarImagen:hover {
+    background-color: #cb4332;
+}
+
+
 @media (max-width: 768px) {
     .formulario-agregar-producto h1 {
         font-size: 24px;
