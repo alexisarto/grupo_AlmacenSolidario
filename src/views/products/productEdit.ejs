@@ -99,7 +99,17 @@
                     <input type="text" required name="precio" value="<%= producto.precio %>">
                     </div>
                     <div class="input-file">
-                        <a class = "modificarImagen" href="/products/editar-producto/<%= producto.id %>/image">Modificar Imagen</a>
+                        <input type="file" required id="imagen_producto" name="imagen_producto">
+                        <label for="imagen_producto">Seleccionar archivo de imagen</label>
+                        <span id="file-name"><%= producto.imagen %></span>
+                        <script>
+                            let inputFile = document.getElementById('imagen_producto');
+                            let fileNameField = document.getElementById('file-name');
+                            inputFile.addEventListener('change', function(event) {
+                                let uploadedFilename = event.target.files[0].name;
+                                fileNameField.textContent = uploadedFilename;
+                            })
+                        </script>
                     </div><br>
                 </div><br>
                 <p class="texto-nota">* Todos los campos son requeridos</p>

@@ -20,11 +20,11 @@
                     </div>
                     <div class="detallesProd">
                         <h1 class="nombreProd"><%=producto.descripcion_completa %></h1>
-                        <p class=><%=producto.marca.marca%></p>
+                        <p><%=producto.marca.marca%></p>
                         <p class="detalle_presentacion_producto_almacen"><%= producto.presentacion %><%= producto.unidad.medida %></p>
-                    </div>
-                    <div class="agregarYpagar">
-                        <h2 class="precio">Precio: <%=producto.precio%>$</h2>
+                    
+                    <div class="agregarYpagarDetail">
+                        <p>Precio: $<%=producto.precio%></p>
                         <% if (typeof errors != 'undefined') { %>
                             <p style="color: red; text-align: left; margin-bottom: 3px">Error!</p>
                             <ul style="font-size: 13px">
@@ -33,13 +33,25 @@
                                 <% } %>
                             </ul>
                         <% } %>
+                        <% if(typeof usuarioLogueado != 'undefined' && usuarioLogueado.perfil_id == 2){ %> 
+							<div class="buttonDetail">
+                                <form action="/products/editar-producto/<%=producto.id%>" method="GET">
+                                    <button type="submit" class="buttonPDEdit">Editar</button>
+                                </form>
+                                <form action="/products/destroy/<%=producto.id%>" method="POST">
+                                    <button type="submit" class="buttonPDDelete">Borrar</button>
+                                </form>
+                            </div>
+						<% } else { %>
                         <form action="/users/addToCart" method="POST">
                             <input type="hidden" id="quantity" name="quantity" value="1">
                             <input type="hidden" name="productId" value="<%= producto.id %>">
                             <input type="hidden" name="precio" value="<%= producto.precio %>">
                             <input type="submit" class="botonAgregar" value="Agregar">
                         </form>
+                        <% } %>
                     </div>
+                </div>
                 </div>
             </div>
         </main>    

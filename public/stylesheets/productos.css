@@ -178,19 +178,16 @@
 }
 
 .botonAgregar{
-    position: relative;
-    right:20vh;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     background-color: #0022aa;
     color:white;
     border-radius: 5px;
     border: 0;
-    height: 50px;
-    width: 100px;
+    width: 40%;
 }
-.precio{
-    position: relative;
-    left: 20vh;
-}
+
 .agregarYpagar{
     display: flex;
     align-items: center;
@@ -198,6 +195,41 @@
     justify-content: space-between;
     width:100%;
 }
+.agregarYpagarDetail {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.buttonPDEdit{
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #1e9e6b;
+    color:white;
+    border-radius: 5px;
+    border: 0;
+    width: 40%;
+}
+
+.buttonPDDelete{
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #dc7a07;
+    color:white;
+    border-radius: 5px;
+    border: 0;
+    width: 40%;
+}
+
+.buttonPDEdit:hover{
+    background-color: #069059;
+}
+
+.buttonPDDelete:hover{
+    background-color: #cb4332;
+}
+
 .detalle_producto{
     width: 85%;
     margin-top: 105px;
