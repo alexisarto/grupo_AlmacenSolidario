@@ -424,7 +424,7 @@ destroy: function(req, res, next) {
       }).then((productoYaAgregado) => {
         if (productoYaAgregado != null) {
           //alert('El producto ' + productoYaAgregado.productos.descripcion + 'ya está en el carrito')
-          res.redirect("carrito");
+          res.redirect("/products/almacen");
         } else {
       // Busco el producto que voy a agregar como Item.
       db.Producto.findByPk(req.body.productId)
@@ -463,7 +463,7 @@ destroy: function(req, res, next) {
                   estado: "abierto"
                 },
               }).then(() => {
-                return res.redirect("carrito");
+                return res.redirect("/products/almacen");
               })
             })
           })

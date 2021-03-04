@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2021 at 07:20 PM
+-- Generation Time: Mar 04, 2021 at 06:03 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -63,7 +63,8 @@ INSERT INTO `carritos` (`id`, `usuario_id`, `total`, `estado`, `created_at`, `up
 (22, 32, 14352.7, 'cerrado', '2021-02-27 15:39:48', '2021-02-27 14:51:45', 3, 41.00771484375),
 (23, 32, 8600.3, 'cerrado', '2021-02-27 17:53:44', '2021-02-27 17:56:58', 1, 24.572285714285712),
 (24, 32, 11235.2, 'cerrado', '2021-02-27 18:06:51', '2021-02-27 18:09:45', 4, 32.10057142857143),
-(25, 32, 0, 'abierto', '2021-02-27 18:13:48', '2021-02-27 18:13:48', NULL, NULL);
+(25, 32, 686.4, 'cerrado', '2021-02-27 18:13:48', '2021-03-01 18:44:13', 1, 1.961142857142857),
+(26, 32, 6778.9, 'cerrado', '2021-03-01 19:00:58', '2021-03-02 18:54:26', 3, 19.36828571428571);
 
 -- --------------------------------------------------------
 
@@ -245,7 +246,17 @@ INSERT INTO `carrito_producto` (`id`, `carrito_id`, `producto_id`, `cantidad`, `
 (251, 24, 39, 10, 50.15, '2021-02-27 18:08:38', '2021-02-27 18:08:44'),
 (252, 24, 45, 12, 100.7, '2021-02-27 18:08:53', '2021-02-27 18:08:59'),
 (253, 24, 54, 12, 245.25, '2021-02-27 18:09:06', '2021-02-27 18:09:12'),
-(254, 24, 66, 36, 49.05, '2021-02-27 18:09:21', '2021-02-27 18:09:29');
+(254, 24, 66, 36, 49.05, '2021-02-27 18:09:21', '2021-02-27 18:09:29'),
+(255, 25, 4, 1, 131.05, '2021-03-01 18:43:29', '2021-03-01 18:43:29'),
+(256, 25, 6, 1, 43.45, '2021-03-01 18:43:39', '2021-03-01 18:43:39'),
+(257, 25, 14, 1, 58.3, '2021-03-01 18:43:50', '2021-03-01 18:43:50'),
+(258, 25, 18, 1, 453.6, '2021-03-01 18:43:59', '2021-03-01 18:43:59'),
+(260, 26, 15, 10, 68.5, '2021-03-01 19:01:56', '2021-03-02 18:52:10'),
+(261, 26, 16, 12, 75, '2021-03-01 19:02:07', '2021-03-02 18:52:18'),
+(262, 26, 18, 6, 453.6, '2021-03-01 19:02:15', '2021-03-02 18:52:25'),
+(264, 26, 22, 12, 35.3, '2021-03-01 19:06:26', '2021-03-02 18:52:40'),
+(267, 26, 20, 10, 87.15, '2021-03-02 18:53:27', '2021-03-02 18:53:36'),
+(268, 26, 66, 24, 49.05, '2021-03-02 18:53:48', '2021-03-02 18:53:56');
 
 -- --------------------------------------------------------
 
@@ -271,6 +282,29 @@ INSERT INTO `categorias` (`id`, `categoria`, `created_at`, `updated_at`) VALUES
 (4, 'Lácteos', '2021-02-21 01:38:42', '2021-02-21 01:38:42'),
 (5, 'Limpieza', '2021-02-21 01:38:52', '2021-02-21 01:38:52'),
 (6, 'Perfumería', '2021-02-21 01:39:08', '2021-02-21 01:39:08');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `instituciones`
+--
+
+CREATE TABLE `instituciones` (
+  `id` int(10) NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `instituciones`
+--
+
+INSERT INTO `instituciones` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
+(1, 'Los piletones', '2021-02-26 23:10:38', '2021-02-26 20:10:38'),
+(2, 'Los niños primero', '2021-02-26 23:10:59', '2021-02-26 20:10:59'),
+(3, 'Los bajitos', '2021-02-26 23:11:13', '2021-02-26 20:11:13'),
+(4, 'Manos en acción', '2021-02-26 23:11:30', '2021-02-26 20:11:30');
 
 -- --------------------------------------------------------
 
@@ -460,36 +494,37 @@ CREATE TABLE `sub_categorias` (
   `id` int(10) NOT NULL,
   `sub_categoria` varchar(50) NOT NULL,
   `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `categoria_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `sub_categorias`
 --
 
-INSERT INTO `sub_categorias` (`id`, `sub_categoria`, `created_at`, `updated_at`) VALUES
-(1, 'Aceites y aderezos', '2021-01-04 22:45:16', '2021-01-04 19:45:16'),
-(2, 'Agua mineral', '2021-01-04 22:45:16', '2021-01-04 19:45:16'),
-(3, 'Arroz y fideos', '2021-02-06 16:13:29', '2021-02-06 13:13:29'),
-(4, 'Conservas', '2021-02-06 16:14:52', '2021-02-06 13:14:52'),
-(5, 'Infusiones, cacao', '2021-02-06 16:15:14', '2021-02-06 13:15:14'),
-(6, 'Sopas, caldos, puré', '2021-02-06 16:15:38', '2021-02-06 13:15:38'),
-(7, 'Mermeladas y dulces', '2021-02-06 16:16:05', '2021-02-06 13:16:05'),
-(8, 'Premezcla postres', '2021-02-06 16:16:39', '2021-02-06 13:16:39'),
-(9, 'Panadería, galletitas', '2021-02-06 16:17:00', '2021-02-06 13:17:00'),
-(10, 'Gaseosas', '2021-02-20 21:37:45', '2021-02-20 21:37:45'),
-(11, 'Harinas', '2021-02-20 21:48:46', '2021-02-20 21:48:46'),
-(12, 'Bebidas', '2021-02-20 21:55:17', '2021-02-20 21:55:17'),
-(14, 'Baño', '2021-02-21 01:41:34', '2021-02-21 01:41:34'),
-(15, 'Cocina', '2021-02-21 01:41:44', '2021-02-21 01:41:44'),
-(16, 'Dulce de leche', '2021-02-21 01:41:56', '2021-02-21 01:41:56'),
-(17, 'Leche en polvo', '2021-02-21 01:42:08', '2021-02-21 01:42:08'),
-(18, 'Leche larga vida', '2021-02-21 01:42:20', '2021-02-21 01:42:20'),
-(19, 'Oleo calcáreo', '2021-02-21 01:42:37', '2021-02-21 01:42:37'),
-(20, 'Pañales descartables', '2021-02-21 01:42:51', '2021-02-21 01:42:51'),
-(21, 'Papeles', '2021-02-21 01:43:03', '2021-02-21 01:43:03'),
-(22, 'Piso', '2021-02-21 01:43:13', '2021-02-21 01:43:13'),
-(23, '', '2021-02-21 01:53:33', '2021-02-21 01:53:33');
+INSERT INTO `sub_categorias` (`id`, `sub_categoria`, `created_at`, `updated_at`, `categoria_id`) VALUES
+(1, 'Aceites y aderezos', '2021-01-04 22:45:16', '2021-03-02 19:10:36', 1),
+(2, 'Agua mineral', '2021-01-04 22:45:16', '2021-03-02 19:11:33', 2),
+(3, 'Arroz y fideos', '2021-02-06 16:13:29', '2021-03-02 19:09:33', 1),
+(4, 'Conservas', '2021-02-06 16:14:52', '2021-03-02 19:09:43', 1),
+(5, 'Infusiones, cacao', '2021-02-06 16:15:14', '2021-03-02 19:09:53', 1),
+(6, 'Sopas, caldos, puré', '2021-02-06 16:15:38', '2021-03-02 19:10:00', 1),
+(7, 'Mermeladas y dulces', '2021-02-06 16:16:05', '2021-03-02 19:10:08', 1),
+(8, 'Premezcla postres', '2021-02-06 16:16:39', '2021-03-02 19:10:14', 1),
+(9, 'Panadería, galletitas', '2021-02-06 16:17:00', '2021-03-02 19:10:21', 1),
+(10, 'Gaseosas', '2021-02-20 21:37:45', '2021-03-02 19:11:42', 2),
+(11, 'Harinas', '2021-02-20 21:48:46', '2021-03-02 19:10:28', 1),
+(12, 'Bebidas', '2021-02-20 21:55:17', '2021-03-02 19:20:50', 1),
+(14, 'Baño', '2021-02-21 01:41:34', '2021-03-02 19:12:07', 5),
+(15, 'Cocina', '2021-02-21 01:41:44', '2021-03-02 19:12:12', 5),
+(16, 'Dulce de leche', '2021-02-21 01:41:56', '2021-03-02 19:10:54', 4),
+(17, 'Leche en polvo', '2021-02-21 01:42:08', '2021-03-02 19:11:10', 4),
+(18, 'Leche larga vida', '2021-02-21 01:42:20', '2021-03-02 19:11:03', 4),
+(19, 'Oleo calcáreo', '2021-02-21 01:42:37', '2021-03-02 19:12:48', 3),
+(20, 'Pañales descartables', '2021-02-21 01:42:51', '2021-03-02 19:12:37', 3),
+(21, 'Papeles', '2021-02-21 01:43:03', '2021-03-02 19:12:24', 5),
+(22, 'Piso', '2021-02-21 01:43:13', '2021-03-02 19:11:56', 5),
+(23, '', '2021-02-21 01:53:33', '2021-03-02 19:20:14', 6);
 
 -- --------------------------------------------------------
 
@@ -595,6 +630,12 @@ ALTER TABLE `categorias`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `instituciones`
+--
+ALTER TABLE `instituciones`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `marcas`
 --
 ALTER TABLE `marcas`
@@ -621,7 +662,8 @@ ALTER TABLE `productos`
 -- Indexes for table `sub_categorias`
 --
 ALTER TABLE `sub_categorias`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sub_categorias_ibfk_1_idx` (`categoria_id`);
 
 --
 -- Indexes for table `unidades`
@@ -644,19 +686,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `carritos`
 --
 ALTER TABLE `carritos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `carrito_producto`
 --
 ALTER TABLE `carrito_producto`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=255;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=269;
 
 --
 -- AUTO_INCREMENT for table `categorias`
 --
 ALTER TABLE `categorias`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `instituciones`
+--
+ALTER TABLE `instituciones`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `marcas`
@@ -680,7 +728,7 @@ ALTER TABLE `productos`
 -- AUTO_INCREMENT for table `sub_categorias`
 --
 ALTER TABLE `sub_categorias`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `unidades`
@@ -720,6 +768,12 @@ ALTER TABLE `productos`
   ADD CONSTRAINT `productos_ibfk_2` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `productos_ibfk_3` FOREIGN KEY (`unidad_id`) REFERENCES `unidades` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `productos_ibfk_4` FOREIGN KEY (`sub_categoria_id`) REFERENCES `sub_categorias` (`id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `sub_categorias`
+--
+ALTER TABLE `sub_categorias`
+  ADD CONSTRAINT `sub_categorias_ibfk_1` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `usuarios`

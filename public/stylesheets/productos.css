@@ -327,6 +327,18 @@
     margin-top:5px;
 }
 
+.controles {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+i.fas.fa-minus, i.fas.fa-plus, .controles span {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
 /* Carrito */
 div#quantityInCart {
     display: flex;

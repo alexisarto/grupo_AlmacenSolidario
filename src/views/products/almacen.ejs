@@ -16,7 +16,7 @@
             <%- include('../partials/aside')%>
             
             <div class="grilla_almacen">
-                <% for (let i = 0 ; i < 12 ; i++) { %>
+                <% for (let i = 0 ; i < products.length ; i++) { %>
                 <div class="producto_almacen">
                     
                     <div class="fotoeInfo_almacen">
@@ -41,9 +41,8 @@
                     </div>
                 </div>
                 <% } %>
-            </div>
-            <div class="controles">
-                <button>siguiente</button>
+            
+                
             </div>
         </main>    
         

@@ -34,6 +34,12 @@
         <div class="sectionAdmin">
             <form action="/products/agregarsubcategoria" method="POST">
                 <input type="text" name="subCategoria" placeholder="Agregar nueva sub-categoria"><br>
+                <div class="etiqueta-subcategoria">
+                    <label for="">Seleccionar categoría</label>
+                    <select name="categoria" id="select-categoria">
+
+                    </select>
+                </div>
                 <button class="adminButton" type="submit">Agregar <strong>sub-categoria</strong></button>
             </form>
         </div>
@@ -41,6 +47,6 @@
 
     </main>
 
-
+    <script src="/js/categorias.js"></script>
 </body>
 </html>

@@ -8,11 +8,17 @@ module.exports = function(sequelize, dataTypes) {
         },
         medida: {
             type: dataTypes.STRING
+        },
+        created_at: {
+            type: dataTypes.DATE,
+        },
+        updated_at: {
+            type: dataTypes.DATE,
         }
     };
     let config = {
         tableName: "unidades",
-        timestamps: false
+        underscored: true
     }
     let Unidad = sequelize.define(alias, cols, config);
     Unidad.associate = function(models) {

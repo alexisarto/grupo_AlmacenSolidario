@@ -8,11 +8,20 @@ module.exports = function(sequelize, dataTypes) {
         },
         sub_categoria: {
             type: dataTypes.STRING
+        },
+        categoria_id: {
+            type: dataTypes.INTEGER
+        },
+        created_at: {
+            type: dataTypes.DATE,
+        },
+        updated_at: {
+            type: dataTypes.DATE,
         }
     };
     let config = {
         tableName: "sub_categorias",
-        timestamps: false
+        underscored: true
 
     }
     let Sub_Categoria = sequelize.define(alias, cols, config);
@@ -20,6 +29,10 @@ module.exports = function(sequelize, dataTypes) {
         Sub_Categoria.hasMany(models.Producto, {
             as: "productos",
             foreignKey: "sub_categoria_id"
+        });
+        Sub_Categoria.belongsTo(models.Categoria, {
+            as: "categoria",
+            foreignKey: "categoria_id"
         });
     }
     return Sub_Categoria;

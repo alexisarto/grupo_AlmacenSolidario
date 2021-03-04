@@ -32,11 +32,17 @@ module.exports = function(sequelize, dataTypes) {
         },
         unidad_id: {
             type: dataTypes.INTEGER
+        },
+        created_at: {
+            type: dataTypes.DATE,
+        },
+        updated_at: {
+            type: dataTypes.DATE,
         }
     };
     let config = {
         tableName: "productos",
-        timestamps: false
+        underscored: true
     }
     let Producto = sequelize.define(alias, cols, config);
     Producto.associate = function(models) {

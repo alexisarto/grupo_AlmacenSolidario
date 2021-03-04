@@ -8,11 +8,17 @@ module.exports = function(sequelize, dataTypes) {
         },
         marca: {
             type: dataTypes.STRING
+        },
+        created_at: {
+            type: dataTypes.DATE,
+        },
+        updated_at: {
+            type: dataTypes.DATE,
         }
     };
     let config = {
         tableName: "marcas",
-        timestamps: false
+        underscored: true
     }
     let Marca = sequelize.define(alias, cols, config);
     Marca.associate = function(models) {

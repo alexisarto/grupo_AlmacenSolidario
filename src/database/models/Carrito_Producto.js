@@ -17,11 +17,17 @@ module.exports = function(sequelize, dataTypes) {
         },
         producto_id: {
             type: dataTypes.INTEGER
+        },
+        created_at: {
+            type: dataTypes.DATE,
+        },
+        updated_at: {
+            type: dataTypes.DATE,
         }
     };
     let config = {
         tableName: "carrito_producto",
-        timestamps: false
+        underscored: true
     };
 
     let Carrito_Producto = sequelize.define(alias, cols, config);

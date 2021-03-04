@@ -82,6 +82,16 @@ const productsController = {
             res.json(respuesta);
         })
     },
+
+    findsub_categorias: function(req, res) {
+        db.Sub_Categoria.findAll( {
+            where: {
+                categoria_id: req.params.id
+            }
+        }).then(function(product) {
+            res.json(product)
+            });
+    },
 }
 
     module.exports = productsController;
