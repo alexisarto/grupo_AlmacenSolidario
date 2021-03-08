@@ -4,6 +4,7 @@ var { check, validationResult, body } = require('express-validator');
 var users = JSON.parse(fs.readFileSync(__dirname + '/../data/users.json', 'utf-8'));
 var db = require('../database/models');
 const { types } = require('util');
+
 const usersController = {
   logout: function (req, res, next) {
     res.cookie("recordame", "", { expires: new Date() }); 
@@ -519,6 +520,12 @@ shop(req, res) {
         }
       }).then(() => {
         res.clearCookie('importe');
+        db.Carrito.create( {
+          usuario_id: req.session.usuarioLogueado.id,
+          estado: "abierto"
+      })
+      .then(function() {
+        
         if (req.body.institucion == 1) {
           res.redirect('/losPiletones');
         } else if (req.body.institucion == 2) {
@@ -529,6 +536,7 @@ shop(req, res) {
           res.redirect('/manosEnAccion');
         }
       })
+    })
     }
   },
 

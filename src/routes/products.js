@@ -16,12 +16,6 @@ router.get('/detalleProducto/:id', productsController.detalleProducto);
 
 /* GET todos los productos*/
 router.get('/almacen', productsController.almacen);
-/* router.post('/almacenAnterior', productsController.almacenAnterior);
-router.post('/almacenSiguiente', productsController.almacenSiguiente); */
-/* router.get('/almacen1', productsController.almacen1);
-router.get('/almacen2', productsController.almacen2);
-router.get('/almacen3', productsController.almacen3); */
-
 router.get('/almacen/:categoria_id', productsController.filtroCategoria);
 router.get('/almacen/:categoria_id/:sub_categoria_id?', productsController.filtroSubCategoria);
 

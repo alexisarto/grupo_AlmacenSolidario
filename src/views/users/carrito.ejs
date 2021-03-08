@@ -54,7 +54,7 @@
                 <% for (let i = 0; i < items.length; i++) { %>
                 <div class="contenedor_info_producto">
                     <div class="producto_precio">
-                        <h3 class="precioProd"><%= items[i].productos.descripcion_completa %>
+                        <h3 class="precioProd"><%= items[i].productos.descripcion %>
                             <span><%= items[i].productos.marca.marca %></span>
                             <span> x <%= items[i].productos.presentacion %></span>
                             <span> <%= items[i].productos.unidad.medida %></span><h4 class="cantidad_producto">x <%= items[i].cantidad %></h4></h3>

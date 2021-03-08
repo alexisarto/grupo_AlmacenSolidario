@@ -1,4 +1,6 @@
 var db = require('../../database/models');
+let sequelize = db.sequelize;
+
 const productsController = {
     cantidadProductos: function(req, res) {
         db.Producto.findAll()
@@ -70,6 +72,7 @@ const productsController = {
         },
 
     categorias: function(req, res) {
+        console.log('aca va');
         db.Categoria.findAll()
         .then(function(categorias) {
             let respuesta = {
@@ -91,6 +94,20 @@ const productsController = {
         }).then(function(product) {
             res.json(product)
             });
+    },
+
+    cantidadProductosPorCategoria: function(req, res) {
+        sequelize.query("SELECT categoria, COUNT(*) AS cantidad FROM productos INNER JOIN categorias ON categoria_id = categorias.id GROUP BY categoria")
+        .then(function(cantidadDeProductosPorCategoria) {
+            let respuesta = {
+                meta: {
+                    status: 200,
+                    url: "/api/products/cantidadDeProductosPorCategoria"
+                },
+                data: cantidadDeProductosPorCategoria[0]
+            };
+            res.json(respuesta);
+        });
     },
 }
 

@@ -1,4 +1,6 @@
 var db = require('../../database/models');
+let sequelize = db.sequelize;
+
 const salesController = {
     cantidadVentas: function(req, res) {
         db.Carrito.findAll({
@@ -115,7 +117,21 @@ const salesController = {
             res.json(respuesta);
         })
         });
-    }
+    },
+
+    cantidadDonacionesPorInstitucion: function(req, res) {
+        sequelize.query("SELECT nombre, COUNT(*) AS cantidad FROM carritos INNER JOIN instituciones ON institucion_id = instituciones.id GROUP BY nombre")
+        .then(function(donacionesPorInstitucion) {
+            let respuesta = {
+                meta: {
+                    status: 200,
+                    url: "/api/sales/donacionesPorInstitucion"
+                },
+                data: donacionesPorInstitucion[0]
+            };
+            res.json(respuesta);
+        });
+    },
 
     }
 

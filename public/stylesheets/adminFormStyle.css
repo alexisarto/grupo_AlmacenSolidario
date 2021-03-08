@@ -67,6 +67,22 @@ button.adminButton:hover {
     background-color: #069059;
 }
 
+div.sectionAdmin form div#etiqueta-subcategoria {
+    width: 100%;
+    align-items: center;
+}
+
+div.sectionAdmin form div#etiqueta-subcategoria select {
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: gray;
+}
+
+div.sectionAdmin form div#etiqueta-subcategoria label {
+    position: unset;
+}
 
 @media (max-width: 768px){
     main.admin {
