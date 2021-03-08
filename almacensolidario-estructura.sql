@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2021 at 06:03 PM
+-- Generation Time: Mar 08, 2021 at 11:35 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -115,7 +115,6 @@ CREATE TABLE `perfiles` (
 CREATE TABLE `productos` (
   `id` int(11) NOT NULL,
   `descripcion` varchar(100) NOT NULL,
-  `descripcion_completa` varchar(150) NOT NULL DEFAULT 'null',
   `marca_id` int(10) NOT NULL,
   `categoria_id` int(10) NOT NULL,
   `sub_categoria_id` int(10) NOT NULL,
