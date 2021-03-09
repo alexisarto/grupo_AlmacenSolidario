@@ -34,7 +34,15 @@ section.proceso {
     color: white;
     background-color: #1e9e6b;
     border-radius: 5px;
+    height: 40px;
+    width: 100px;
 }
+
+.proceso form {
+    align-items: center;
+    padding-top: 25px;
+}
+
 .sec-button:hover {
     background-color: #069059;
 }

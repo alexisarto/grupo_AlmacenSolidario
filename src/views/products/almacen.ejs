@@ -23,7 +23,7 @@
                         <a class="linkProducto" href="/products/detalleProducto/<%=products[i].id %>">
                         <img class="moldefoto" src="/images/products/<%= products[i].imagen %>" alt="FOTO">
                     <div class="infoProd_almacen">
-                        <h1 class="nombreProd_almacen"><%= products[i].descripcion_completa %></h1>
+                        <h1 class="nombreProd_almacen"><%= products[i].descripcion %></h1>
                         <p class="detalle_producto_almacen"><%= products[i].marca.marca %></p>
                         <p class="detalle_presentacion_producto_almacen"><%= products[i].presentacion %><%= products[i].unidad.medida %></p>
                         <h4 class="precioProd_almacen">$<%= products[i].precio %></h4>

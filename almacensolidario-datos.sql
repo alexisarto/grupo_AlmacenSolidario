@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2021 at 11:34 PM
+-- Generation Time: Mar 08, 2021 at 11:35 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -20,23 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `almacensolidario`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `carritos`
---
-
-CREATE TABLE `carritos` (
-  `id` int(10) NOT NULL,
-  `usuario_id` int(10) NOT NULL,
-  `total` float NOT NULL,
-  `estado` varchar(10) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `institucion_id` int(10) DEFAULT NULL,
-  `personas_alcanzadas` double DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `carritos`
@@ -70,22 +53,6 @@ INSERT INTO `carritos` (`id`, `usuario_id`, `total`, `estado`, `created_at`, `up
 (29, 32, 9620.3, 'cerrado', '2021-03-04 18:45:56', '2021-03-08 19:14:22', 2, 27.486570870535715),
 (31, 32, 9965.65, 'cerrado', '2021-03-06 03:43:39', '2021-03-08 22:19:01', 3, 28.473285714285712),
 (32, 32, 0, 'abierto', '2021-03-08 22:19:01', '2021-03-08 22:19:01', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `carrito_producto`
---
-
-CREATE TABLE `carrito_producto` (
-  `id` int(10) NOT NULL,
-  `carrito_id` int(10) NOT NULL,
-  `producto_id` int(10) NOT NULL,
-  `cantidad` int(10) NOT NULL,
-  `precio` float NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `carrito_producto`
@@ -296,19 +263,6 @@ INSERT INTO `carrito_producto` (`id`, `carrito_id`, `producto_id`, `cantidad`, `
 (302, 31, 54, 1, 245.25, '2021-03-08 22:17:25', '2021-03-08 22:17:25'),
 (303, 31, 66, 24, 49.05, '2021-03-08 22:17:34', '2021-03-08 22:18:46');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `categorias`
---
-
-CREATE TABLE `categorias` (
-  `id` int(10) NOT NULL,
-  `categoria` varchar(30) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Dumping data for table `categorias`
 --
@@ -321,19 +275,6 @@ INSERT INTO `categorias` (`id`, `categoria`, `created_at`, `updated_at`) VALUES
 (5, 'Limpieza', '2021-02-21 01:38:52', '2021-02-21 01:38:52'),
 (6, 'Perfumería', '2021-02-21 01:39:08', '2021-02-21 01:39:08');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `instituciones`
---
-
-CREATE TABLE `instituciones` (
-  `id` int(10) NOT NULL,
-  `nombre` varchar(45) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Dumping data for table `instituciones`
 --
@@ -343,19 +284,6 @@ INSERT INTO `instituciones` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
 (2, 'Los niños primero', '2021-02-26 23:10:59', '2021-02-26 20:10:59'),
 (3, 'Los bajitos', '2021-02-26 23:11:13', '2021-02-26 20:11:13'),
 (4, 'Manos en acción', '2021-02-26 23:11:30', '2021-02-26 20:11:30');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `marcas`
---
-
-CREATE TABLE `marcas` (
-  `id` int(10) NOT NULL,
-  `marca` varchar(30) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `marcas`
@@ -403,19 +331,6 @@ INSERT INTO `marcas` (`id`, `marca`, `created_at`, `updated_at`) VALUES
 (40, 'Sanicare', '2021-02-21 01:37:13', '2021-02-21 01:37:13'),
 (41, 'Virulana', '2021-02-21 01:37:24', '2021-02-21 01:37:24');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `perfiles`
---
-
-CREATE TABLE `perfiles` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(20) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Dumping data for table `perfiles`
 --
@@ -423,26 +338,6 @@ CREATE TABLE `perfiles` (
 INSERT INTO `perfiles` (`id`, `nombre`, `created_at`, `updated_at`) VALUES
 (1, 'usuario', '2021-01-05 02:59:26', '2021-01-04 23:59:26'),
 (2, 'admin', '2021-01-05 02:59:51', '2021-01-04 23:59:51');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `productos`
---
-
-CREATE TABLE `productos` (
-  `id` int(11) NOT NULL,
-  `descripcion` varchar(100) NOT NULL,
-  `marca_id` int(10) NOT NULL,
-  `categoria_id` int(10) NOT NULL,
-  `sub_categoria_id` int(10) NOT NULL,
-  `precio` float NOT NULL,
-  `presentacion` varchar(50) NOT NULL,
-  `unidad_id` int(10) NOT NULL,
-  `imagen` varchar(100) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `productos`
@@ -521,20 +416,6 @@ INSERT INTO `productos` (`id`, `descripcion`, `marca_id`, `categoria_id`, `sub_c
 (82, 'Rollo de cocina 60 paños', 35, 5, 21, 103.45, '3', 5, 'Rollo de cocina 60 paños Elite x 3 un.webp', '2021-02-21 03:38:31', '2021-02-21 03:38:31'),
 (83, 'Servilletas Blanca', 35, 5, 21, 53.8, '70', 5, 'Servilletas Blanca Elite x 70 un.jpg', '2021-02-21 03:39:54', '2021-02-21 03:39:54');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `sub_categorias`
---
-
-CREATE TABLE `sub_categorias` (
-  `id` int(10) NOT NULL,
-  `sub_categoria` varchar(50) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `categoria_id` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Dumping data for table `sub_categorias`
 --
@@ -563,19 +444,6 @@ INSERT INTO `sub_categorias` (`id`, `sub_categoria`, `created_at`, `updated_at`,
 (22, 'Piso', '2021-02-21 01:43:13', '2021-03-02 19:11:56', 5),
 (23, '', '2021-02-21 01:53:33', '2021-03-02 19:20:14', 6);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `unidades`
---
-
-CREATE TABLE `unidades` (
-  `id` int(10) NOT NULL,
-  `medida` varchar(10) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Dumping data for table `unidades`
 --
@@ -587,22 +455,6 @@ INSERT INTO `unidades` (`id`, `medida`, `created_at`, `updated_at`) VALUES
 (4, 'gr', '2021-01-10 17:55:25', '2021-01-10 14:55:25'),
 (5, 'un', '2021-01-10 17:55:35', '2021-01-10 14:55:35'),
 (6, 'ml', '2021-02-21 01:44:34', '2021-02-21 01:44:34');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `usuarios`
---
-
-CREATE TABLE `usuarios` (
-  `id` int(10) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `perfil_id` int(10) NOT NULL,
-  `created_at` timestamp NULL DEFAULT current_timestamp(),
-  `updated_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `usuarios`
@@ -639,184 +491,6 @@ INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `perfil_id`, `creat
 (56, 'Diego', 'diego@diego.com', '$2a$10$3okJHjtrbYrt7gxogmEm2Ot.7TuyEmfQuDA9G1ipRoIHX.D9EKCh.', 1, '2021-02-20 20:57:01', '2021-02-20 20:57:01'),
 (57, 'Antonio', 'antonio@antonio.com', '$2a$10$uqRY76ksZnFoqATFBceZJ..yohzoWU2C7qIsNgiXC7IbiZ6EMkdhO', 1, '2021-02-27 03:51:33', '2021-02-27 03:51:33'),
 (58, 'Giacomo', 'giacomo@giacomo.com', '$2a$10$wXuA36wAeXNKgo9BuX/3NOG4hESubiuiR80YFFRAsQWtbOsOZk7gG', 1, '2021-02-27 04:12:31', '2021-02-27 04:12:31');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `carritos`
---
-ALTER TABLE `carritos`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `usuario_id` (`usuario_id`),
-  ADD KEY `carritos_ibfk_2_idx` (`institucion_id`);
-
---
--- Indexes for table `carrito_producto`
---
-ALTER TABLE `carrito_producto`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `carrito_id` (`carrito_id`),
-  ADD KEY `producto_id` (`producto_id`);
-
---
--- Indexes for table `categorias`
---
-ALTER TABLE `categorias`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `instituciones`
---
-ALTER TABLE `instituciones`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `marcas`
---
-ALTER TABLE `marcas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `perfiles`
---
-ALTER TABLE `perfiles`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `productos`
---
-ALTER TABLE `productos`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`),
-  ADD KEY `marca_id` (`marca_id`),
-  ADD KEY `categoria_id` (`categoria_id`),
-  ADD KEY `sub_categoria_id` (`sub_categoria_id`),
-  ADD KEY `productos_ibfk_3_idx` (`unidad_id`);
-
---
--- Indexes for table `sub_categorias`
---
-ALTER TABLE `sub_categorias`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `sub_categorias_ibfk_1_idx` (`categoria_id`);
-
---
--- Indexes for table `unidades`
---
-ALTER TABLE `unidades`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `perfil_id` (`perfil_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `carritos`
---
-ALTER TABLE `carritos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
-
---
--- AUTO_INCREMENT for table `carrito_producto`
---
-ALTER TABLE `carrito_producto`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=304;
-
---
--- AUTO_INCREMENT for table `categorias`
---
-ALTER TABLE `categorias`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `instituciones`
---
-ALTER TABLE `instituciones`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `marcas`
---
-ALTER TABLE `marcas`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
-
---
--- AUTO_INCREMENT for table `perfiles`
---
-ALTER TABLE `perfiles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `productos`
---
-ALTER TABLE `productos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
-
---
--- AUTO_INCREMENT for table `sub_categorias`
---
-ALTER TABLE `sub_categorias`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
---
--- AUTO_INCREMENT for table `unidades`
---
-ALTER TABLE `unidades`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `carritos`
---
-ALTER TABLE `carritos`
-  ADD CONSTRAINT `carritos_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `carritos_ibfk_2` FOREIGN KEY (`institucion_id`) REFERENCES `instituciones` (`id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `carrito_producto`
---
-ALTER TABLE `carrito_producto`
-  ADD CONSTRAINT `carrito_producto_ibfk_1` FOREIGN KEY (`carrito_id`) REFERENCES `carritos` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `carrito_producto_ibfk_2` FOREIGN KEY (`producto_id`) REFERENCES `productos` (`id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `productos`
---
-ALTER TABLE `productos`
-  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`marca_id`) REFERENCES `marcas` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `productos_ibfk_2` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `productos_ibfk_3` FOREIGN KEY (`unidad_id`) REFERENCES `unidades` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `productos_ibfk_4` FOREIGN KEY (`sub_categoria_id`) REFERENCES `sub_categorias` (`id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `sub_categorias`
---
-ALTER TABLE `sub_categorias`
-  ADD CONSTRAINT `sub_categorias_ibfk_1` FOREIGN KEY (`categoria_id`) REFERENCES `categorias` (`id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`perfil_id`) REFERENCES `perfiles` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -215,9 +215,4 @@ a.modificarImagen:hover {
     .formulario-agregar-producto .texto-nota {
         font-size: 8px;
     }
-    .etiqueta-subcategoria {
-        display: flex;
-        align-items: center;
-        width: 300px;        
-    }
 }

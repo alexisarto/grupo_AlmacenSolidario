@@ -56,7 +56,6 @@ const validations = {
       ],
       productAddForm: [
         check('descripcion').isLength({min: 8, max: 255}).withMessage('La descripcion debe estar entre 8 y 255 caracteres'),
-        check('descripcion_completa').isLength({min: 8, max: 255}).withMessage('La descripcion completa debe estar entre 8 y 255 caracteres'),
         check('presentacion')
           .isNumeric().withMessage('La presentacion debe ser un numero')
           .isLength().withMessage('La presentacion no puede quedar vacia'),
