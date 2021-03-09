@@ -85,7 +85,8 @@ header section.navegacion nav ul li a {
     color: white;
     text-decoration: none;
     display: inline-block;
-    padding: 0px 10px;   
+    padding: 0px 10px;
+    text-shadow: 1px 1px 0 #AAA;   
 }
 
 header section.navegacion nav ul li a:hover {
@@ -184,12 +185,13 @@ header section.navegacion nav ul li.subLogin ul.children li {
 
     header section.navegacion nav .links a {
         font-size: 20px;
+        text-shadow: 1px 1px 0 rgb(125, 129, 179);
         
     }
 
     header section.navegacion nav ul li.subLogin ul.children li {
         background-color: rgba(0,0,0,0);
-        font-weight: 600;
+        font-weight: 500;
         padding-left: 30px;
     }
     

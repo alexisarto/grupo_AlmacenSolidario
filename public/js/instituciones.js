@@ -12,10 +12,26 @@ window.addEventListener('load', function(){
     let infoInsti4 = document.querySelector('div.infoInsti4');
     let imgInsti4 = document.querySelector('div.imgInsti4');
 
+    window.addEventListener('resize', function(e){
+        e.preventDefault();
+        if (window.innerWidth > 767) {
+            infoInsti1.style.display = 'flex';
+            infoInsti2.style.display = 'flex';
+            infoInsti3.style.display = 'flex';
+            infoInsti4.style.display = 'flex';
+        }else{
+            infoInsti1.style.display = 'none';
+            infoInsti2.style.display = 'none';
+            infoInsti3.style.display = 'none';
+            infoInsti4.style.display = 'none';
+        }
+    })
+    
     imgInsti1.onmouseover = function (e) { 
         e.preventDefault();
         if (window.innerWidth < 767) {
         infoInsti1.style.display = 'flex';
+        imgInsti1.style.transition = 'transform 1s'
         }
     };
 
@@ -23,6 +39,7 @@ window.addEventListener('load', function(){
         e.preventDefault();
         if (window.innerWidth < 767) {
         infoInsti1.style.display = 'none';
+        imgInsti1.style.transition = 'transform 1s'
         }
     };
 

@@ -5,7 +5,8 @@ class CategoriesInDB extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			categorias: []
+			categorias: [],
+			cantidad: []
 		}
 	}
 
@@ -18,12 +19,21 @@ class CategoriesInDB extends Component {
 
 	componentDidMount() {
 		this.apiCall('http://localhost:3001/api/products/categorias', this.mostrarCategorias)
+		this.apiCall('http://localhost:3001/api/products/cantidadDeProductosPorCategoria', this.mostrarCantidad)
 	}
 
 	mostrarCategorias = (data) => {
 		this.setState (
 			{
 				categorias: data.data
+			}
+		)
+	}
+
+	mostrarCantidad = (data) => {
+		this.setState (
+			{
+				cantidad: data.data
 			}
 		)
 	}
@@ -38,8 +48,8 @@ class CategoriesInDB extends Component {
 					<div className="card-body">
 						<div className="row">
 							{
-							this.state.categorias.map((categoria, i) => 
-							<Category key={i} {...categoria} />
+							this.state.cantidad.map((cant, i) => 
+                            <Category key={i} {...cant} />
 							)}
 						</div>
 					</div>

@@ -17,6 +17,7 @@ import AllTheProductsInTheDBTitle from './components/AllProductsInTheDBTitle';
 import TodosLosProductos from './components/TodosLosProductos';
 import BarChart from './components/BarChart';
 
+
 function App() {
   return (
     <Router>
