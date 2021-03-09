@@ -9,9 +9,6 @@ module.exports = function(sequelize, dataTypes) {
         descripcion: {
             type: dataTypes.STRING
         },
-        descripcion_completa: {
-            type: dataTypes.STRING
-        },
         marca_id: {
             type: dataTypes.INTEGER
         },

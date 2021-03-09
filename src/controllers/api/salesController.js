@@ -125,7 +125,7 @@ const salesController = {
             let respuesta = {
                 meta: {
                     status: 200,
-                    url: "/api/sales/donacionesPorInstitucion"
+                    url: "/api/sales/cantidadDeDonacionesPorInstitucion"
                 },
                 data: donacionesPorInstitucion[0]
             };

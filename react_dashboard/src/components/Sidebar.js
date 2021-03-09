@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 function Sidebar() {
     return (
@@ -38,9 +39,9 @@ function Sidebar() {
 
 {/*<!-- Nav Item - Charts -->*/}
 <li className="nav-item">
-    <a className="nav-link" href="/">
+    <Link to="/chart" className="nav-link" href="/">
         <i className="fas fa-fw fa-chart-area"></i>
-        <span>Charts</span></a>
+        <span>Charts</span></Link>
 </li>
 
 {/*<!-- Nav Item - Tables -->*/}
