@@ -31,7 +31,7 @@ window.addEventListener('load', function(){
         e.preventDefault();
         if (window.innerWidth < 767) {
         infoInsti1.style.display = 'flex';
-        infoInsti1.style.transition = 'transform 1s'
+        imgInsti1.style.transition = 'transform 1s'
         }
     };
 
@@ -39,7 +39,7 @@ window.addEventListener('load', function(){
         e.preventDefault();
         if (window.innerWidth < 767) {
         infoInsti1.style.display = 'none';
-        infoInsti1.style.transition = 'transform 1s'
+        imgInsti1.style.transition = 'transform 1s'
         }
     };
 
