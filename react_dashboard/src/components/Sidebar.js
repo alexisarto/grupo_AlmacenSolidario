@@ -30,24 +30,24 @@ function Sidebar() {
 
 {/*<!-- Nav Item - Pages -->*/}
 <li className="nav-item">
-    <a className="nav-link collapsed" href="/">
-        <i className="fas fa-fw fa-folder"></i>
-        <span>Pages</span>
+    <a className="nav-link collapsed" href="http://localhost:3001/home">
+        <i className="fas fa-fw fa-home"></i>
+        <span>Home</span>
     </a>
 </li>
 
 {/*<!-- Nav Item - Charts -->*/}
 <li className="nav-item">
-    <a className="nav-link" href="/">
-        <i className="fas fa-fw fa-chart-area"></i>
-        <span>Charts</span></a>
+    <a className="nav-link" href="http://localhost:3001/products/almacen">
+        <i className="fas fa-dolly"></i>
+        <span>Almacen</span></a>
 </li>
 
 {/*<!-- Nav Item - Tables -->*/}
 <li className="nav-item">
-    <a className="nav-link" href="/">
-        <i className="fas fa-fw fa-table"></i>
-        <span>Tables</span></a>
+    <a className="nav-link" href="http://localhost:3001/instituciones">
+        <i className="fas fa-church"></i>
+        <span>Instituciones</span></a>
 </li>
 
 {/*<!-- Divider -->*/}
