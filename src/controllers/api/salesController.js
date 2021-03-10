@@ -133,6 +133,20 @@ const salesController = {
         });
     },
 
+    productosMasVendidos: function(req, res) {
+        sequelize.query("SELECT productos.descripcion, SUM(cantidad) AS cantidad FROM carrito_producto INNER JOIN carritos ON carritos.id = carrito_id INNER JOIN productos ON productos.id = producto_id WHERE carritos.estado = 'cerrado' GROUP BY producto_id ORDER BY SUM(cantidad) DESC LIMIT 6")
+        .then(function(productosMasVendidos) {
+            let respuesta = {
+                meta: {
+                    status: 200,
+                    url: "/api/sales/productosMasVendidos"
+                },
+                data: productosMasVendidos[0]
+            };
+            res.json(respuesta);
+        });
+    },
+
     }
 
     module.exports = salesController;

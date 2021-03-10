@@ -16,14 +16,16 @@ import Footer from './components/Footer';
 import AllTheProductsInTheDBTitle from './components/AllProductsInTheDBTitle';
 import TodosLosProductos from './components/TodosLosProductos';
 import BarChart from './components/BarChart';
+import Chart2 from './components/Chart2';
 
 
 function App() {
   return (
     <Router>
       <Switch>
-      <Route path="/chart">
+        <Route path="/chart">
           <BarChart />
+          <Chart2 />
         </Route>
         <Route path="/">
           <div id="wrapper">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2021 at 11:34 PM
+-- Generation Time: Mar 10, 2021 at 03:37 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -69,7 +69,9 @@ INSERT INTO `carritos` (`id`, `usuario_id`, `total`, `estado`, `created_at`, `up
 (28, 32, 6771.25, 'cerrado', '2021-03-04 18:43:56', '2021-03-04 18:45:56', 4, 19.34642857142857),
 (29, 32, 9620.3, 'cerrado', '2021-03-04 18:45:56', '2021-03-08 19:14:22', 2, 27.486570870535715),
 (31, 32, 9965.65, 'cerrado', '2021-03-06 03:43:39', '2021-03-08 22:19:01', 3, 28.473285714285712),
-(32, 32, 0, 'abierto', '2021-03-08 22:19:01', '2021-03-08 22:19:01', NULL, NULL);
+(32, 32, 0, 'abierto', '2021-03-08 22:19:01', '2021-03-08 22:19:01', NULL, NULL),
+(33, 33, 4905, 'cerrado', '2021-03-10 13:11:07', '2021-03-10 13:12:11', 4, 14.014285714285714),
+(34, 33, 7500, 'abierto', '2021-03-10 13:12:11', '2021-03-10 13:13:16', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -294,7 +296,9 @@ INSERT INTO `carrito_producto` (`id`, `carrito_id`, `producto_id`, `cantidad`, `
 (300, 31, 39, 12, 50.15, '2021-03-08 22:17:07', '2021-03-08 22:18:21'),
 (301, 31, 45, 24, 100.7, '2021-03-08 22:17:15', '2021-03-08 22:18:32'),
 (302, 31, 54, 1, 245.25, '2021-03-08 22:17:25', '2021-03-08 22:17:25'),
-(303, 31, 66, 24, 49.05, '2021-03-08 22:17:34', '2021-03-08 22:18:46');
+(303, 31, 66, 24, 49.05, '2021-03-08 22:17:34', '2021-03-08 22:18:46'),
+(304, 33, 66, 100, 49.05, '2021-03-10 13:11:40', '2021-03-10 13:11:52'),
+(305, 34, 16, 100, 75, '2021-03-10 13:13:03', '2021-03-10 13:13:16');
 
 -- --------------------------------------------------------
 
@@ -723,13 +727,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT for table `carritos`
 --
 ALTER TABLE `carritos`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `carrito_producto`
 --
 ALTER TABLE `carrito_producto`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=304;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=306;
 
 --
 -- AUTO_INCREMENT for table `categorias`

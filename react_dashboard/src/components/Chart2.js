@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import './BarChart.css';
-import BarGroup from './BarGroup';
+import './Chart2.css';
+import BarGroup2 from './BarGroup2';
 
-class BarChart extends Component {
+class Chart2 extends Component {
     constructor(props) {
 		super(props);
 		this.state = {
@@ -19,10 +19,10 @@ class BarChart extends Component {
 	}
 
 	componentDidMount() {
-		this.apiCall('http://localhost:3001/api/sales/cantidadDeDonacionesPorInstitucion', this.mostrarDonaciones)
+		this.apiCall('http://localhost:3001/api/sales/productosMasVendidos', this.mostrarVentasPorProducto)
 	}
 
-	mostrarDonaciones = (data) => {
+	mostrarVentasPorProducto = (data) => {
 		this.setState (
 			{
 				data: data.data
@@ -33,20 +33,25 @@ class BarChart extends Component {
     render() {
         let barHeight = 30;
         let barGroups = this.state.data.map((d, i) => <g key={i} transform={`translate(0, ${i * barHeight})`}>
-                                                <BarGroup d={d} barHeight={barHeight} />
+                                                <BarGroup2 d={d} barHeight={barHeight} />
                                               </g>)
 
       return (
+      <div>
         <svg width="800" height="250" >
             <g className="container">
-                <text className="title" x="10" y="30">Cantidad de donaciones por institución</text>
-                <g className="chart" transform="translate(144,60)">
+                <text className="title" x="10" y="30">Productos más vendidos</text>
+                <g className="chart" transform="translate(186,60)">
                 {barGroups}
                 </g>
             </g>
         </svg>
+        <Link to="/" className="nav-link" href="/">
+        <i className="fas fa-home"></i>
+        <span> Home</span></Link>
+      </div>
       )
     }
   }
 
-  export default BarChart;
+  export default Chart2;
