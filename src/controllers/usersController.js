@@ -180,7 +180,6 @@ list: function(req, res, next) {
 },
 
 destroy: function(req, res, next) {
-  console.log('estoy listo para borrar este usuario')
   db.Carrito.findAll({
     where: {
       usuario_id: req.params.id,
@@ -190,7 +189,10 @@ destroy: function(req, res, next) {
   }).then((compras) => {
     console.log(compras[0]);
     if (compras.length != 0) {
-      res.send('El usuario ' + compras[0].usuario.email + ' tiene compras realizadas. No puede ser eliminado.');
+      db.Usuario.findAll({include: [{all: true, nested: true}]})
+      .then(function(usuarios) {
+      res.render('users/list', {usuarios:usuarios, errors:[{msg: 'El usuario ' + compras[0].usuario.email + ' tiene compras realizadas. No puede ser eliminado.'}]});
+      })
     } else {
       db.Carrito.destroy({
         where: {

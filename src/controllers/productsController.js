@@ -113,16 +113,32 @@ const productsController = {
     },
 
     destroy: function(req, res, next) {
-        db.Producto.destroy({
+        db.Carrito_Producto.findAll({
             where: {
-                id: req.params.id
+              producto_id: req.params.id,
+            },
+            include: [{association: "productos"}]
+          }).then((ventas) => {
+            console.log(ventas[0]);
+            if (ventas.length != 0) {
+                db.Producto.findAll({include: [{association: "marca"}, {association: "categoria"}, {association: "sub_categoria"}, {association: "unidad"}]})
+                .then(function(productos) {
+                    res.render('products/list', {productos:productos, errors:[{msg: 'El producto ' + ventas[0].productos.descripcion + ' tiene ventas realizadas. No puede ser eliminado.'}]});
+                })
+            } else {
+                db.Producto.destroy({
+                    where: {
+                        id: req.params.id
+                    }
+                }).then(function() {
+                    res.redirect("/products/list");
+                });
             }
-        });
-        res.redirect("/products/list")
+          })
     },
 
     list: function(req, res, next) {
-        db.Producto.findAll({include: [{association: "marca"}, {association: "categoria"}]})
+        db.Producto.findAll({include: [{association: "marca"}, {association: "categoria"}, {association: "sub_categoria"}, {association: "unidad"}]})
         .then(function(productos){
             res.render('products/list', {productos:productos})
         })

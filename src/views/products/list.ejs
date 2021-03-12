@@ -10,25 +10,27 @@
 
     <main class= "productsList">
         <h1 class ="h1Pl">Listado de productos</h1>
+        <% if (typeof errors != 'undefined') { %>
+            <p style="color: red; text-align: left; margin-bottom: 3px">Error!
+            <span style="font-size: 13px"><%= errors[0].msg %></span></p>
+        <% } %>
         <ol class="olProductList">
             <% for (let i = 0; i < productos.length; i++) { %>
                 <li class="liProductList">
                     <div class="productDetailL">
                         <a href="detalleProducto/<%=productos[i].id%>"><%=productos[i].descripcion%></a>
-                        <p><%=productos[i].marca.marca%></p>
-                        <p><%=productos[i].categoria.categoria%></p>                   
+                        <p><%=productos[i].marca.marca%> - <%= productos[i].presentacion %><%= productos[i].unidad.medida %></p>
+                        <p><%=productos[i].categoria.categoria%> - <%=productos[i].sub_categoria.sub_categoria%></p>                   
                         <p>$<%=productos[i].precio%></p>
                     </div>
                     <div class="buttonList">
-                        <form action="/products/destroy/<%=productos[i].id%>" method="POST">
-                            <button type="submit" class="buttonPL">Borrar</button>
+                        <form action="/products/destroy/<%=productos[i].id%>" id="eliminar" method="POST">
+                            <button type="submit" class="buttonPL" onclick="return confirm('Pulse OK para confirmar la eliminación del producto o CANCEL para cancelar la eliminación');">Borrar</button>
                         </form>
                         <form action="/products/editar-producto/<%=productos[i].id%>" method="GET">
                             <button type="submit" class="buttonPL">Editar</button>
                         </form>
                     </div>
-
-
                 </li>
             <% } %>
         </ol>

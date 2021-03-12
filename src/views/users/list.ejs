@@ -9,6 +9,10 @@
     <div class="usersList"> 
             
     <h1>Listado de Usuarios</h1>
+    <% if (typeof errors != 'undefined') { %>
+        <p style="color: red; text-align: left; margin-bottom: 3px">Error!
+        <span style="font-size: 13px"><%= errors[0].msg %></span></p>
+    <% } %>
     <ol>
         <% for (let i = 0; i < usuarios.length; i++) { %>
             <li>
@@ -16,7 +20,7 @@
                  - Nombre: <%= usuarios[i].nombre %>
                  - E-mail: <%= usuarios[i].email %>
                  - Perfil: <%= usuarios[i].perfil.nombre %>
-                 - <button class="eliminar-usuario-button" type="button"><a href='/users/destroy/<%= usuarios[i].id %>'>Eliminar</a></button>
+                 - <button class="eliminar-usuario-button" type="button"><a href='/users/destroy/<%= usuarios[i].id %>' onclick="return confirm('Pulse OK para confirmar la eliminación del usuario o CANCEL para cancelar la eliminación');" >Eliminar</a></button>
             </li>
         <% } %>
     </ol>
