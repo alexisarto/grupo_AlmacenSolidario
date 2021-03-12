@@ -16,7 +16,7 @@
                 <br>
                 <ul>
                     <% for (let i = 0; i < items.length; i++) { %>
-                        <li><%= items[i].productos.descripcion %> - <%= items[i].productos.marca.marca %> x <%= items[i].productos.presentacion %> <%= items[i].productos.unidad.medida %> x <%= items[i].cantidad %> = $ <%= (items[i].productos.precio * items[i].cantidad) %></li>
+                        <li><%= items[i].productos.descripcion %> - <%= items[i].productos.marca.marca %> x <%= items[i].productos.presentacion %> <%= items[i].productos.unidad.medida %> x <%= items[i].cantidad %> = $ <%= (items[i].productos.precio * items[i].cantidad).toFixed(2)%></li>
                     <% } %>
                 </ul>
                 <br>

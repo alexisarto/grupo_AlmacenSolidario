@@ -9,28 +9,8 @@ const usersController = {
   logout: function (req, res, next) {
     res.cookie("recordame", "", { expires: new Date() }); 
     req.session.destroy();
+    res.clearCookie('importe');
     res.redirect('/home');
-  },
-
-  passwordReset: function (req, res, next) {
-    res.render('users/passwordReset');
-  },
-
-  passwordForgot: function (req, res, next) {
-    db.Usuario.findOne({
-      where: {
-        email: req.body.email
-      }
-    }).then(function(user) {
-      if(!user) {
-        return res.render('users/passwordReset', {
-          errors: [
-            { msg: 'e-mail inválido' }
-          ], email: req.body.email
-        });
-      }
-    res.render('users/passwordReset');
-    })
   },
 
   crear: function(req, res, next) {
@@ -115,7 +95,7 @@ const usersController = {
 });
  },
 
- formularioLogin: function (req, res, next) {
+formularioLogin: function (req, res, next) {
   res.render('users/ingresar');
 },
 
@@ -187,25 +167,38 @@ destroy: function(req, res, next) {
     },
     include: [{association: "usuario"}]
   }).then((compras) => {
-    console.log(compras[0]);
     if (compras.length != 0) {
       db.Usuario.findAll({include: [{all: true, nested: true}]})
       .then(function(usuarios) {
       res.render('users/list', {usuarios:usuarios, errors:[{msg: 'El usuario ' + compras[0].usuario.email + ' tiene compras realizadas. No puede ser eliminado.'}]});
       })
     } else {
-      db.Carrito.destroy({
+      db.Carrito.findOne({
         where: {
           usuario_id: req.params.id
         }
-      }).then(function() {
-        db.Usuario.destroy({
-          where: {
-              id: req.params.id
-          }
-      }).then(function() {
-        res.redirect("/users/list")
-      });
+      }).then(function(carrito) {
+        if (carrito.total !=0) {
+          db.Carrito_Producto.destroy({
+            where: {
+              carrito_id: carrito.id
+            }
+          }).then(function() {
+            db.Carrito.destroy({
+              where: {
+                usuario_id: req.params.id
+              }
+            }).then(function() {
+              db.Usuario.destroy({
+                where: {
+                    id: req.params.id
+                }
+            }).then(function() {
+              res.redirect("/users/list")
+            });
+            })
+          })
+        }
       })
     }
   })

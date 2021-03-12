@@ -72,7 +72,6 @@ const productsController = {
         },
 
     categorias: function(req, res) {
-        console.log('aca va');
         db.Categoria.findAll()
         .then(function(categorias) {
             let respuesta = {

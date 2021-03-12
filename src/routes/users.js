@@ -16,10 +16,6 @@ router.get('/', function(req, res, next) {
 // *** Logout ***
 router.get('/logout', authMiddleware, usersController.logout);
 
-// *** Resetear contrasenia ***
-router.get('/resetear-contrasenia', usersController.passwordForgot);
-router.post('/resetear-contrasenia', usersController.passwordReset);
-
 // *** Crear usuario sql ***
 router.get('/crear', guestMiddleware, usersController.crear);
 router.post('/crear', validations.registroUsuario, usersController.registro);

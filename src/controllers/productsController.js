@@ -119,7 +119,6 @@ const productsController = {
             },
             include: [{association: "productos"}]
           }).then((ventas) => {
-            console.log(ventas[0]);
             if (ventas.length != 0) {
                 db.Producto.findAll({include: [{association: "marca"}, {association: "categoria"}, {association: "sub_categoria"}, {association: "unidad"}]})
                 .then(function(productos) {

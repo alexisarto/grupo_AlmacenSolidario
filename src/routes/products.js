@@ -21,8 +21,8 @@ router.get('/almacen/:categoria_id/:sub_categoria_id?', productsController.filtr
 
 
 /* GET product edit */
-router.get('/editar-producto/:id', productsController.productEdit);
-router.get('/editar-producto/:id/image', productsController.productEditImage);
+router.get('/editar-producto/:id', adminMiddleware, productsController.productEdit);
+router.get('/editar-producto/:id/image', adminMiddleware, productsController.productEditImage);
 /* POST product edit */
 router.post('/editar-producto/:id', upload.any(), productsController.productUpdate);
 router.post('/editar-producto/:id/image', upload.any(), productsController.productUpdateImage);
@@ -34,7 +34,7 @@ router.post('/destroy/:id', productsController.destroy);
 router.get('/list', adminMiddleware, productsController.list);
 
 /* Products agregar marca, unidad, categoria y subcategoria*/
-router.get('/agregarmarca', productsController.brandAdd);
+router.get('/agregarmarca', adminMiddleware, productsController.brandAdd);
 router.post('/agregarmarca', productsController.brandStore);
 router.post('/agregarunidad', productsController.unidadStore);
 router.post('/agregarcategoria', productsController.categoryStore);
