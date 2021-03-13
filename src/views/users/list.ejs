@@ -19,7 +19,6 @@
                 Ingreso: <%= usuarios[i].created_at.toDateString() %>
                  - Nombre: <%= usuarios[i].nombre %>
                  - E-mail: <%= usuarios[i].email %>
-                 - Perfil: <%= usuarios[i].perfil.nombre %>
                  - <button class="eliminar-usuario-button" type="button"><a href='/users/destroy/<%= usuarios[i].id %>' onclick="return confirm('Pulse OK para confirmar la eliminación del usuario o CANCEL para cancelar la eliminación');" >Eliminar</a></button>
             </li>
         <% } %>

@@ -149,7 +149,11 @@ ingresar: function (req, res, next) {
 },
 
 list: function(req, res, next) {
-  db.Usuario.findAll({include: [{all: true, nested: true}]})
+  db.Usuario.findAll({
+    where: {
+      perfil_id: 1
+    },
+    include: [{all: true, nested: true}]})
   .then(function(usuarios){
       res.render('users/list', {usuarios:usuarios})
   })
