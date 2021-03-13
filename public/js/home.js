@@ -37,9 +37,7 @@ window.addEventListener('load', function(){
                     count = 0
                 }
             }
-        
-    
-    
+            
         }, 3000);
 
         window.addEventListener('resize', function(e){
