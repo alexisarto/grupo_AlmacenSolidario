@@ -14,6 +14,7 @@ div.historial {
     justify-content: center;
     padding-top: 5px;
     padding-bottom: 10px;
+    border-radius: 10px;
 }
 
 div.ordenCompra {
@@ -49,6 +50,7 @@ div.ordenCompra ul {
 
     div.ordenCompra {
         width: 95%;
+    }
 
 
 }
