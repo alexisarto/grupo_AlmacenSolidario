@@ -79,20 +79,30 @@ section.proceso {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
-    background-color: #dc7a07;
+    background-color: #1e9e6b;
 }
 
 section.proceso div {
-    width: 60px;
+    background-color: #dc7a07;
+    width: 20%;
     text-align: center;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 2px rgba(44, 32, 32, 0.728);
 }
 
 section.proceso div i {
-    padding-bottom: 10px;
+    padding: 10px;
     font-size: 30px;
+}
+
+section.proceso div h3 {
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+
 }
 
 section.imagenAlimentos {
@@ -107,7 +117,7 @@ section.imagenAlimentos img {
 }
 
 section.contadores {
-    background-color: #1e9e6b;
+    background-color: #dc7a07;
     padding: 25px 0px;
     display: flex;
     flex-wrap: wrap;
@@ -116,8 +126,13 @@ section.contadores {
 }
 
 section.contadores div{ 
-    text-align: center;  
+    background-color: #1e9e6b;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 2px rgba(44, 32, 32, 0.728);
+    text-align: center;
+    padding: 10px;  
 }
+
 
 @media (max-width: 768px){
 
@@ -125,7 +140,9 @@ section.contadores div{
         flex-direction: column;
         align-items: center;
         padding-top: 0px;
-        padding-bottom: 15px;;
+        padding-bottom: 15px;
+        padding-left: 5%;
+        padding-right: 5%;
         
     }
     
@@ -139,10 +156,13 @@ section.contadores div{
         align-items: center;
         padding-top: 0px;
         padding-bottom: 15px;
+        padding-left: 5%;
+        padding-right: 5%;
     }
 
     section.contadores div {
         margin-top: 15px;
+        width: 100%;
     }
 }
 
