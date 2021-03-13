@@ -1,0 +1,54 @@
+main.buyDetail {
+    display: flex;
+    justify-content: center;
+    padding-top: 120px;
+    
+}
+
+div.historial {
+    width: 80%;
+    background-color: white;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+div.ordenCompra {
+    width: 80%;
+    background-color: rgb(170, 208, 208);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    padding: 5px 0px;
+    border-radius: 10px;
+    
+}
+
+div.ordenCompra ul {
+    text-align: center;
+}
+
+.historial ul li {
+    list-style: none;
+}
+
+@media (max-width: 768px){
+    main.buyDetail {
+        width: 100%;
+        
+    }
+    
+    div.historial {
+        width: 100%;
+        
+    }
+
+    div.ordenCompra {
+        width: 95%;
+
+
+}
