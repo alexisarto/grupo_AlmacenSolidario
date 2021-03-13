@@ -134,7 +134,7 @@ section.contadores div{
 }
 
 
-@media (max-width: 768px){
+@media (max-width: 767px){
 
     section.proceso {
         flex-direction: column;
@@ -146,10 +146,18 @@ section.contadores div{
         
     }
     
-    section.proceso div {
+    section.proceso div{
         width: 100%;
         margin-top: 15px;
     }
+
+    section.proceso div.etapa2,
+    section.proceso div.etapa3,
+    section.proceso div.etapa4 {
+        display: none;
+    }
+
+
 
     section.contadores {
         flex-direction: column;
