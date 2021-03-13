@@ -25,13 +25,13 @@
                     <option value="3">Los bajitos</option>
                     <option value="4">Manos en accion</option>
                 </select>
-                <button class="sec-button" type="submit">Donar</button>
+                <button class="botonInsti" type="submit">Donar</button>
             </form>
             <div class="errorInstitucion">
-            <% if (typeof errors != 'undefined') { %>
-                <p style="color: red; text-align: left; margin-right: 5px">Error!</p>
-                <p style="font-size: 13px"><%= errors[0].msg %></p>
-            <% } %>
+                <% if (typeof errors != 'undefined') { %>
+                    <p style="color: red; text-align: left; margin-right: 5px">Error!</p>
+                    <p style="font-size: 13px"><%= errors[0].msg %></p>
+                <% } %>
             </div>
         </section>
         <% } %>

@@ -104,22 +104,6 @@ body.form div.formulario div.errores ul li {
     font-size: 13px;
 }
 
-/* Historial */
-
-.historial {
-    padding-top: 120px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-left: 10%;
-    margin-right: 10%;
-}
-
-.historial ul li {
-    list-style: none;
-
-}
-
 /* Users list */
 .usersList {
     margin-top: 120px;

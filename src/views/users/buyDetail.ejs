@@ -6,24 +6,23 @@
 </head>
 <body class="form">
     <%- include('../partials/header')%>
-    <div class="historial">
-            <h1>Detalle orden de compra</h1><br>
+    <main class = 'buyDetail'>
+        <div class="historial">
+                <h1>Detalle orden de compra</h1><br>
                 Usuario: <%= usuarioLogueado.nombre %><br><br>
-                <p>Orden de compra nro: <%= cart.id %></p>
-                <p>Fecha: <%= cart.updated_at.toDateString() %></p>
-                <p>Importe $<%= cart.total %></p>
-                <p>Institución: <%= cart.institucion.nombre %></p><br>
-                <br>
-                <ul>
-                    <% for (let i = 0; i < items.length; i++) { %>
-                        <li><%= items[i].productos.descripcion %> - <%= items[i].productos.marca.marca %> x <%= items[i].productos.presentacion %> <%= items[i].productos.unidad.medida %> x <%= items[i].cantidad %> = $ <%= (items[i].productos.precio * items[i].cantidad).toFixed(2)%></li>
-                    <% } %>
-                </ul>
-                <br>
-        </main>
-    </div>
-    <!-- footer -->
-   
-   <!-- /footer -->
+                <div class = 'ordenCompra'>
+                    <p>Orden de compra nro: <%= cart.id %></p>
+                    <p>Fecha: <%= cart.updated_at.toDateString() %></p>
+                    <p>Importe $<%= cart.total %></p>
+                    <p>Institución: <%= cart.institucion.nombre %></p><br>
+                    <ul>
+                        <% for (let i = 0; i < items.length; i++) { %>
+                            <li><%= items[i].productos.descripcion %> - <%= items[i].productos.marca.marca %> x <%= items[i].productos.presentacion %> <%= items[i].productos.unidad.medida %> x <%= items[i].cantidad %> = $ <%= (items[i].productos.precio * items[i].cantidad).toFixed(2) %></li>
+                        <% } %>
+                    </ul>
+                </div>
+        </div>
+    </main>
+    <%- include('../partials/footer') %>
 </body>
 </html>
