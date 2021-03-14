@@ -17,9 +17,18 @@ window.addEventListener('load', function() {
                     }
                 }
             })
+            
             .catch(function(error) {
             console.log("Error: " + error);
             })
         }
     })
+    
+
+
+    window.addEventListener("click",function(e) {
+        e.getElementById("a").style.color="red"
+    })
+
+
 })
