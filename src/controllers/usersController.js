@@ -202,6 +202,20 @@ destroy: function(req, res, next) {
             });
             })
           })
+        } else {
+          db.Carrito.destroy({
+            where: {
+              usuario_id: req.params.id
+            }
+          }).then(function() {
+          db.Usuario.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function() {
+          res.redirect("/users/list")
+        });
+        })
         }
       })
     }
