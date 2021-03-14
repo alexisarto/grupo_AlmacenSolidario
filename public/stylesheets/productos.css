@@ -24,7 +24,6 @@
 .Contenedor_productos{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 70%;
     overflow: auto;
     margin-top: 100px;
@@ -49,6 +48,7 @@
 .contenedor_info_producto{
     display: flex;
     flex-direction: row;
+    margin-top: 20px;
 }
 
 .cantidad_producto{
@@ -75,7 +75,7 @@
     height:80%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     border-bottom: 2px solid black;
     overflow: auto;
 }
@@ -93,8 +93,8 @@
 .botonpagar{
     position: relative;
     align-self: center;
-    margin-left: 20px;
-    top: 50px;
+    margin-left: 37%;
+    top: 60px;
     background-color: #0022aa;
     color: white;
     border-radius: 5px;
@@ -123,22 +123,34 @@
 }
 
 /* DETALLE DEL PRODUCTO */
+@media screen and (max-width:768px){
+    .aside{
+        font-size:8px;
+        width: fit-content;
+    }
+    .grilla_almacen{
+        width:fit-content;
+    }
+}
 
 .aside{
-    height: 950px;
+    height: max-content; 
     width: 15%;
     margin-top: 102px;
     border:2px solid black;
     margin-left: 2px;
     margin-bottom: 2px;
+    overflow:scroll;
+    overflow-x: hidden;
+    overflow-y: hidden;
 
 }
+
 
 .moldeFotoDetalle{
     position: relative;
     height: 300px;
     width: 250px;
-    border:2px solid black;
     top:10px;
     left:10px;
 }
@@ -160,6 +172,7 @@
     border: 2px solid black;
     border-radius: 5px;
     margin-left: 5px;
+    background-color: #00b8e6;
 }
 .infoProd{
     height: 80%;
@@ -278,6 +291,7 @@
     display: flex;
     background-color: white;
     flex-direction: column;
+    height:fit-content;
 }
 .nombreProd_almacen{
     font-size: medium;
