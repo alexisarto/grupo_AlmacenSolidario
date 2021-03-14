@@ -11,6 +11,9 @@
     padding: 20px;
     display: flex;
     justify-content: space-between;
+    bottom: 0;
+    position:relative;
+    width: 100%;
 
 }
 .disenio-footer .copyright {

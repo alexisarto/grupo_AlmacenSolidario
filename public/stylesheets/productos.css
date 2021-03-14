@@ -125,11 +125,20 @@
 /* DETALLE DEL PRODUCTO */
 @media screen and (max-width:768px){
     .aside{
-        font-size:8px;
-        width: fit-content;
+        width: 40%!important;   
     }
-    .grilla_almacen{
-        width:fit-content;
+    .producto_almacen{
+        width:225px!important;
+        overflow:hidden;
+    }
+    .precioProd_almacen, .detalle_producto_almacen, .detalle_presentacion_producto_almacen{
+        font-size: 10px!important;
+    }
+    .nombreProd_almacen{
+        font-size:12px!important;
+    }
+    .moldefoto{
+        height:70px;
     }
 }
 
