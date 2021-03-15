@@ -1,7 +1,11 @@
 var db = require('../../database/models');
 const usersController = {
     cantidadUsuarios: function(req, res) {
-        db.Usuario.findAll()
+        db.Usuario.findAll({
+            where: {
+                perfil_id: 1
+              }
+        })
         .then(function(usuarios) {
             let respuesta = {
                 meta: {
