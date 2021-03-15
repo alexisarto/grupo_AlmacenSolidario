@@ -34,7 +34,6 @@
 .disenio-footer .redes {
     display: flex;
     flex-direction: column;
-    flex: 1 1 12%;
 }
 .disenio-footer .iconos-redes {
     display: flex;
