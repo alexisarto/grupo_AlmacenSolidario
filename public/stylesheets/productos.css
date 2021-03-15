@@ -162,6 +162,12 @@
     .nombreProd{
         font-size:small!important;
     }
+    .fotoDetalle{
+        height: 168px!important;
+    }
+    .containerProd{
+        margin-right: 5px!important;
+    }
 }
 
 .aside{
