@@ -127,18 +127,40 @@
     .aside{
         width: 40%!important;   
     }
-    .producto_almacen{
+    .producto_almacen, .detalle_producto{
         width:225px!important;
         overflow:hidden;
     }
-    .precioProd_almacen, .detalle_producto_almacen, .detalle_presentacion_producto_almacen{
+    .precioProd_almacen, .detalle_producto_almacen, .detalle_presentacion_producto_almacen,.texto_producto_carrito, .precioProd,.precio_producto,.textopagar{
         font-size: 10px!important;
     }
     .nombreProd_almacen{
         font-size:12px!important;
     }
     .moldefoto{
-        height:70px;
+        height:70px!important;
+    }
+    .producto{
+        height:160px;
+    }
+    .botonpagar{
+        height: 25px;
+        width: 50px;
+    }
+    .precio_producto{
+        justify-content:flex-end;
+        width:70px;
+        margin-top: 10px;
+        margin-left: 20px;
+    }
+    .cantidad_producto{
+        font-size:8px;
+    }
+    .contenedor_info_producto{
+        flex-direction: column;
+    }
+    .nombreProd{
+        font-size:small!important;
     }
 }
 
